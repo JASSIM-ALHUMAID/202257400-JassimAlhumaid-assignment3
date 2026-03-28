@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,56 +9,124 @@
   </head>
 
   <body>
-    <main
-      class="flex flex-col items-center justify-center mx-auto bg-primary text-white"
-    >
-      <div class="container overflow-hidden">
-        <!-- Nav Bar -->
-        <nav class="fixed top-0 left-0 right-0 min-w-ful z-999">
-          <ul class="flex gap-4 p-4 items-center justify-center nav-links">
+    <main class="flex min-h-screen w-full flex-col items-center bg-primary text-white overflow-x-hidden">
+      <!-- Nav Bar -->
+      <nav id="site-nav" class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+        <div
+          class="mx-auto w-full max-w-6xl rounded-2xl border border-white/10 bg-primary/80 shadow-lg shadow-black/20 backdrop-blur-md"
+        >
+          <div class="flex items-center justify-between px-4 py-3 md:hidden">
+            <a href="#home" class="text-sm font-semibold tracking-widest uppercase"
+              >Jassim</a
+            >
+            <button
+              id="mobile-menu-button"
+              type="button"
+              class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              aria-label="Open navigation menu"
+            >
+              <span class="sr-only">Toggle navigation menu</span>
+              <span
+                id="mobile-menu-open-icon"
+                class="flex items-center justify-center"
+              >
+                <i data-lucide="menu" width="20" height="20"></i>
+              </span>
+              <span
+                id="mobile-menu-close-icon"
+                class="hidden flex items-center justify-center"
+              >
+                <i data-lucide="x" width="20" height="20"></i>
+              </span>
+            </button>
+          </div>
+
+          <div id="mobile-menu" class="hidden border-t border-white/10 px-4 pb-4 md:hidden">
+            <ul class="nav-links flex flex-col gap-2 pt-3 text-sm font-medium">
+              <li>
+                <a
+                  href="#home"
+                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <ul
+            class="nav-links hidden items-center justify-center gap-6 px-6 py-4 text-sm font-medium md:flex lg:gap-8"
+          >
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-        </nav>
+        </div>
+      </nav>
+
+      <div class="w-full overflow-hidden">
 
         <!-- Hero Section -->
         <section
           id="home"
-          class="relative z-0 flex flex-col gap-5 items-center justify-center min-h-screen"
+          class="relative z-0 flex min-h-screen w-full flex-col items-center justify-center gap-5 px-4 pb-16 pt-32 text-center sm:px-6 md:pt-36"
         >
           <!-- main blob background -->
           <div
-            class="bg-blob h-1/2 w-1/2 shadow-blob shadow-2xl blur-3xl rounded-full absolute left-1/2 top-5/12 -translate-y-1/2 -translate-x-1/2 z-[-1]"
+            class="bg-blob absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-blob shadow-2xl blur-3xl z-[-1] sm:h-80 sm:w-80 md:h-96 md:w-96"
           ></div>
 
           <div
-            class="flex flex-col items-center font-bold -mt-42 text-center text-4xl md:text-6xl"
+            class="flex flex-col items-center gap-2 font-bold text-4xl sm:text-5xl md:text-6xl"
           >
             <h1 id="welcome-message">Good Mourning</h1>
             <h1>I'm <span class="liner-gradient-bg">Jassim Alhumaid</span></h1>
           </div>
           <h3
-            class="text-md md:text-lg text-center text-foreground font-semibold"
+            class="px-3 text-base text-foreground font-semibold md:text-lg"
           >
             Junior Software Engineering Student at KFUPM
           </h3>
 
-          <p class="text-center text-sm md:text-base text-gray w-1/2">
+          <p class="max-w-2xl px-2 text-sm text-gray sm:text-base">
             I craft high-performance digital experiences with a focus on clean
             architecture and intuitive design. Specializing in the modern web
             stack with React, Next.js, and Tailwind CSS.
           </p>
-          <div>
-            <button class="bg-blue px-4 py-2 rounded">Download CV</button>
+          <div class="w-full sm:w-auto">
+            <button class="w-full rounded bg-blue px-6 py-3 font-semibold sm:w-auto">
+              Download CV
+            </button>
           </div>
         </section>
 
         <!-- About Section -->
         <section
           id="about"
-          class="min-h-screen flex items-center justify-center py-20 px-4"
+          class="scroll-mt-24 flex min-h-screen w-full items-center justify-center px-4 py-16 sm:px-6 md:scroll-mt-32 md:py-20"
         >
           <div
             class="max-w-4xl w-full bg-white/5 border border-white/10 rounded-3xl p-6 md:p-12 backdrop-blur-sm relative overflow-hidden"
@@ -79,7 +147,8 @@
               </div>
 
               <h2 class="text-2xl md:text-5xl font-bold mt-8 mb-6">
-                Junior Software Engineering<br />Student at KFUPM
+                Junior Software Engineering<br class="hidden md:block" />Student
+                at KFUPM
               </h2>
 
               <p
@@ -157,7 +226,10 @@
         </section>
       </div>
       <!-- Projects Section -->
-      <section id="projects" class="min-h-screen py-20 px-4 relative z-0">
+      <section
+        id="projects"
+        class="scroll-mt-24 min-h-screen w-full px-4 py-16 relative z-0 sm:px-6 md:scroll-mt-32 md:py-20"
+      >
         <div class="max-w-6xl mx-auto">
           <div class="flex flex-col items-center text-center mb-16">
             <div
@@ -171,12 +243,12 @@
             <h2 class="text-3xl md:text-5xl font-bold">Featured Projects</h2>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <!-- Project 1 -->
             <div
               class="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors duration-300"
             >
-              <div class="p-6">
+              <div class="p-5 sm:p-6">
                 <div class="flex justify-between items-start mb-4">
                   <div class="p-2 bg-blue/10 rounded-lg text-blue">
                     <i data-lucide="layout" width="24" height="24"></i>
@@ -195,7 +267,7 @@
                 <div class="rounded-2xl mb-10">
                   <img
                     src="./assets/images/portfolio-image.png"
-                    class="w-full h-72 object-cover rounded-2xl"
+                    class="w-full h-60 object-cover rounded-2xl sm:h-72"
                     alt="Portfolio Website"
                   />
                 </div>
@@ -232,7 +304,7 @@
             <div
               class="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors duration-300"
             >
-              <div class="p-6">
+              <div class="p-5 sm:p-6">
                 <div class="flex justify-between items-start mb-4">
                   <div class="p-2 bg-purple/10 rounded-lg text-purple">
                     <i data-lucide="shopping-cart" width="24" height="24"></i>
@@ -251,7 +323,7 @@
                 <div class="rounded-2xl mb-10">
                   <img
                     src="./assets/images/job-tracker.png"
-                    class="w-full h-72 object-cover rounded-2xl"
+                    class="w-full h-60 object-cover rounded-2xl sm:h-72"
                     alt="Job tracking application"
                   />
                 </div>
@@ -289,7 +361,7 @@
             <div
               class="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors duration-300"
             >
-              <div class="p-6">
+              <div class="p-5 sm:p-6">
                 <div class="flex justify-between items-start mb-4">
                   <div class="p-2 bg-green-500/10 rounded-lg text-green-400">
                     <i data-lucide="check-square" width="24" height="24"></i>
@@ -308,7 +380,7 @@
                 <div class="rounded-2xl mb-10">
                   <img
                     src="./assets/images/task-manager.png"
-                    class="w-full h-72 object-cover rounded-2xl"
+                    class="w-full h-60 object-cover rounded-2xl sm:h-72"
                     alt="Task manager application"
                   />
                 </div>
@@ -343,7 +415,7 @@
             <div
               class="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors duration-300"
             >
-              <div class="p-6">
+              <div class="p-5 sm:p-6">
                 <div class="flex justify-between items-start mb-4">
                   <div class="p-2 bg-orange-500/10 rounded-lg text-red-400">
                     <i data-lucide="credit-card" width="24" height="24"></i>
@@ -362,7 +434,7 @@
                 <div class="rounded-2xl mb-10">
                   <img
                     src="./assets/images/expencse-tracker.png"
-                    class="w-full h-72 object-cover rounded-2xl"
+                    class="w-full h-60 object-cover rounded-2xl sm:h-72"
                     alt="Expense tracker application"
                   />
                 </div>
@@ -396,13 +468,13 @@
         </div>
         <!--  blob background -->
         <div
-          class="bg-blob h-1/2 w-1/2 shadow-blob shadow-2xl blur-3xl rounded-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1]"
+          class="bg-blob h-64 w-64 shadow-blob shadow-2xl blur-3xl rounded-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] sm:h-80 sm:w-80 md:h-96 md:w-96"
         ></div>
       </section>
       <!-- Contact Section -->
       <section
         id="contact"
-        class="min-h-screen py-20 px-4 flex items-center justify-center relative z-0"
+        class="scroll-mt-24 flex min-h-screen w-full items-center justify-center px-4 py-16 relative z-0 sm:px-6 md:scroll-mt-32 md:py-20"
       >
         <!-- Background decorative glow -->
         <div
@@ -423,7 +495,7 @@
           </div>
 
           <div
-            class="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm"
+            class="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12 backdrop-blur-sm"
           >
             <form class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -488,10 +560,10 @@
 
       <!-- Footer -->
       <footer
-        class="py-8 border-t border-white/10 bg-black/20 backdrop-blur-sm rounded-2xl"
+        class="w-full py-8 border-t border-white/10 bg-black/20 backdrop-blur-sm"
       >
         <div
-          class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4"
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 sm:px-6 md:flex-row"
         >
           <div class="text-gray text-sm">
             &copy; 2026 Jassim Alhumaid. All rights reserved.
