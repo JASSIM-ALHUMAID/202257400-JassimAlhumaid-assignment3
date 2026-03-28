@@ -11,6 +11,7 @@ const projectsSearchInput = document.getElementById("projects-search-input");
 const projectsSearchStatus = document.getElementById("projects-search-status");
 const projectsEmptyState = document.getElementById("projects-empty-state");
 const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
+const revealSections = Array.from(document.querySelectorAll("[data-reveal-section]"));
 
 const getStoredTheme = () => {
   try {
@@ -157,6 +158,43 @@ if (projectsSearchInput && projectsSearchStatus && projectsEmptyState && project
 
   projectsSearchInput.addEventListener("input", updateProjectsSearch);
   updateProjectsSearch();
+}
+
+if (revealSections.length) {
+  const revealSectionContent = (section) => {
+    const revealItems = Array.from(section.querySelectorAll("[data-reveal]"));
+
+    revealItems.forEach((item) => {
+      item.classList.add("is-revealed");
+    });
+  };
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealSections.forEach(revealSectionContent);
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          revealSectionContent(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.35,
+        rootMargin: "0px 0px -18% 0px",
+      }
+    );
+
+    revealSections.forEach((section) => {
+      revealObserver.observe(section);
+    });
+  }
 }
 
 lucide.createIcons();
