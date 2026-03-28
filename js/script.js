@@ -4,6 +4,10 @@ const mobileMenu = document.getElementById("mobile-menu");
 const menuOpenIcon = document.getElementById("mobile-menu-open-icon");
 const menuCloseIcon = document.getElementById("mobile-menu-close-icon");
 const siteNav = document.getElementById("site-nav");
+const projectsSearchInput = document.getElementById("projects-search-input");
+const projectsSearchStatus = document.getElementById("projects-search-status");
+const projectsEmptyState = document.getElementById("projects-empty-state");
+const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
 
 if (welcomeMessage) {
   const time = new Date().getHours();
@@ -62,6 +66,44 @@ if (mobileMenuButton && mobileMenu && menuOpenIcon && menuCloseIcon && siteNav) 
       setMobileMenuState(false);
     }
   });
+}
+
+if (projectsSearchInput && projectsSearchStatus && projectsEmptyState && projectCards.length) {
+  const totalProjects = projectCards.length;
+
+  const updateProjectsSearch = () => {
+    const query = projectsSearchInput.value.trim().toLowerCase();
+    let visibleProjects = 0;
+
+    projectCards.forEach((card) => {
+      const searchText = (card.dataset.projectSearch || card.textContent || "").toLowerCase();
+      const isMatch = query === "" || searchText.includes(query);
+
+      card.classList.toggle("hidden", !isMatch);
+      card.setAttribute("aria-hidden", String(!isMatch));
+
+      if (isMatch) {
+        visibleProjects += 1;
+      }
+    });
+
+    projectsEmptyState.classList.toggle("hidden", visibleProjects !== 0);
+
+    if (query === "") {
+      projectsSearchStatus.textContent = `Showing all ${totalProjects} projects.`;
+      return;
+    }
+
+    if (visibleProjects === 0) {
+      projectsSearchStatus.textContent = `No projects match "${projectsSearchInput.value.trim()}".`;
+      return;
+    }
+
+    projectsSearchStatus.textContent = `Showing ${visibleProjects} of ${totalProjects} projects for "${projectsSearchInput.value.trim()}".`;
+  };
+
+  projectsSearchInput.addEventListener("input", updateProjectsSearch);
+  updateProjectsSearch();
 }
 
 lucide.createIcons();
