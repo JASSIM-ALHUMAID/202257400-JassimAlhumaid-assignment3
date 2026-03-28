@@ -12,6 +12,8 @@ const projectsSearchStatus = document.getElementById("projects-search-status");
 const projectsEmptyState = document.getElementById("projects-empty-state");
 const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
 const revealSections = Array.from(document.querySelectorAll("[data-reveal-section]"));
+const contactForm = document.querySelector("[data-contact-form]");
+const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 
 const getStoredTheme = () => {
   try {
@@ -195,6 +197,35 @@ if (revealSections.length) {
       revealObserver.observe(section);
     });
   }
+}
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!contactForm.reportValidity()) {
+      return;
+    }
+
+    const formData = new FormData(contactForm);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const subject = String(formData.get("subject") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      "",
+      "Message:",
+      message,
+    ].join("\n");
+    const mailtoLink =
+      `mailto:${CONTACT_EMAIL}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+  });
 }
 
 lucide.createIcons();

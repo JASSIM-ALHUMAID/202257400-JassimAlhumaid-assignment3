@@ -698,7 +698,7 @@
             class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm motion-safe:[animation-delay:180ms] sm:p-8 md:p-12"
             data-reveal
           >
-            <form class="space-y-6">
+            <form class="space-y-6" data-contact-form>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-2">
                   <label for="name" class="text-sm font-medium text-gray"
@@ -707,8 +707,12 @@
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
                     placeholder="John Doe"
+                    autocomplete="name"
+                    minlength="2"
+                    required
                   />
                 </div>
                 <div class="space-y-2">
@@ -718,8 +722,11 @@
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
                     placeholder="john@example.com"
+                    autocomplete="email"
+                    required
                   />
                 </div>
               </div>
@@ -731,8 +738,11 @@
                 <input
                   type="text"
                   id="subject"
+                  name="subject"
                   class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
                   placeholder="Project Inquiry"
+                  minlength="3"
+                  required
                 />
               </div>
 
@@ -742,9 +752,12 @@
                 >
                 <textarea
                   id="message"
+                  name="message"
                   rows="4"
                   class="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
                   placeholder="Your message here..."
+                  minlength="10"
+                  required
                 ></textarea>
               </div>
 
