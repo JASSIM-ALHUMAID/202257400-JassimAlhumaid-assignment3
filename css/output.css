@@ -400,8 +400,11 @@
   .resize-none {
     resize: none;
   }
-  .scroll-mt-24 {
-    scroll-margin-top: calc(var(--spacing) * 24);
+  .scroll-mt-12 {
+    scroll-margin-top: calc(var(--spacing) * 12);
+  }
+  .scroll-mt-16 {
+    scroll-margin-top: calc(var(--spacing) * 16);
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -985,9 +988,14 @@
       width: calc(var(--spacing) * 96);
     }
   }
-  .md\:scroll-mt-32 {
+  .md\:scroll-mt-20 {
     @media (width >= 48rem) {
-      scroll-margin-top: calc(var(--spacing) * 32);
+      scroll-margin-top: calc(var(--spacing) * 20);
+    }
+  }
+  .md\:scroll-mt-24 {
+    @media (width >= 48rem) {
+      scroll-margin-top: calc(var(--spacing) * 24);
     }
   }
   .md\:grid-cols-2 {
