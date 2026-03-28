@@ -1,23 +1,37 @@
 # SWE363 Portfolio
 
-A modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript. Features glassmorphism design and a clean layout showcasing projects and skills.
+This project is a modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript. It presents personal information, skills, featured projects, and contact details through an interactive interface designed for Assignment 2.
 
-## 🚀 Features
+## Features
 
-- **Glassmorphism Design**: Modern glass-like effects with backdrop blur and transparency
-- **Responsive Layout**: Fully responsive design that works seamlessly on all devices
-- **Dynamic Content**: Time-based welcome message that changes throughout the day
-- **Project Showcase**: Project cards with hover effects and technology tags
+- **Glassmorphism Design**: Uses layered transparency, blur, and soft shadows to create a modern visual style.
+- **Responsive Layout**: Adapts cleanly across mobile, tablet, and desktop screen sizes.
+- **Dynamic Content**: Displays a greeting that updates according to the time of day.
+- **Project Showcase**: Presents featured projects with hover feedback, icons, and technology tags.
 
-## 🛠️ Tech Stack
+## Assignment 2 Checklist
 
-- **HTML5**: Semantic markup and structure
-- **Tailwind CSS v4.1.18**: Utility-first CSS framework
-- **JavaScript**: Dynamic functionality and interactions
-- **Lucide Icons**: Beautiful, consistent iconography
-- **GitHub Copilot**: AI-powered code completion and assistance
+The following checklist summarizes the Assignment 2 requirements implemented in this project, based on `portfolio assignment-2.md`:
 
-## 📁 Project Structure
+- [x] Added a dynamic greeting that changes based on the time of day.
+- [x] Added section navigation through the main navigation links for `Home`, `About`, `Projects`, and `Contact`.
+- [x] Added show/hide behavior for interactive content, including the mobile navigation menu.
+- [x] Added live project filtering through the search input.
+- [x] Used `localStorage` to save the selected theme preference.
+- [x] Added contact form validation for `name`, `email`, `subject`, and `message`.
+- [x] Added smooth transitions, hover effects, and scroll-triggered reveal animations.
+- [x] Added an empty-state message when no projects match the search query.
+
+## Tech Stack
+
+- **HTML5**: Semantic markup and accessible page structure.
+- **Tailwind CSS v4.1.18**: Utility-first styling, transitions, and animation support.
+- **JavaScript**: Dynamic behavior for theme handling, section reveals, search, and form submission.
+- **Lucide Icons**: Consistent iconography across the interface.
+- **Font Awesome**: Social and utility icons used in the footer and contact links.
+- **GitHub Copilot**: AI-assisted support during development.
+
+## Project Structure
 
 ```
 SWE363-portfolio/
@@ -35,64 +49,69 @@ SWE363-portfolio/
 └── package.json            # Project dependencies and scripts
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- npm or yarn package manager
+- npm
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/JASSIM-ALHUMAID/SWE363-portfolio.git
    cd SWE363-portfolio
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
-3. **Start development server**
+3. **Start the development workflow**
+
    ```bash
-   # Run Tailwind CSS in watch mode for development
    npm run dev
    ```
 
 4. **Open in browser**
-   - Open `index.html` in your preferred browser
-   - Or use a live server extension in your code editor
+   - Open `index.html` in your preferred browser.
+   - A local development server such as Live Server is recommended.
 
 ### Build for Production
 
-To compile the final CSS for production:
+To generate the production CSS bundle:
+
 ```bash
 npx tailwindcss -i ./css/styles.css -o ./css/output.css --minify
 ```
 
-## 🤖 AI Usage Summary
+## AI Usage Summary
 
-This project was developed with significant AI assistance to enhance productivity and code quality:
+AI tools were used to support implementation, refinement, and documentation throughout the project.
 
 ### Tools Used
-- **Google Stitch**: Initial website design and conceptualization
-- **AI Assistant**: Implementation, refinement, and troubleshooting
-- **GitHub Copilot**: Intelligent auto-completion and code suggestions
+
+- **Google Stitch**: Initial design exploration and layout ideation.
+- **AI Assistant**: Implementation support, refinement, and troubleshooting.
+- **GitHub Copilot**: Code suggestions and auto-completion.
 
 For detailed AI usage information, see [docs/ai-usage-report.md](docs/ai-usage-report.md).
 
-## 📱 Live Deployment
+## Live Deployment
 
-The portfolio is deployed and available at:
-- **GitHub Pages**: (https://jassim-alhumaid.github.io/202257400-JassimAlhumaid-assignment1)
+The project is deployed at:
 
-## 🙏 Acknowledgments
+- **GitHub Pages**: (https://jassim-alhumaid.github.io/-202257400-JassimAlhumaid-assignment2/)
 
-- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
-- [Lucide](https://lucide.dev/) for beautiful icons
-- [GitHub Copilot](https://github.com/features/copilot) for AI-powered assistance
-- AI tools for design guidance and code optimization
+## Acknowledgments
+
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework.
+- [Lucide](https://lucide.dev/) for the icon set used throughout the interface.
+- [GitHub Copilot](https://github.com/features/copilot) for AI-assisted development support.
+- AI tools for design guidance, documentation support, and iterative refinement.
 
 ---
