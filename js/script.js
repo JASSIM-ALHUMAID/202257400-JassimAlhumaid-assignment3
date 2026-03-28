@@ -1,13 +1,66 @@
+const THEME_STORAGE_KEY = "portfolio-theme";
+const rootElement = document.documentElement;
 const welcomeMessage = document.getElementById("welcome-message");
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const menuOpenIcon = document.getElementById("mobile-menu-open-icon");
 const menuCloseIcon = document.getElementById("mobile-menu-close-icon");
 const siteNav = document.getElementById("site-nav");
+const themeToggleButtons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
 const projectsSearchInput = document.getElementById("projects-search-input");
 const projectsSearchStatus = document.getElementById("projects-search-status");
 const projectsEmptyState = document.getElementById("projects-empty-state");
 const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
+
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY);
+  } catch (error) {
+    return null;
+  }
+};
+
+const setStoredTheme = (theme) => {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (error) {
+  }
+};
+
+const applyTheme = (theme) => {
+  const activeTheme = theme === "light" ? "light" : "dark";
+  const nextThemeLabel =
+    activeTheme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+
+  rootElement.dataset.theme = activeTheme;
+
+  themeToggleButtons.forEach((button) => {
+    const sunIcon = button.querySelector('[data-theme-icon="sun"]');
+    const moonIcon = button.querySelector('[data-theme-icon="moon"]');
+
+    if (sunIcon && moonIcon) {
+      sunIcon.classList.toggle("hidden", activeTheme !== "dark");
+      moonIcon.classList.toggle("hidden", activeTheme !== "light");
+    }
+
+    button.setAttribute("aria-pressed", String(activeTheme === "dark"));
+    button.setAttribute("aria-label", nextThemeLabel);
+    button.setAttribute("title", nextThemeLabel);
+  });
+};
+
+if (themeToggleButtons.length) {
+  themeToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme = rootElement.dataset.theme === "dark" ? "light" : "dark";
+
+      applyTheme(nextTheme);
+      setStoredTheme(nextTheme);
+    });
+  });
+
+  applyTheme(getStoredTheme() || rootElement.dataset.theme || "dark");
+}
 
 if (welcomeMessage) {
   const time = new Date().getHours();

@@ -6,11 +6,46 @@
   --color-blob: #151e4b;
   --color-foreground: #d1d5db;
   --color-gray: #9ca3af;
+  --color-copy: #f8fafc;
   --color-blue: #5161f0;
   --color-purple: #c5a3f7;
 }
+
+:root {
+  color-scheme: dark;
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-panel-color: rgba(10, 14, 28, 0.28);
+  --surface-hover-color: rgba(255, 255, 255, 0.1);
+  --surface-strong-color: rgba(0, 0, 0, 0.2);
+  --surface-border-color: rgba(255, 255, 255, 0.1);
+  --surface-border-subtle-color: rgba(255, 255, 255, 0.05);
+  --surface-border-strong-color: rgba(255, 255, 255, 0.15);
+  --shell-bg-color: rgba(16, 19, 34, 0.82);
+  --footer-bg-color: rgba(0, 0, 0, 0.2);
+  --field-focus-bg-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-primary: #d9e4ef;
+  --color-blob: #b7c9e1;
+  --color-foreground: #3f5369;
+  --color-gray: #5a6c80;
+  --color-copy: #102033;
+  --surface-color: rgba(229, 236, 244, 0.74);
+  --surface-panel-color: rgba(214, 223, 233, 0.82);
+  --surface-hover-color: rgba(238, 243, 249, 0.88);
+  --surface-strong-color: rgba(214, 223, 233, 0.86);
+  --surface-border-color: rgba(15, 23, 42, 0.12);
+  --surface-border-subtle-color: rgba(15, 23, 42, 0.09);
+  --surface-border-strong-color: rgba(15, 23, 42, 0.16);
+  --shell-bg-color: rgba(220, 230, 240, 0.86);
+  --footer-bg-color: rgba(207, 217, 228, 0.76);
+  --field-focus-bg-color: rgba(240, 245, 250, 0.95);
+}
+
 body {
-  @apply bg-primary text-white overflow-x-hidden;
+  @apply bg-primary text-copy overflow-x-hidden;
 }
 
 .liner-gradient-bg {
@@ -22,6 +57,51 @@ body {
   color: transparent;
   background-clip: text;
 }
-.nav-links li a { 
+
+.nav-links li a {
   @apply hover:text-purple cursor-pointer;
+}
+
+.theme-panel {
+  background-color: var(--surface-panel-color);
+}
+
+:root[data-theme="light"] .bg-white\/5 {
+  background-color: var(--surface-color);
+}
+
+:root[data-theme="light"] .bg-black\/20 {
+  background-color: var(--surface-strong-color);
+}
+
+:root[data-theme="light"] .bg-primary\/80 {
+  background-color: var(--shell-bg-color);
+}
+
+:root[data-theme="light"] .border-white\/10 {
+  border-color: var(--surface-border-color);
+}
+
+:root[data-theme="light"] .border-white\/5 {
+  border-color: var(--surface-border-subtle-color);
+}
+
+:root[data-theme="light"] .border-white\/15 {
+  border-color: var(--surface-border-strong-color);
+}
+
+:root[data-theme="light"] .hover\:bg-white\/10:hover {
+  background-color: var(--surface-hover-color);
+}
+
+:root[data-theme="light"] .hover\:bg-white\/5:hover {
+  background-color: var(--surface-color);
+}
+
+:root[data-theme="light"] .focus\:bg-white\/10:focus {
+  background-color: var(--field-focus-bg-color);
+}
+
+:root[data-theme="light"] .theme-footer {
+  background-color: var(--footer-bg-color);
 }
