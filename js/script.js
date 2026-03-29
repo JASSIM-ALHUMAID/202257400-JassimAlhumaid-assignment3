@@ -11,7 +11,7 @@ const projectsSearchInput = document.getElementById("projects-search-input");
 const projectsSearchStatus = document.getElementById("projects-search-status");
 const projectsEmptyState = document.getElementById("projects-empty-state");
 const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
-const revealSections = Array.from(document.querySelectorAll("[data-reveal-section]"));
+const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
 const contactForm = document.querySelector("[data-contact-form]");
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 
@@ -162,19 +162,15 @@ if (projectsSearchInput && projectsSearchStatus && projectsEmptyState && project
   updateProjectsSearch();
 }
 
-if (revealSections.length) {
-  const revealSectionContent = (section) => {
-    const revealItems = Array.from(section.querySelectorAll("[data-reveal]"));
-
-    revealItems.forEach((item) => {
-      item.classList.add("is-revealed");
-    });
+if (revealItems.length) {
+  const revealItem = (item) => {
+    item.classList.add("is-revealed");
   };
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    revealSections.forEach(revealSectionContent);
+    revealItems.forEach(revealItem);
   } else {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -183,18 +179,18 @@ if (revealSections.length) {
             return;
           }
 
-          revealSectionContent(entry.target);
+          revealItem(entry.target);
           observer.unobserve(entry.target);
         });
       },
       {
-        threshold: 0.35,
-        rootMargin: "0px 0px -18% 0px",
+        threshold: 0.1,
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 
-    revealSections.forEach((section) => {
-      revealObserver.observe(section);
+    revealItems.forEach((item) => {
+      revealObserver.observe(item);
     });
   }
 }
