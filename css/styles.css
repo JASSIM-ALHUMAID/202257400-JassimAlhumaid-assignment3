@@ -176,3 +176,46 @@ body::before {
 :root[data-theme="light"] .theme-footer {
   background-color: var(--footer-bg-color);
 }
+
+/* Horizontal Projects Scroll */
+@media (min-width: 768px) {
+  #projects {
+    overflow: hidden !important;
+    display: flex;
+    align-items: center;
+    padding: 0 !important;
+    height: 100vh;
+  }
+
+  .projects-viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .projects-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 5vw;
+    padding: 0 5vw;
+    will-change: transform;
+  }
+
+  .projects-intro-card,
+  [data-project-card] {
+    flex-shrink: 0;
+    width: 85vw;
+    max-width: 1000px;
+    display: flex !important;
+  }
+  
+  .projects-intro-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+}
+

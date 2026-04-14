@@ -80,6 +80,13 @@ const initScrollReveals = () => {
   const revealItems = document.querySelectorAll("[data-reveal]");
   
   revealItems.forEach((item) => {
+    // Optimization: Skip reveal animation for items inside the horizontal track on desktop
+    // because the horizontal scrolling logic handles their entrance visually.
+    if (window.innerWidth >= 768 && (item.closest(".projects-track") || item.closest("#projects"))) {
+      gsap.set(item, { opacity: 1, y: 0 });
+      return;
+    }
+
     gsap.from(item, {
       scrollTrigger: {
         trigger: item,
@@ -93,6 +100,7 @@ const initScrollReveals = () => {
     });
   });
 };
+
 
 // 3. Magnetic Buttons
 const initMagneticButtons = () => {
@@ -136,6 +144,46 @@ const initParallaxBlobs = () => {
     ease: "none"
   });
 };
+
+// 5. Horizontal Projects Scroll
+const initHorizontalScroll = () => {
+  const track = document.getElementById("projects-track");
+  const section = document.getElementById("projects");
+  if (!track || !section) return;
+
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 768px)", () => {
+    // Calculate total distance to scroll
+    // We want the scroll length to feel proportional to the physical width
+    const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
+
+    gsap.to(track, {
+      x: getScrollAmount,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        pin: true,
+        scrub: 1,
+        start: "top top",
+        // Increase end distance to ensure it's long enough for the horizontal travel
+        end: () => `+=${track.scrollWidth}`,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+        pinSpacing: true,
+        id: "projects-pin"
+      }
+    });
+
+    return () => {
+      // Cleanup
+      const st = ScrollTrigger.getById("projects-pin");
+      if (st) st.kill();
+    };
+  });
+};
+
+
 
 // --- Functional Logic ---
 
@@ -191,8 +239,12 @@ if (projectsSearchInput && projectCards.length) {
         projectsEmptyState.classList.add("hidden");
       }
     }
+
+    // Refresh ScrollTrigger to recalculate horizontal scroll distance
+    ScrollTrigger.refresh();
   });
 }
+
 
 // Contact Form
 if (contactForm) {
@@ -210,11 +262,21 @@ const init = () => {
   initScrollReveals();
   initMagneticButtons();
   initParallaxBlobs();
+  initHorizontalScroll();
   lucide.createIcons();
 };
+
 
 if (document.readyState === "loading") {
   window.addEventListener("DOMContentLoaded", init);
 } else {
   init();
 }
+
+// Force a refresh after all assets (like those giant images) are fully loaded
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 100); // Small buffer to ensure browser has settled
+});
+
