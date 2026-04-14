@@ -1,20 +1,30 @@
 /**
  * SWE363 Portfolio - Main Script
- * Hybrid Premium UI/UX
+ * Vite + GSAP Premium UI/UX
  */
 
+import "../css/styles.css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP Plugins
+gsap.registerPlugin(ScrollTrigger);
+
+// Constants
 const THEME_STORAGE_KEY = "portfolio-theme";
+const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
+
+// Elements
 const rootElement = document.documentElement;
 const welcomeMessage = document.getElementById("welcome-message");
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const siteNav = document.getElementById("site-nav");
-const themeToggleButtons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
+const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 const projectsSearchInput = document.getElementById("projects-search-input");
-const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
-const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+const projectCards = document.querySelectorAll("[data-project-card]");
+const projectsEmptyState = document.getElementById("projects-empty-state");
 const contactForm = document.querySelector("[data-contact-form]");
-const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 
 // --- Theme Management ---
 const applyTheme = (theme) => {
@@ -30,6 +40,13 @@ const applyTheme = (theme) => {
       moonIcon.classList.toggle("hidden", activeTheme !== "light");
     }
   });
+
+  // GSAP Smooth Background Transition
+  gsap.to("body", {
+    backgroundColor: activeTheme === "light" ? "#f8fafc" : "#0a0c14",
+    duration: 0.5,
+    ease: "power2.inOut"
+  });
 };
 
 themeToggleButtons.forEach((button) => {
@@ -39,22 +56,90 @@ themeToggleButtons.forEach((button) => {
   });
 });
 
-// Initialize theme
+// Initialize Theme
 const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 applyTheme(savedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
 
-// --- Navbar Scroll Effect ---
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    siteNav.querySelector("div").classList.add("py-1", "px-4", "scale-95");
-    siteNav.querySelector("div").classList.remove("py-2", "px-6");
-  } else {
-    siteNav.querySelector("div").classList.remove("py-1", "px-4", "scale-95");
-    siteNav.querySelector("div").classList.add("py-2", "px-6");
-  }
-});
+// --- GSAP Animations ---
 
-// --- Greeting Logic ---
+// 1. Hero Stagger Entrance
+const initHeroAnimations = () => {
+  const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+  tl.from("#site-nav div", { y: -50, opacity: 0, duration: 1.2 })
+    .from("#home .inline-flex", { scale: 0.8, opacity: 0, duration: 0.8 }, "-=0.8")
+    .from("#home h1", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
+    .from("#home h2", { y: 30, opacity: 0, duration: 1 }, "-=0.6")
+    .from("#home p", { y: 20, opacity: 0, duration: 0.8 }, "-=0.8")
+    .from("#home .flex-wrap a", { y: 20, opacity: 0, stagger: 0.2, duration: 0.8 }, "-=0.6")
+    .from("#home .absolute.bottom-12", { y: -20, opacity: 0, repeat: -1, yoyo: true, duration: 1.5 }, "-=0.2");
+};
+
+// 2. Scroll-Triggered Reveal (Bento & Projects)
+const initScrollReveals = () => {
+  const revealItems = document.querySelectorAll("[data-reveal]");
+  
+  revealItems.forEach((item) => {
+    gsap.from(item, {
+      scrollTrigger: {
+        trigger: item,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+  });
+};
+
+// 3. Magnetic Buttons
+const initMagneticButtons = () => {
+  const buttons = document.querySelectorAll("#home a, [data-contact-form] button");
+  
+  buttons.forEach(btn => {
+    btn.addEventListener("mousemove", (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      gsap.to(btn, {
+        x: x * 0.3,
+        y: y * 0.3,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      gsap.to(btn, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: "elastic.out(1, 0.3)"
+      });
+    });
+  });
+};
+
+// 4. Parallax Background Blobs
+const initParallaxBlobs = () => {
+  gsap.to(".bg-blue\\/20, .bg-purple\\/20", {
+    scrollTrigger: {
+      trigger: "body",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 1
+    },
+    y: (i, target) => i % 2 === 0 ? 200 : -200,
+    ease: "none"
+  });
+};
+
+// --- Functional Logic ---
+
+// Greeting Logic
 if (welcomeMessage) {
   const hour = new Date().getHours();
   let greeting = "Good Morning";
@@ -63,29 +148,23 @@ if (welcomeMessage) {
   welcomeMessage.textContent = greeting;
 }
 
-// --- Mobile Menu ---
+// Mobile Menu
 if (mobileMenuButton && mobileMenu) {
   mobileMenuButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-    const isOpen = !mobileMenu.classList.contains("hidden");
-    mobileMenuButton.innerHTML = isOpen 
-      ? '<i data-lucide="x" width="20"></i>' 
-      : '<i data-lucide="menu" width="20"></i>';
-    lucide.createIcons();
-  });
-
-  // Close menu on link click
-  mobileMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
+    const isHidden = mobileMenu.classList.contains("hidden");
+    if (isHidden) {
+      mobileMenu.classList.remove("hidden");
+      gsap.fromTo(mobileMenu, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+      mobileMenuButton.innerHTML = '<i data-lucide="x" width="20"></i>';
+    } else {
+      gsap.to(mobileMenu, { opacity: 0, y: -20, duration: 0.3, onComplete: () => mobileMenu.classList.add("hidden") });
       mobileMenuButton.innerHTML = '<i data-lucide="menu" width="20"></i>';
-      lucide.createIcons();
-    });
+    }
+    lucide.createIcons();
   });
 }
 
-// --- Project Search ---
-const projectsEmptyState = document.getElementById("projects-empty-state");
+// Project Search
 if (projectsSearchInput && projectCards.length) {
   projectsSearchInput.addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase();
@@ -94,38 +173,28 @@ if (projectsSearchInput && projectCards.length) {
     projectCards.forEach(card => {
       const content = card.dataset.projectSearch.toLowerCase();
       const isVisible = content.includes(query);
-      card.style.display = isVisible ? "flex" : "none";
-      if (isVisible) visibleCount++;
+      
+      if (isVisible) {
+        card.style.display = "flex";
+        gsap.to(card, { opacity: 1, scale: 1, duration: 0.4 });
+        visibleCount++;
+      } else {
+        gsap.to(card, { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => card.style.display = "none" });
+      }
     });
 
     if (projectsEmptyState) {
-      projectsEmptyState.classList.toggle("hidden", visibleCount > 0);
+      if (visibleCount === 0) {
+        projectsEmptyState.classList.remove("hidden");
+        gsap.fromTo(projectsEmptyState, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+      } else {
+        projectsEmptyState.classList.add("hidden");
+      }
     }
   });
 }
 
-// --- Scroll Reveal ---
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      // Staggered delay for grid items
-      const delay = entry.target.closest('.grid') ? (index % 3) * 100 : 0;
-      setTimeout(() => {
-        entry.target.classList.add("is-revealed");
-      }, delay);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-revealItems.forEach(item => revealObserver.observe(item));
-
-// --- Contact Form ---
+// Contact Form
 if (contactForm) {
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -135,5 +204,17 @@ if (contactForm) {
   });
 }
 
-// Initialize Lucide icons
-lucide.createIcons();
+// Initialize Everything
+const init = () => {
+  initHeroAnimations();
+  initScrollReveals();
+  initMagneticButtons();
+  initParallaxBlobs();
+  lucide.createIcons();
+};
+
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}

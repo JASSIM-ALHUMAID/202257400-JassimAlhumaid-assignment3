@@ -137,35 +137,6 @@ body::before {
   background-color: var(--surface-panel-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  :root.js [data-reveal] {
-    opacity: 0;
-    transform: translateY(18px);
-    pointer-events: none;
-    will-change: opacity, transform;
-  }
-
-  :root.js [data-reveal].is-revealed {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    animation: var(--animate-fade-up);
-    will-change: auto;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root.js [data-reveal] {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-
-  :root.js [data-reveal].is-revealed {
-    animation: none;
-  }
-}
-
 :root[data-theme="light"] .bg-white\/5 {
   background-color: var(--surface-color);
 }
