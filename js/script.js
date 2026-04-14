@@ -1,229 +1,139 @@
+/**
+ * SWE363 Portfolio - Main Script
+ * Hybrid Premium UI/UX
+ */
+
 const THEME_STORAGE_KEY = "portfolio-theme";
 const rootElement = document.documentElement;
 const welcomeMessage = document.getElementById("welcome-message");
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
-const menuOpenIcon = document.getElementById("mobile-menu-open-icon");
-const menuCloseIcon = document.getElementById("mobile-menu-close-icon");
 const siteNav = document.getElementById("site-nav");
 const themeToggleButtons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
 const projectsSearchInput = document.getElementById("projects-search-input");
-const projectsSearchStatus = document.getElementById("projects-search-status");
-const projectsEmptyState = document.getElementById("projects-empty-state");
 const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
 const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
 const contactForm = document.querySelector("[data-contact-form]");
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 
-const getStoredTheme = () => {
-  try {
-    return localStorage.getItem(THEME_STORAGE_KEY);
-  } catch (error) {
-    return null;
-  }
-};
-
-const setStoredTheme = (theme) => {
-  try {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-  } catch (error) {
-  }
-};
-
+// --- Theme Management ---
 const applyTheme = (theme) => {
   const activeTheme = theme === "light" ? "light" : "dark";
-  const nextThemeLabel =
-    activeTheme === "dark" ? "Switch to light theme" : "Switch to dark theme";
-
   rootElement.dataset.theme = activeTheme;
+  localStorage.setItem(THEME_STORAGE_KEY, activeTheme);
 
   themeToggleButtons.forEach((button) => {
     const sunIcon = button.querySelector('[data-theme-icon="sun"]');
     const moonIcon = button.querySelector('[data-theme-icon="moon"]');
-
     if (sunIcon && moonIcon) {
       sunIcon.classList.toggle("hidden", activeTheme !== "dark");
       moonIcon.classList.toggle("hidden", activeTheme !== "light");
     }
-
-    button.setAttribute("aria-pressed", String(activeTheme === "dark"));
-    button.setAttribute("aria-label", nextThemeLabel);
-    button.setAttribute("title", nextThemeLabel);
   });
 };
 
-if (themeToggleButtons.length) {
-  themeToggleButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const nextTheme = rootElement.dataset.theme === "dark" ? "light" : "dark";
-
-      applyTheme(nextTheme);
-      setStoredTheme(nextTheme);
-    });
+themeToggleButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const nextTheme = rootElement.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
   });
+});
 
-  applyTheme(getStoredTheme() || rootElement.dataset.theme || "dark");
-}
+// Initialize theme
+const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+applyTheme(savedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
 
+// --- Navbar Scroll Effect ---
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    siteNav.querySelector("div").classList.add("py-1", "px-4", "scale-95");
+    siteNav.querySelector("div").classList.remove("py-2", "px-6");
+  } else {
+    siteNav.querySelector("div").classList.remove("py-1", "px-4", "scale-95");
+    siteNav.querySelector("div").classList.add("py-2", "px-6");
+  }
+});
+
+// --- Greeting Logic ---
 if (welcomeMessage) {
-  const time = new Date().getHours();
-
-  if (time < 12) {
-    welcomeMessage.textContent = "Good Morning";
-  } else if (time < 18) {
-    welcomeMessage.textContent = "Good Afternoon";
-  } else {
-    welcomeMessage.textContent = "Good Evening";
-  }
+  const hour = new Date().getHours();
+  let greeting = "Good Morning";
+  if (hour >= 12 && hour < 17) greeting = "Good Afternoon";
+  else if (hour >= 17 || hour < 5) greeting = "Good Evening";
+  welcomeMessage.textContent = greeting;
 }
 
-if (mobileMenuButton && mobileMenu && menuOpenIcon && menuCloseIcon && siteNav) {
-  const mobileMenuLinks = mobileMenu.querySelectorAll("a[href^='#']");
-
-  const setMobileMenuState = (isOpen) => {
-    mobileMenu.classList.toggle("hidden", !isOpen);
-    menuOpenIcon.classList.toggle("hidden", isOpen);
-    menuCloseIcon.classList.toggle("hidden", !isOpen);
-    mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
-    mobileMenuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
-  };
-
+// --- Mobile Menu ---
+if (mobileMenuButton && mobileMenu) {
   mobileMenuButton.addEventListener("click", () => {
-    setMobileMenuState(mobileMenu.classList.contains("hidden"));
+    mobileMenu.classList.toggle("hidden");
+    const isOpen = !mobileMenu.classList.contains("hidden");
+    mobileMenuButton.innerHTML = isOpen 
+      ? '<i data-lucide="x" width="20"></i>' 
+      : '<i data-lucide="menu" width="20"></i>';
+    lucide.createIcons();
   });
 
-  mobileMenuLinks.forEach((link) => {
+  // Close menu on link click
+  mobileMenu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
-      setMobileMenuState(false);
+      mobileMenu.classList.add("hidden");
+      mobileMenuButton.innerHTML = '<i data-lucide="menu" width="20"></i>';
+      lucide.createIcons();
     });
   });
+}
 
-  document.addEventListener("click", (event) => {
-    if (window.innerWidth >= 768 || mobileMenu.classList.contains("hidden")) {
-      return;
-    }
+// --- Project Search ---
+const projectsEmptyState = document.getElementById("projects-empty-state");
+if (projectsSearchInput && projectCards.length) {
+  projectsSearchInput.addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    let visibleCount = 0;
+    
+    projectCards.forEach(card => {
+      const content = card.dataset.projectSearch.toLowerCase();
+      const isVisible = content.includes(query);
+      card.style.display = isVisible ? "flex" : "none";
+      if (isVisible) visibleCount++;
+    });
 
-    if (!siteNav.contains(event.target)) {
-      setMobileMenuState(false);
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      setMobileMenuState(false);
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 768) {
-      setMobileMenuState(false);
+    if (projectsEmptyState) {
+      projectsEmptyState.classList.toggle("hidden", visibleCount > 0);
     }
   });
 }
 
-if (projectsSearchInput && projectsSearchStatus && projectsEmptyState && projectCards.length) {
-  const totalProjects = projectCards.length;
+// --- Scroll Reveal ---
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
 
-  const updateProjectsSearch = () => {
-    const query = projectsSearchInput.value.trim().toLowerCase();
-    let visibleProjects = 0;
-
-    projectCards.forEach((card) => {
-      const searchText = (card.dataset.projectSearch || card.textContent || "").toLowerCase();
-      const isMatch = query === "" || searchText.includes(query);
-
-      card.classList.toggle("hidden", !isMatch);
-      card.setAttribute("aria-hidden", String(!isMatch));
-
-      if (isMatch) {
-        visibleProjects += 1;
-      }
-    });
-
-    projectsEmptyState.classList.toggle("hidden", visibleProjects !== 0);
-
-    if (query === "") {
-      projectsSearchStatus.textContent = `Showing all ${totalProjects} projects.`;
-      return;
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      // Staggered delay for grid items
+      const delay = entry.target.closest('.grid') ? (index % 3) * 100 : 0;
+      setTimeout(() => {
+        entry.target.classList.add("is-revealed");
+      }, delay);
+      revealObserver.unobserve(entry.target);
     }
+  });
+}, observerOptions);
 
-    if (visibleProjects === 0) {
-      projectsSearchStatus.textContent = `No projects match "${projectsSearchInput.value.trim()}".`;
-      return;
-    }
+revealItems.forEach(item => revealObserver.observe(item));
 
-    projectsSearchStatus.textContent = `Showing ${visibleProjects} of ${totalProjects} projects for "${projectsSearchInput.value.trim()}".`;
-  };
-
-  projectsSearchInput.addEventListener("input", updateProjectsSearch);
-  updateProjectsSearch();
-}
-
-if (revealItems.length) {
-  const revealItem = (item) => {
-    item.classList.add("is-revealed");
-  };
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    revealItems.forEach(revealItem);
-  } else {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          revealItem(entry.target);
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -10% 0px",
-      }
-    );
-
-    revealItems.forEach((item) => {
-      revealObserver.observe(item);
-    });
-  }
-}
-
+// --- Contact Form ---
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!contactForm.reportValidity()) {
-      return;
-    }
-
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     const formData = new FormData(contactForm);
-    const name = String(formData.get("name") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const subject = String(formData.get("subject") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      "",
-      "Message:",
-      message,
-    ].join("\n");
-    const mailtoLink =
-      `mailto:${CONTACT_EMAIL}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailtoLink;
+    const body = `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\n\nMessage:\n${formData.get("message")}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=Portfolio Inquiry&body=${encodeURIComponent(body)}`;
   });
 }
 
+// Initialize Lucide icons
 lucide.createIcons();
-
-

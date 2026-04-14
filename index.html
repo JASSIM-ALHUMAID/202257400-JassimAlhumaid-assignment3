@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SWE363 Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script>
       (function () {
         document.documentElement.classList.add("js");
@@ -30,165 +33,51 @@
       class="flex min-h-screen w-full flex-col items-center bg-primary text-copy overflow-x-hidden"
     >
       <!-- Nav Bar -->
-      <nav id="site-nav" class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+      <nav id="site-nav" class="fixed inset-x-0 top-6 z-50 flex justify-center px-4 transition-all duration-500">
         <div
-          class="mx-auto w-full max-w-6xl rounded-2xl border border-white/10 bg-primary/80 shadow-lg shadow-black/20 backdrop-blur-md motion-safe:animate-fade-down"
+          class="mx-auto flex w-full max-w-fit items-center rounded-full border border-white/10 bg-primary/80 px-6 py-2 shadow-2xl shadow-black/40 backdrop-blur-xl motion-safe:animate-fade-down"
         >
-          <div class="flex items-center justify-between px-4 py-3 md:hidden">
-            <a
-              href="#home"
-              class="text-sm font-semibold tracking-widest uppercase"
-              >Jassim</a
+          <!-- Mobile view toggle/menu -->
+          <div class="flex items-center gap-4 md:hidden">
+            <a href="#home" class="text-xs font-bold tracking-widest uppercase">JA</a>
+            <button
+              id="mobile-menu-button"
+              class="text-copy"
+              aria-label="Toggle menu"
             >
-            <div class="flex items-center gap-3">
-              <button
-                type="button"
-                class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-copy transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
-                data-theme-toggle
-                aria-label="Switch to light theme"
-                aria-pressed="true"
-                title="Switch to light theme"
-              >
-                <span class="sr-only">Toggle color theme</span>
-                <span
-                  data-theme-icon="sun"
-                  class="flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-sun text-base" aria-hidden="true"></i>
-                </span>
-                <span
-                  data-theme-icon="moon"
-                  class="hidden flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-moon text-base" aria-hidden="true"></i>
-                </span>
-              </button>
-              <button
-                id="mobile-menu-button"
-                type="button"
-                class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-copy transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-                aria-label="Open navigation menu"
-              >
-                <span class="sr-only">Toggle navigation menu</span>
-                <span
-                  id="mobile-menu-open-icon"
-                  class="flex items-center justify-center"
-                >
-                  <i data-lucide="menu" width="20" height="20"></i>
-                </span>
-                <span
-                  id="mobile-menu-close-icon"
-                  class="hidden flex items-center justify-center"
-                >
-                  <i data-lucide="x" width="20" height="20"></i>
-                </span>
-              </button>
-            </div>
+              <i data-lucide="menu" width="20"></i>
+            </button>
           </div>
 
-          <div
-            id="mobile-menu"
-            class="hidden border-t border-white/10 px-4 pb-4 md:hidden"
-          >
-            <ul class="nav-links flex flex-col gap-2 pt-3 text-sm font-medium">
-              <li>
-                <a
-                  href="#home"
-                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
-                  >Projects</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  class="block rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
+          <!-- Desktop Links -->
+          <ul class="nav-links hidden items-center gap-8 text-xs font-bold tracking-wide uppercase md:flex">
+            <li><a href="#home" class="hover:text-blue transition-colors">Home</a></li>
+            <li><a href="#about" class="hover:text-blue transition-colors">About</a></li>
+            <li><a href="#projects" class="hover:text-blue transition-colors">Projects</a></li>
+            <li><a href="#contact" class="hover:text-blue transition-colors">Contact</a></li>
+          </ul>
 
-          <div
-            class="hidden items-center px-6 py-4 md:grid md:grid-cols-[1fr_auto_1fr]"
+          <div class="ml-8 hidden h-4 w-px bg-white/10 md:block"></div>
+
+          <!-- Theme Toggle -->
+          <button
+            type="button"
+            class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-copy transition-all hover:bg-white/10"
+            data-theme-toggle
           >
-            <a
-              href="#home"
-              class="justify-self-start text-sm font-semibold tracking-widest uppercase"
-              >Jassim</a
-            >
-            <ul
-              class="nav-links flex items-center justify-center gap-6 text-sm font-medium lg:gap-8"
-            >
-              <li>
-                <a
-                  href="#home"
-                  class="relative inline-flex items-center py-1 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-purple after:transition-transform after:duration-500 hover:after:scale-x-100"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  class="relative inline-flex items-center py-1 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-purple after:transition-transform after:duration-500 hover:after:scale-x-100"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  class="relative inline-flex items-center py-1 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-purple after:transition-transform after:duration-500 hover:after:scale-x-100"
-                  >Projects</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  class="relative inline-flex items-center py-1 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-purple after:transition-transform after:duration-500 hover:after:scale-x-100"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-            <div class="flex justify-end">
-              <button
-                type="button"
-                class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-copy transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
-                data-theme-toggle
-                aria-label="Switch to light theme"
-                aria-pressed="true"
-                title="Switch to light theme"
-              >
-                <span class="sr-only">Toggle color theme</span>
-                <span
-                  data-theme-icon="sun"
-                  class="flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-sun text-base" aria-hidden="true"></i>
-                </span>
-                <span
-                  data-theme-icon="moon"
-                  class="hidden flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-moon text-base" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-          </div>
+            <span data-theme-icon="sun" class="flex"><i class="fa-solid fa-sun text-xs"></i></span>
+            <span data-theme-icon="moon" class="hidden"><i class="fa-solid fa-moon text-xs"></i></span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Portal (simplified for now) -->
+        <div id="mobile-menu" class="hidden absolute top-16 inset-x-4 rounded-3xl border border-white/10 bg-primary/95 p-6 backdrop-blur-2xl shadow-2xl md:hidden">
+          <ul class="flex flex-col gap-4 text-center text-sm font-bold uppercase tracking-widest">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
         </div>
       </nav>
 
@@ -196,164 +85,152 @@
         <!-- Hero Section -->
         <section
           id="home"
-          class="relative z-0 flex min-h-screen w-full flex-col items-center justify-center gap-5 px-4 pb-16 pt-32 text-center sm:px-6 md:pt-36"
+          class="relative z-0 flex min-h-screen w-full flex-col items-center justify-center gap-8 px-4 pb-16 pt-32 text-center sm:px-6 md:pt-36"
         >
-          <!-- main blob background -->
-          <div
-            class="absolute left-1/2 top-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2"
-          >
-            <div
-              class="bg-blob h-64 w-64 rounded-full shadow-blob shadow-2xl blur-3xl motion-safe:animate-blob-drift sm:h-80 sm:w-80 md:h-96 md:w-96"
-            ></div>
+          <!-- background blobs -->
+          <div class="absolute inset-0 z-[-1] overflow-hidden">
+            <div class="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue/20 blur-[100px] motion-safe:animate-blob-drift"></div>
+            <div class="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-purple/20 blur-[100px] motion-safe:animate-blob-drift" style="animation-delay: -5s;"></div>
+          </div>
+
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-blue motion-safe:animate-fade-up">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-blue"></span>
+            </span>
+            Available for new opportunities
           </div>
 
           <div
-            class="flex flex-col items-center gap-2 font-bold text-4xl sm:text-5xl md:text-6xl"
-            data-reveal
+            class="flex flex-col items-center gap-4 motion-safe:animate-fade-up"
           >
-            <h1 id="welcome-message">Good Mourning</h1>
-            <h1>I'm <span class="liner-gradient-bg">Jassim Alhumaid</span></h1>
+            <h1 class="text-xs font-bold uppercase tracking-[0.3em] text-gray" id="welcome-message">Good Morning</h1>
+            <h2 class="text-5xl font-extrabold tracking-tight sm:text-7xl md:text-8xl">
+              I'm <span class="liner-gradient-bg">Jassim</span>
+            </h2>
           </div>
-          <h3
-            class="px-3 text-base text-foreground font-semibold motion-safe:[animation-delay:180ms] md:text-lg"
-            data-reveal
-          >
-            Junior Software Engineering Student at KFUPM
-          </h3>
 
           <p
-            class="max-w-2xl px-2 text-sm text-gray motion-safe:[animation-delay:360ms] sm:text-base"
-            data-reveal
+            class="max-w-xl px-2 text-base leading-relaxed text-gray motion-safe:animate-fade-up motion-safe:[animation-delay:200ms] sm:text-lg"
           >
-            I craft high-performance digital experiences with a focus on clean
-            architecture and intuitive design. Specializing in the modern web
-            stack with React, Next.js, and Tailwind CSS.
+            A Junior Software Engineering student at <span class="text-copy font-semibold">KFUPM</span>, 
+            crafting high-performance digital experiences with a focus on 
+            clean architecture and intuitive design.
           </p>
+
           <div
-            class="w-full motion-safe:[animation-delay:540ms] sm:w-auto"
-            data-reveal
+            class="flex flex-wrap items-center justify-center gap-4 motion-safe:animate-fade-up motion-safe:[animation-delay:400ms]"
           >
             <a
-              class="inline-flex w-full cursor-pointer justify-center rounded-xl bg-blue px-6 py-3 font-semibold text-white shadow-lg shadow-blue/20 transition-colors duration-500 hover:bg-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60 sm:w-auto"
+              class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-blue px-8 py-4 font-bold text-white transition-all hover:scale-105 active:scale-95"
               href="assets/CV/Jassim_Alhumaid_FlowCV_Resume_2026-03-29.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Download CV
+              <span>Download CV</span>
+              <i data-lucide="arrow-down-to-line" width="18"></i>
+              <div class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"></div>
             </a>
+            
+            <a
+              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 font-bold text-copy transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
+              href="#projects"
+            >
+              View Projects
+            </a>
+          </div>
+
+          <div class="absolute bottom-12 left-1/2 -translate-x-1/2 motion-safe:animate-bounce">
+            <i data-lucide="chevron-down" class="text-gray" width="24"></i>
           </div>
         </section>
 
-        <!-- About Section -->
+        <!-- Bento About Section -->
         <section
           id="about"
-          class="scroll-mt-16 flex min-h-screen w-full items-center justify-center px-4 py-16 sm:px-6 md:scroll-mt-24 md:py-20"
+          class="scroll-mt-16 flex min-h-screen w-full flex-col items-center justify-center px-4 py-24 sm:px-6 md:scroll-mt-24"
         >
-          <div
-            class="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:p-12"
-            data-reveal
-          >
-            <!-- Background decorative glow -->
-            <div
-              class="absolute top-0 right-0 -z-10 translate-x-1/2 -translate-y-1/2"
-            >
-              <div
-                class="h-64 w-64 rounded-full bg-blue/10 blur-3xl motion-safe:animate-blob-drift"
-              ></div>
+          <div class="mb-16 flex flex-col items-center text-center" data-reveal>
+            <div class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6">
+              <span class="text-xs font-bold tracking-widest text-purple uppercase">About Me</span>
             </div>
+            <h2 class="text-4xl md:text-6xl font-bold">The Story So Far</h2>
+          </div>
 
-            <div class="flex flex-col items-center text-center mb-10">
-              <div
-                class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10"
-              >
-                <span
-                  class="text-xs md:text-sm font-bold tracking-widest text-purple uppercase"
-                  >About Me</span
-                >
+          <div class="grid w-full max-w-6xl grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
+            <!-- Main Bio Card -->
+            <div
+              class="group relative md:col-span-2 md:row-span-2 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
+              data-reveal
+            >
+              <div class="flex flex-col h-full justify-between">
+                <div>
+                  <h3 class="text-2xl font-bold mb-4">Crafting digital solutions with precision.</h3>
+                  <p class="text-gray leading-relaxed">
+                    Passionate Junior Software Engineering student at KFUPM. I specialize in building scalable web applications that merge technical excellence with exceptional user experience.
+                  </p>
+                </div>
+                <div class="flex gap-4 mt-8">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue/10 text-blue">
+                    <i data-lucide="code-2" width="24"></i>
+                  </div>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple/10 text-purple">
+                    <i data-lucide="palette" width="24"></i>
+                  </div>
+                </div>
               </div>
-
-              <h2 class="text-2xl md:text-5xl font-bold mt-8 mb-6">
-                Junior Software Engineering<br class="hidden md:block" />Student
-                at KFUPM
-              </h2>
-
-              <p
-                class="text-gray text-base md:text-lg leading-relaxed max-w-3xl"
-              >
-                Hello! I'm a passionate developer currently pursuing my degree
-                at King Fahd University of Petroleum and Minerals (KFUPM). My
-                journey into tech started with a curiosity for how things work
-                on the web, which quickly evolved into a love for building
-                robust, scalable applications. I thrive at the intersection of
-                engineering and design, focusing heavily on the React ecosystem,
-                Next.js for full-stack capabilities, and Tailwind CSS for rapid,
-                beautiful UI development.
-              </p>
             </div>
 
-            <!-- skills Card -->
+            <!-- Tech Stack Card -->
             <div
-              class="theme-panel rounded-2xl p-6 md:p-8 border border-white/10"
+              class="group relative md:col-span-2 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
+              data-reveal
             >
-              <h3
-                class="text-sm font-bold tracking-widest text-copy uppercase mb-6 border-b border-white/10 pb-4"
-              >
-                My Focus & Toolkit:
-              </h3>
+              <h4 class="text-xs font-bold uppercase tracking-widest text-gray mb-4">Tech Toolkit</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">React</span>
+                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Next.js</span>
+                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Tailwind CSS</span>
+                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">TypeScript</span>
+                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Python</span>
+                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Java</span>
+              </div>
+            </div>
 
-              <div class="grid gap-6">
-                <!-- Item 1 -->
-                <div
-                  class="flex items-start gap-4 motion-safe:[animation-delay:180ms]"
-                  data-reveal
-                >
-                  <div class="mt-1 p-1.5 rounded bg-blue/10 text-blue">
-                    <i data-lucide="check-circle" width="18" height="18"></i>
-                  </div>
-                  <div>
-                    <span class="font-bold text-copy block md:inline"
-                      >Focus:</span
-                    >
-                    <span class="text-gray"
-                      >Frontend Engineering & UI/UX Design</span
-                    >
-                  </div>
+            <!-- Education Card -->
+            <div
+              class="group relative md:col-span-1 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
+              data-reveal
+            >
+              <div class="flex flex-col h-full items-center justify-center text-center">
+                <div class="text-3xl font-bold text-copy">KFUPM</div>
+                <div class="text-[10px] font-bold uppercase tracking-widest text-gray mt-2">SWE Student</div>
+              </div>
+            </div>
+
+            <!-- Location/Focus Card -->
+            <div
+              class="group relative md:col-span-1 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
+              data-reveal
+            >
+              <div class="flex flex-col h-full items-center justify-center text-center">
+                <i data-lucide="map-pin" class="text-blue mb-2" width="24"></i>
+                <div class="text-sm font-bold">Dhahran, SA</div>
+              </div>
+            </div>
+
+            <!-- Focus Area Card -->
+            <div
+              class="group relative md:col-span-2 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
+              data-reveal
+            >
+              <div class="flex items-center gap-6 h-full">
+                <div class="hidden sm:flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-green-500/10 text-green-400">
+                  <i data-lucide="zap" width="32"></i>
                 </div>
-
-                <!-- Item 2 -->
-                <div
-                  class="flex items-start gap-4 motion-safe:[animation-delay:360ms]"
-                  data-reveal
-                >
-                  <div class="mt-1 p-1.5 rounded bg-purple/10 text-purple">
-                    <i data-lucide="layers" width="18" height="18"></i>
-                  </div>
-                  <div>
-                    <span class="font-bold text-copy block md:inline"
-                      >Stack:</span
-                    >
-                    <span class="text-gray"
-                      >React, Next.js, Tailwind CSS, TypeScript</span
-                    >
-                  </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div
-                  class="flex items-start gap-4 motion-safe:[animation-delay:540ms]"
-                  data-reveal
-                >
-                  <div
-                    class="mt-1 p-1.5 rounded bg-green-500/10 text-green-400"
-                  >
-                    <i data-lucide="code" width="18" height="18"></i>
-                  </div>
-                  <div>
-                    <span class="font-bold text-copy block md:inline"
-                      >Languages:</span
-                    >
-                    <span class="text-gray">Python, Java, C++, JavaScript</span>
-                  </div>
+                <div>
+                  <h4 class="font-bold">Focus: Scalability</h4>
+                  <p class="text-sm text-gray mt-1">Architecture that grows with your users, built on modern industry standards.</p>
                 </div>
               </div>
             </div>
@@ -363,410 +240,236 @@
       <!-- Projects Section -->
       <section
         id="projects"
-        class="scroll-mt-16 min-h-screen w-full px-4 py-16 relative z-0 sm:px-6 md:scroll-mt-24 md:py-20"
+        class="scroll-mt-16 min-h-screen w-full px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-24"
       >
         <div class="max-w-6xl mx-auto">
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
-            <div
-              class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6"
-            >
-              <span
-                class="text-xs md:text-sm font-bold tracking-widest text-blue uppercase"
-                >Portfolio</span
-              >
+            <div class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6">
+              <span class="text-xs font-bold tracking-widest text-blue uppercase">Portfolio</span>
             </div>
-            <h2 class="text-3xl md:text-5xl font-bold">Featured Projects</h2>
+            <h2 class="text-4xl md:text-6xl font-bold">Featured Projects</h2>
           </div>
 
+          <!-- Premium Search Bar -->
           <div
-            class="mx-auto mb-10 w-full max-w-2xl motion-safe:[animation-delay:180ms]"
+            class="mx-auto mb-16 w-full max-w-2xl"
             data-reveal
           >
-            <label for="projects-search-input" class="sr-only"
-              >Search projects</label
-            >
             <div
-              class="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-[border-color,box-shadow,background-color] duration-500 focus-within:border-blue/40 focus-within:bg-white/10 focus-within:shadow-lg focus-within:shadow-blue/10"
+              class="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-1 transition-all focus-within:border-blue/50 focus-within:ring-4 focus-within:ring-blue/10"
             >
-              <div
-                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-gray"
-              >
-                <i data-lucide="search" width="18" height="18"></i>
+              <div class="pointer-events-none absolute inset-y-0 left-6 flex items-center text-gray">
+                <i data-lucide="search" width="20"></i>
               </div>
               <input
                 id="projects-search-input"
                 type="search"
-                placeholder="Search by project name, stack, or keyword"
-                class="w-full rounded-2xl bg-transparent py-3 pl-11 pr-4 text-sm text-copy placeholder:text-gray focus:outline-none focus:ring-2 focus:ring-blue/50"
+                placeholder="Search by tech stack or project name..."
+                class="w-full rounded-[1.8rem] bg-transparent py-4 pl-14 pr-6 text-sm text-copy placeholder:text-gray/50 focus:outline-none"
               />
             </div>
-            <p
-              id="projects-search-status"
-              class="mt-3 text-sm text-gray"
-              aria-live="polite"
-            >
-              Showing all 4 projects.
-            </p>
           </div>
 
-          <div id="projects-grid" class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div id="projects-grid" class="grid grid-cols-1 gap-8 md:grid-cols-2">
             <!-- Project 1 -->
             <div
-              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-[transform,background-color,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/10 hover:shadow-2xl hover:shadow-black/10 motion-safe:[animation-delay:240ms]"
+              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
               data-project-card
               data-reveal
               data-project-search="portfolio website html tailwind css javascript responsive glassmorphism animations"
             >
-              <div class="p-5 sm:p-6">
+              <div class="aspect-video overflow-hidden">
+                <img
+                  src="./assets/images/portfolio-image.png"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  alt="Portfolio Website"
+                />
+              </div>
+              <div class="flex flex-col flex-1 p-8">
                 <div class="flex justify-between items-start mb-4">
-                  <div
-                    class="rounded-lg bg-blue/10 p-2 text-blue transition-transform duration-500 group-hover:scale-110"
-                  >
-                    <i data-lucide="layout" width="24" height="24"></i>
-                  </div>
-                  <div class="flex gap-2">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID"
-                      target="_blank"
-                      class="rounded-full p-2 text-gray transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:text-copy"
-                      title="View Code"
-                    >
-                      <i data-lucide="github" width="20" height="20"></i>
-                    </a>
-                  </div>
+                  <h3 class="text-2xl font-bold group-hover:text-blue transition-colors">Portfolio Website</h3>
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
+                    <i data-lucide="external-link" width="20"></i>
+                  </a>
                 </div>
-                <div class="mb-10 overflow-hidden rounded-2xl">
-                  <img
-                    src="./assets/images/portfolio-image.png"
-                    class="h-60 w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-72"
-                    alt="Portfolio Website"
-                  />
-                </div>
-
-                <h3
-                  class="mb-2 text-xl font-bold transition-colors duration-500 group-hover:text-blue"
-                >
-                  Portfolio Website
-                </h3>
-                <p class="text-gray text-sm mb-4 line-clamp-3">
-                  A modern, responsive portfolio website built with HTML and
-                  Tailwind CSS. Features glassmorphism design, smooth
-                  animations, and a clean convenient layout.
+                <p class="text-gray text-sm mb-6 flex-1">
+                  A modern, responsive portfolio website featuring glassmorphism design and smooth animations.
                 </p>
-
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >HTML</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >Tailwind CSS</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >JavaScript</span
-                  >
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full bg-blue/10 px-3 py-1 text-[10px] font-bold text-blue">HTML</span>
+                  <span class="rounded-full bg-blue/10 px-3 py-1 text-[10px] font-bold text-blue">Tailwind CSS</span>
+                  <span class="rounded-full bg-blue/10 px-3 py-1 text-[10px] font-bold text-blue">JavaScript</span>
                 </div>
               </div>
             </div>
 
             <!-- Project 2 -->
             <div
-              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-[transform,background-color,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/10 hover:shadow-2xl hover:shadow-black/10 motion-safe:[animation-delay:400ms]"
+              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
               data-project-card
               data-reveal
               data-project-search="job application tracker next.js tailwind css mongodb kanban full stack tutorial"
             >
-              <div class="p-5 sm:p-6">
+              <div class="aspect-video overflow-hidden">
+                <img
+                  src="./assets/images/job-tracker.png"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  alt="Job application tracker"
+                />
+              </div>
+              <div class="flex flex-col flex-1 p-8">
                 <div class="flex justify-between items-start mb-4">
-                  <div
-                    class="rounded-lg bg-purple/10 p-2 text-purple transition-transform duration-500 group-hover:scale-110"
-                  >
-                    <i data-lucide="shopping-cart" width="24" height="24"></i>
-                  </div>
-                  <div class="flex gap-2">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID"
-                      target="_blank"
-                      class="rounded-full p-2 text-gray transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:text-copy"
-                      title="View Code"
-                    >
-                      <i data-lucide="github" width="20" height="20"></i>
-                    </a>
-                  </div>
+                  <h3 class="text-2xl font-bold group-hover:text-purple transition-colors">Job Tracker</h3>
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
+                    <i data-lucide="external-link" width="20"></i>
+                  </a>
                 </div>
-                <div class="mb-10 overflow-hidden rounded-2xl">
-                  <img
-                    src="./assets/images/job-tracker.png"
-                    class="h-60 w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-72"
-                    alt="Job tracking application"
-                  />
-                </div>
-
-                <h3
-                  class="mb-2 text-xl font-bold transition-colors duration-500 group-hover:text-purple"
-                >
-                  Job Application Tracker
-                </h3>
-                <p class="text-gray text-sm mb-4 line-clamp-3">
-                  A full-stack job application tracking system built with
-                  Next.js, featuring a Kanban board interface for managing your
-                  job search. This project is part of a YouTube tutorial series
-                  where you'll learn how to build this application step by step.
+                <p class="text-gray text-sm mb-6 flex-1">
+                  Full-stack Kanban board for tracking job applications built with Next.js and MongoDB.
                 </p>
-
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >Next.js</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >Tailwind CSS</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >MongoDB</span
-                  >
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full bg-purple/10 px-3 py-1 text-[10px] font-bold text-purple">Next.js</span>
+                  <span class="rounded-full bg-purple/10 px-3 py-1 text-[10px] font-bold text-purple">MongoDB</span>
                 </div>
               </div>
             </div>
 
             <!-- Project 3 -->
             <div
-              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-[transform,background-color,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/10 hover:shadow-2xl hover:shadow-black/10 motion-safe:[animation-delay:560ms]"
+              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
               data-project-card
               data-reveal
               data-project-search="task manager react firebase tailwind productivity drag and drop reminders categories"
             >
-              <div class="p-5 sm:p-6">
+              <div class="aspect-video overflow-hidden">
+                <img
+                  src="./assets/images/task-manager.png"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  alt="Task manager"
+                />
+              </div>
+              <div class="flex flex-col flex-1 p-8">
                 <div class="flex justify-between items-start mb-4">
-                  <div
-                    class="rounded-lg bg-green-500/10 p-2 text-green-400 transition-transform duration-500 group-hover:scale-110"
-                  >
-                    <i data-lucide="check-square" width="24" height="24"></i>
-                  </div>
-                  <div class="flex gap-2">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID"
-                      target="_blank"
-                      class="rounded-full p-2 text-gray transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:text-copy"
-                      title="View Code"
-                    >
-                      <i data-lucide="github" width="20" height="20"></i>
-                    </a>
-                  </div>
+                  <h3 class="text-2xl font-bold group-hover:text-green-400 transition-colors">Task Manager</h3>
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
+                    <i data-lucide="external-link" width="20"></i>
+                  </a>
                 </div>
-                <div class="mb-10 overflow-hidden rounded-2xl">
-                  <img
-                    src="./assets/images/task-manager.png"
-                    class="h-60 w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-72"
-                    alt="Task manager application"
-                  />
-                </div>
-                <h3
-                  class="mb-2 text-xl font-bold transition-colors duration-500 group-hover:text-green-400"
-                >
-                  Task Manager
-                </h3>
-                <p class="text-gray text-sm mb-4 line-clamp-3">
-                  A productivity application for managing daily tasks. Features
-                  drag-and-drop organization, due date reminders, and category
-                  filtering.
+                <p class="text-gray text-sm mb-6 flex-1">
+                  Productivity tool with drag-and-drop task management and real-time Firebase sync.
                 </p>
-
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >React</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >Firebase</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >Tailwind</span
-                  >
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full bg-green-500/10 px-3 py-1 text-[10px] font-bold text-green-400">React</span>
+                  <span class="rounded-full bg-green-500/10 px-3 py-1 text-[10px] font-bold text-green-400">Firebase</span>
                 </div>
               </div>
             </div>
+
             <!-- Project 4 -->
             <div
-              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-[transform,background-color,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/10 hover:shadow-2xl hover:shadow-black/10 motion-safe:[animation-delay:720ms]"
+              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
               data-project-card
               data-reveal
               data-project-search="expense tracker react firebase tailwind finance budgeting personal expenses"
             >
-              <div class="p-5 sm:p-6">
+              <div class="aspect-video overflow-hidden">
+                <img
+                  src="./assets/images/expencse-tracker.png"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  alt="Expense tracker"
+                />
+              </div>
+              <div class="flex flex-col flex-1 p-8">
                 <div class="flex justify-between items-start mb-4">
-                  <div
-                    class="rounded-lg bg-orange-500/10 p-2 text-red-400 transition-transform duration-500 group-hover:scale-110"
-                  >
-                    <i data-lucide="credit-card" width="24" height="24"></i>
-                  </div>
-                  <div class="flex gap-2">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID"
-                      target="_blank"
-                      class="rounded-full p-2 text-gray transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:text-copy"
-                      title="View Code"
-                    >
-                      <i data-lucide="github" width="20" height="20"></i>
-                    </a>
-                  </div>
+                  <h3 class="text-2xl font-bold group-hover:text-orange-400 transition-colors">Expense Tracker</h3>
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
+                    <i data-lucide="external-link" width="20"></i>
+                  </a>
                 </div>
-                <div class="mb-10 overflow-hidden rounded-2xl">
-                  <img
-                    src="./assets/images/expencse-tracker.png"
-                    class="h-60 w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-72"
-                    alt="Expense tracker application"
-                  />
-                </div>
-                <h3
-                  class="mb-2 text-xl font-bold transition-colors duration-500 group-hover:text-orange-400"
-                >
-                  Expense Tracker
-                </h3>
-                <p class="text-gray text-sm mb-4 line-clamp-3">
-                  Web application for tracking expenses and managing personal
-                  finances.
+                <p class="text-gray text-sm mb-4 flex-1">
+                  Financial management application for tracking personal expenses and budgeting.
                 </p>
-
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >React</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >Firebase</span
-                  >
-                  <span
-                    class="text-xs px-2 py-1 bg-white/5 rounded text-gray border border-white/5"
-                    >Tailwind</span
-                  >
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full bg-orange-500/10 px-3 py-1 text-[10px] font-bold text-orange-400">React</span>
+                  <span class="rounded-full bg-orange-500/10 px-3 py-1 text-[10px] font-bold text-orange-400">Firebase</span>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- Empty State -->
           <div
             id="projects-empty-state"
-            class="hidden rounded-3xl border border-dashed border-white/15 bg-white/5 px-6 py-12 text-center text-gray backdrop-blur-sm motion-safe:animate-fade-up"
+            class="hidden mt-12 rounded-[2.5rem] border border-dashed border-white/10 bg-white/5 px-6 py-20 text-center text-gray backdrop-blur-sm"
           >
-            No projects match your search.
+            <i data-lucide="search-x" class="mx-auto mb-4 opacity-20" width="48"></i>
+            <p class="text-lg font-medium">No projects match your search.</p>
+            <p class="text-sm opacity-60">Try searching for a different tech stack or keyword.</p>
           </div>
-        </div>
-        <!--  blob background -->
-        <div
-          class="absolute left-1/2 top-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2"
-        >
-          <div
-            class="bg-blob h-64 w-64 rounded-full shadow-blob shadow-2xl blur-3xl motion-safe:animate-blob-drift sm:h-80 sm:w-80 md:h-96 md:w-96"
-          ></div>
         </div>
       </section>
       <!-- Contact Section -->
       <section
         id="contact"
-        class="scroll-mt-12 flex min-h-screen w-full items-center justify-center px-4 py-16 relative z-0 sm:px-6 md:scroll-mt-20 md:py-20"
+        class="scroll-mt-12 flex min-h-screen w-full items-center justify-center px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-20"
       >
-        <!-- Background decorative glow -->
-        <div
-          class="absolute bottom-0 right-0 -z-10 translate-x-1/3 translate-y-1/3"
-        >
-          <div
-            class="h-96 w-96 rounded-full bg-blue/20 blur-3xl motion-safe:animate-blob-drift"
-          ></div>
-        </div>
-
         <div class="max-w-4xl w-full">
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
-            <div
-              class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6"
-            >
-              <span
-                class="text-xs md:text-sm font-bold tracking-widest text-green-400 uppercase"
-                >Get in Touch</span
-              >
+            <div class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6">
+              <span class="text-xs font-bold tracking-widest text-green-400 uppercase">Contact</span>
             </div>
-            <h2 class="text-3xl md:text-5xl font-bold">Contact Me</h2>
+            <h2 class="text-4xl md:text-6xl font-bold">Let's build something.</h2>
           </div>
 
           <div
-            class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm motion-safe:[animation-delay:180ms] sm:p-8 md:p-12"
+            class="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl motion-safe:[animation-delay:180ms] sm:p-12"
             data-reveal
           >
-            <form class="space-y-6" data-contact-form>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                  <label for="name" class="text-sm font-medium text-gray"
-                    >Name</label
-                  >
+            <form class="space-y-8" data-contact-form>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label for="name" class="text-xs font-bold uppercase tracking-widest text-gray ml-1">Name</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
+                    class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
                     placeholder="John Doe"
-                    autocomplete="name"
-                    minlength="2"
                     required
                   />
                 </div>
-                <div class="space-y-2">
-                  <label for="email" class="text-sm font-medium text-gray"
-                    >Email</label
-                  >
+                <div class="space-y-3">
+                  <label for="email" class="text-xs font-bold uppercase tracking-widest text-gray ml-1">Email</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
-                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
+                    class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
                     placeholder="john@example.com"
-                    autocomplete="email"
                     required
                   />
                 </div>
               </div>
 
-              <div class="space-y-2">
-                <label for="subject" class="text-sm font-medium text-gray"
-                  >Subject</label
-                >
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
-                  placeholder="Project Inquiry"
-                  minlength="3"
-                  required
-                />
-              </div>
-
-              <div class="space-y-2">
-                <label for="message" class="text-sm font-medium text-gray"
-                  >Message</label
-                >
+              <div class="space-y-3">
+                <label for="message" class="text-xs font-bold uppercase tracking-widest text-gray ml-1">Message</label>
                 <textarea
                   id="message"
                   name="message"
                   rows="4"
-                  class="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-copy transition-[border-color,background-color,box-shadow] duration-500 focus:bg-white/10 focus:border-blue/50 focus:shadow-lg focus:shadow-blue/10 focus:outline-none"
-                  placeholder="Your message here..."
-                  minlength="10"
+                  class="w-full resize-none rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                  placeholder="Tell me about your project..."
                   required
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                class="w-full rounded-xl bg-blue py-4 font-bold text-white shadow-lg shadow-blue/20 transition-colors duration-500 hover:bg-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
+                class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-blue py-5 font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                Send Message
+                <span>Send Message</span>
+                <i data-lucide="send" width="18"></i>
+                <div class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"></div>
               </button>
             </form>
           </div>
@@ -774,41 +477,22 @@
       </section>
 
       <!-- Footer -->
-      <footer
-        class="theme-footer w-full py-8 border-t border-white/10 bg-black/20 backdrop-blur-sm"
-      >
-        <div
-          class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 md:flex-row"
-        >
-          <div class="text-gray text-sm">
-            &copy; 2026 Jassim Alhumaid. All rights reserved.
+      <footer class="w-full py-12 border-t border-white/10">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="flex flex-col items-center justify-between gap-8 md:flex-row">
+            <div class="flex flex-col items-center gap-4 md:items-start">
+              <a href="#home" class="text-xl font-bold tracking-tighter">JA<span class="text-blue">.</span></a>
+              <p class="text-sm text-gray text-center md:text-left">Building the future of the web, one pixel at a time.</p>
+            </div>
+            
+            <div class="flex items-center gap-6">
+              <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+              <a href="https://www.linkedin.com/in/jassim-m-alhumaid/" target="_blank" class="text-gray hover:text-copy transition-colors"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+              <a href="mailto:jassim.m.alhumaid@gmail.com" class="text-gray hover:text-copy transition-colors"><i class="fa-solid fa-envelope text-xl"></i></a>
+            </div>
           </div>
-
-          <div class="flex items-center justify-center gap-4 sm:gap-6">
-            <a
-              href="https://github.com/JASSIM-ALHUMAID"
-              target="_blank"
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl text-gray transition-[transform,color,background-color] duration-500 hover:-translate-y-1 hover:scale-110 hover:bg-white/5 hover:text-copy"
-              title="GitHub"
-            >
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jassim-m-alhumaid/"
-              target="_blank"
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl text-gray transition-[transform,color,background-color] duration-500 hover:-translate-y-1 hover:scale-110 hover:bg-white/5 hover:text-copy"
-              title="LinkedIn"
-            >
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-
-            <a
-              href="mailto:jassim.m.alhumaid@gmail.com"
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl text-gray transition-[transform,color,background-color] duration-500 hover:-translate-y-1 hover:scale-110 hover:bg-white/5 hover:text-copy"
-              title="Email"
-            >
-              <i class="fa-solid fa-envelope"></i>
-            </a>
+          <div class="mt-12 pt-8 border-t border-white/5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gray/50">
+            &copy; 2026 Jassim Alhumaid. All rights reserved.
           </div>
         </div>
       </footer>
