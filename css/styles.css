@@ -196,26 +196,39 @@ body::before {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: stretch;
-    gap: 5vw;
-    padding: 0 5vw;
+    align-items: center;
+    padding-right: 20vw; /* Breathing room at the end of the track */
     will-change: transform;
   }
 
-  .projects-intro-card,
-  [data-project-card] {
-    flex-shrink: 0;
-    width: 85vw;
-    max-width: 1000px;
-    display: flex !important;
-  }
-  
+
+  /* Full Screen Intro Card */
   .projects-intro-card {
+    flex-shrink: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 2rem;
   }
+
+  /* Project Cards with floating centered look */
+  [data-project-card] {
+    flex-shrink: 0;
+    width: 85vw;
+    max-width: 1000px;
+    height: 75vh; /* Floating card height */
+    max-height: 800px;
+    margin: 0 5vw;
+    display: flex !important;
+    flex-direction: column;
+  }
+
 }
+
+
+
 

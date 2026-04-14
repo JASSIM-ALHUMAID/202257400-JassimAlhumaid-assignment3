@@ -244,46 +244,29 @@
       >
         <div class="projects-viewport">
           <div id="projects-track" class="projects-track">
-            <!-- Intro Card (Title & Search) -->
+            <!-- Full-Width Intro Card -->
             <div class="projects-intro-card">
-              <div class="max-w-4xl mx-auto w-full">
-                <div class="mb-12 flex flex-col items-center text-center" data-reveal>
-                  <div class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6">
+              <div class="max-w-4xl mx-auto text-center px-8">
+                <div class="mb-12 flex flex-col items-center text-center">
+                  <div class="bg-blue/10 px-4 py-1.5 rounded-full border border-blue/20 mb-6">
                     <span class="text-xs font-bold tracking-widest text-blue uppercase">Portfolio</span>
                   </div>
-                  <h2 class="text-4xl md:text-6xl font-bold">Featured Projects</h2>
-                </div>
+                  <h2 class="text-4xl md:text-7xl font-bold mb-8">Featured Projects</h2>
+                  
+                  <p class="text-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
+                    A selection of digital experiences where engineering meets design. 
+                    Scroll sideways to explore the details of my work.
+                  </p>
 
-                <!-- Premium Search Bar -->
-                <div
-                  class="mx-auto w-full max-w-2xl"
-                  data-reveal
-                >
-                  <div
-                    class="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-1 transition-all focus-within:border-blue/50 focus-within:ring-4 focus-within:ring-blue/10"
-                  >
-                    <div class="pointer-events-none absolute inset-y-0 left-6 flex items-center text-gray">
-                      <i data-lucide="search" width="20"></i>
-                    </div>
-                    <input
-                      id="projects-search-input"
-                      type="search"
-                      placeholder="Search by tech stack or project name..."
-                      class="w-full rounded-[1.8rem] bg-transparent py-4 pl-14 pr-6 text-sm text-copy placeholder:text-gray/50 focus:outline-none"
-                    />
+                  <div class="flex items-center justify-center gap-4 text-blue font-bold text-xs uppercase tracking-[0.3em]">
+                    <span class="animate-pulse">Scroll to Explore</span>
+                    <i data-lucide="arrow-right" width="16" class="animate-bounce"></i>
                   </div>
-                </div>
-
-                <!-- Empty State (Inside Intro Card for Desktop, outside for mobile grid) -->
-                <div
-                  id="projects-empty-state"
-                  class="hidden mt-12 rounded-[2.5rem] border border-dashed border-white/10 bg-white/5 px-6 py-12 text-center text-gray backdrop-blur-sm"
-                >
-                  <i data-lucide="search-x" class="mx-auto mb-4 opacity-20" width="48"></i>
-                  <p class="text-lg font-medium">No projects match your search.</p>
                 </div>
               </div>
             </div>
+
+
 
             <!-- Project Cards -->
             <!-- Project 1 -->

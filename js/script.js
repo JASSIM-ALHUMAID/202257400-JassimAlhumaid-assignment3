@@ -21,10 +21,9 @@ const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const siteNav = document.getElementById("site-nav");
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
-const projectsSearchInput = document.getElementById("projects-search-input");
 const projectCards = document.querySelectorAll("[data-project-card]");
-const projectsEmptyState = document.getElementById("projects-empty-state");
 const contactForm = document.querySelector("[data-contact-form]");
+
 
 // --- Theme Management ---
 const applyTheme = (theme) => {
@@ -59,6 +58,28 @@ themeToggleButtons.forEach((button) => {
 // Initialize Theme
 const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 applyTheme(savedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
+
+// --- Navigation Enhancements ---
+const initNavScroll = () => {
+  const allProjectsLinks = document.querySelectorAll('a[href="#projects"]');
+  const projectsSection = document.getElementById("projects");
+
+  allProjectsLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      const st = ScrollTrigger.getById("projects-pin");
+      if (st && window.innerWidth >= 768) {
+        e.preventDefault();
+        // Scroll exactly to the start of the GSAP pinning trigger
+        window.scrollTo({
+          top: st.start,
+          behavior: "smooth"
+        });
+      }
+      // Mobile handles standard anchor behavior fine
+    });
+  });
+};
+
 
 // --- GSAP Animations ---
 
@@ -212,38 +233,7 @@ if (mobileMenuButton && mobileMenu) {
   });
 }
 
-// Project Search
-if (projectsSearchInput && projectCards.length) {
-  projectsSearchInput.addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase();
-    let visibleCount = 0;
-    
-    projectCards.forEach(card => {
-      const content = card.dataset.projectSearch.toLowerCase();
-      const isVisible = content.includes(query);
-      
-      if (isVisible) {
-        card.style.display = "flex";
-        gsap.to(card, { opacity: 1, scale: 1, duration: 0.4 });
-        visibleCount++;
-      } else {
-        gsap.to(card, { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => card.style.display = "none" });
-      }
-    });
 
-    if (projectsEmptyState) {
-      if (visibleCount === 0) {
-        projectsEmptyState.classList.remove("hidden");
-        gsap.fromTo(projectsEmptyState, { opacity: 0 }, { opacity: 1, duration: 0.5 });
-      } else {
-        projectsEmptyState.classList.add("hidden");
-      }
-    }
-
-    // Refresh ScrollTrigger to recalculate horizontal scroll distance
-    ScrollTrigger.refresh();
-  });
-}
 
 
 // Contact Form
@@ -263,8 +253,10 @@ const init = () => {
   initMagneticButtons();
   initParallaxBlobs();
   initHorizontalScroll();
+  initNavScroll();
   lucide.createIcons();
 };
+
 
 
 if (document.readyState === "loading") {
