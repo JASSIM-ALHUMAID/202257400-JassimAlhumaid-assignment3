@@ -178,6 +178,43 @@ body::before {
 }
 
 /* Horizontal Projects Scroll */
+/* About Section Animations */
+
+/* Avatar Ring Glow */
+.avatar-ring {
+  box-shadow: 0 0 40px rgba(79, 70, 229, 0.3), 0 0 80px rgba(168, 85, 247, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.avatar-container:hover .avatar-ring {
+  box-shadow: 0 0 50px rgba(79, 70, 229, 0.5), 0 0 100px rgba(168, 85, 247, 0.3);
+}
+
+/* Stat Counter Animation */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover .stat-number {
+  transform: scale(1.05);
+}
+
+/* Value Card Hover Effect */
+.value-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(79, 70, 229, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.value-card:hover::before {
+  opacity: 1;
+}
+
+/* Horizontal Projects Scroll */
 @media (min-width: 768px) {
   #projects {
     overflow: hidden !important;

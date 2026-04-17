@@ -204,6 +204,57 @@ const initHorizontalScroll = () => {
   });
 };
 
+// 6. Animated Counters for Stats
+const initStatCounters = () => {
+  const statElements = document.querySelectorAll("[data-stat]");
+  
+  statElements.forEach(stat => {
+    const countEl = stat.querySelector("[data-count]");
+    if (!countEl) return;
+    
+    const target = parseInt(stat.dataset.target);
+    const suffix = stat.dataset.suffix || "";
+    const duration = 2000;
+    
+    ScrollTrigger.create({
+      trigger: stat,
+      start: "top 80%",
+      onEnter: () => {
+        let start = 0;
+        const increment = target / (duration / 16);
+        
+        const updateCount = () => {
+          start += increment;
+          if (start < target) {
+            countEl.textContent = Math.floor(start) + suffix;
+            requestAnimationFrame(updateCount);
+          } else {
+            countEl.textContent = target + suffix;
+          }
+        };
+        
+        updateCount();
+      },
+      once: true
+    });
+  });
+};
+
+// 7. Value Card Mouse Follow Effect
+const initValueCardEffects = () => {
+  const valueCards = document.querySelectorAll(".value-card");
+  
+  valueCards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--mouse-x", x + "%");
+      card.style.setProperty("--mouse-y", y + "%");
+    });
+  });
+};
+
 
 
 // --- Functional Logic ---
@@ -254,6 +305,8 @@ const init = () => {
   initParallaxBlobs();
   initHorizontalScroll();
   initNavScroll();
+  initStatCounters();
+  initValueCardEffects();
   lucide.createIcons();
 };
 

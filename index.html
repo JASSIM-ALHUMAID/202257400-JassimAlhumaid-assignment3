@@ -145,95 +145,210 @@
           </div>
         </section>
 
-        <!-- Bento About Section -->
+        <!-- Redesigned About Section -->
         <section
           id="about"
-          class="scroll-mt-16 flex min-h-screen w-full flex-col items-center justify-center px-4 py-24 sm:px-6 md:scroll-mt-24"
+          class="scroll-mt-16 flex w-full flex-col items-center px-4 py-24 sm:px-6 md:scroll-mt-24"
         >
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
-            <div class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6">
-              <span class="text-xs font-bold tracking-widest text-purple uppercase">About Me</span>
+            <div class="mb-6 rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
+              <span class="text-xs font-bold uppercase tracking-widest text-purple">About Me</span>
             </div>
-            <h2 class="text-4xl md:text-6xl font-bold">The Story So Far</h2>
+            <h2 class="text-4xl font-bold md:text-6xl">The Story So Far</h2>
           </div>
 
-          <div class="grid w-full max-w-6xl grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
-            <!-- Main Bio Card -->
-            <div
-              class="group relative md:col-span-2 md:row-span-2 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
-              data-reveal
-            >
-              <div class="flex flex-col h-full justify-between">
-                <div>
-                  <h3 class="text-2xl font-bold mb-4">Crafting digital solutions with precision.</h3>
-                  <p class="text-gray leading-relaxed">
-                    Passionate Junior Software Engineering student at KFUPM. I specialize in building scalable web applications that merge technical excellence with exceptional user experience.
-                  </p>
-                </div>
-                <div class="flex gap-4 mt-8">
-                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue/10 text-blue">
-                    <i data-lucide="code-2" width="24"></i>
-                  </div>
-                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple/10 text-purple">
-                    <i data-lucide="palette" width="24"></i>
+          <div class="flex w-full max-w-6xl flex-col gap-6">
+            
+            <!-- Top Row: Profile + Stats + Bio -->
+            <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12">
+              
+              <!-- Profile Avatar -->
+              <div
+                class="group relative flex flex-col items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 lg:col-span-3"
+                data-reveal
+              >
+                <div class="avatar-container mb-6">
+                  <div class="avatar-ring relative h-40 w-40 rounded-full bg-gradient-to-br from-blue to-purple p-1">
+                    <div class="flex h-full w-full items-center justify-center rounded-full bg-primary text-4xl font-bold liner-gradient-bg">
+                      JA
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <!-- Tech Stack Card -->
-            <div
-              class="group relative md:col-span-2 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
-              data-reveal
-            >
-              <h4 class="text-xs font-bold uppercase tracking-widest text-gray mb-4">Tech Toolkit</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">React</span>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Next.js</span>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Tailwind CSS</span>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">TypeScript</span>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Python</span>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs border border-white/5">Java</span>
-              </div>
-            </div>
-
-            <!-- Education Card -->
-            <div
-              class="group relative md:col-span-1 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
-              data-reveal
-            >
-              <div class="flex flex-col h-full items-center justify-center text-center">
-                <div class="text-3xl font-bold text-copy">KFUPM</div>
-                <div class="text-[10px] font-bold uppercase tracking-widest text-gray mt-2">SWE Student</div>
-              </div>
-            </div>
-
-            <!-- Location/Focus Card -->
-            <div
-              class="group relative md:col-span-1 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
-              data-reveal
-            >
-              <div class="flex flex-col h-full items-center justify-center text-center">
-                <i data-lucide="map-pin" class="text-blue mb-2" width="24"></i>
-                <div class="text-sm font-bold">Dhahran, SA</div>
-              </div>
-            </div>
-
-            <!-- Focus Area Card -->
-            <div
-              class="group relative md:col-span-2 md:row-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
-              data-reveal
-            >
-              <div class="flex items-center gap-6 h-full">
-                <div class="hidden sm:flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-green-500/10 text-green-400">
-                  <i data-lucide="zap" width="32"></i>
+                <div class="text-center">
+                  <h3 class="text-2xl font-bold">Jassim Alhumaid</h3>
+                  <p class="mt-1 text-sm text-gray">Software Engineer</p>
                 </div>
-                <div>
-                  <h4 class="font-bold">Focus: Scalability</h4>
-                  <p class="text-sm text-gray mt-1">Architecture that grows with your users, built on modern industry standards.</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-gray">
+                  <i data-lucide="map-pin" width="14"></i>
+                  <span>Dhahran, Saudi Arabia</span>
                 </div>
               </div>
+
+              <!-- Stats + Bio Container -->
+              <div class="flex flex-col gap-6 lg:col-span-9">
+                
+                <!-- Stats Row -->
+                <div class="grid grid-cols-3 gap-4" data-reveal>
+                  <div class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default" data-stat data-target="5" data-suffix="+">
+                    <i data-lucide="folder-code" class="mb-4 text-blue" width="32"></i>
+                    <span class="stat-number text-5xl font-bold" data-count>0</span>
+                    <span class="text-sm mt-3 font-bold uppercase tracking-widest text-gray">Projects</span>
+                  </div>
+                  <div class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default" data-stat data-target="250" data-suffix="+">
+                    <i data-lucide="git-branch" class="mb-4 text-purple" width="32"></i>
+                    <span class="stat-number text-5xl font-bold" data-count>0</span>
+                    <span class="text-sm mt-3 font-bold uppercase tracking-widest text-gray">Commits</span>
+                  </div>
+                  <div class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default" data-stat data-target="10" data-suffix="+">
+                    <i data-lucide="star" class="mb-4 text-green-400" width="32"></i>
+                    <span class="stat-number text-5xl font-bold" data-count>0</span>
+                    <span class="text-sm mt-3 font-bold uppercase tracking-widest text-gray">Repositories</span>
+                  </div>
+                </div>
+
+                <!-- Bio Card -->
+                <div
+                  class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
+                  data-reveal
+                >
+                  <div class="flex h-full flex-col justify-between gap-6">
+                    <div>
+                      <h3 class="mb-4 text-2xl font-bold">Building digital experiences that matter.</h3>
+                      <p class="leading-relaxed text-gray">
+                        I'm a junior Software Engineering student at KFUPM with a passion for crafting performant web applications. 
+                        My stack centers around React and Next.js, where I focus on building scalable solutions with clean architecture. 
+                        I believe great software is invisible—it just works, beautifully.
+                      </p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                      <span class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue">React</span>
+                      <span class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue">Next.js</span>
+                      <span class="rounded-full bg-purple/10 px-4 py-1.5 text-sm font-bold text-purple">TypeScript</span>
+                      <span class="rounded-full bg-green-500/10 px-4 py-1.5 text-sm font-bold text-green-400">Tailwind</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Bottom Row: Skills + Values + Education -->
+            <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12">
+              
+              <!-- Tech Stack Section -->
+              <div
+                class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 lg:col-span-5"
+                data-reveal
+              >
+                <h4 class="mb-6 text-sm font-bold uppercase tracking-widest text-gray">Tech Stack</h4>
+                <div class="grid grid-cols-4 gap-4">
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="atom" class="text-blue" width="36" height="36"></i>
+                    <span class="text-sm font-medium">React</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="triangle" class="text-copy" width="36" height="36"></i>
+                    <span class="text-sm font-medium">Next.js</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="file-code" class="text-blue" width="36" height="36"></i>
+                    <span class="text-sm font-medium">TypeScript</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="wind" class="text-cyan-400" width="36" height="36"></i>
+                    <span class="text-sm font-medium">Tailwind</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="code" class="text-yellow-400" width="36" height="36"></i>
+                    <span class="text-sm font-medium">JavaScript</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="file-text" class="text-orange-500" width="36" height="36"></i>
+                    <span class="text-sm font-medium">HTML</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="palette" class="text-blue" width="36" height="36"></i>
+                    <span class="text-sm font-medium">CSS</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="snake" class="text-green-400" width="36" height="36"></i>
+                    <span class="text-sm font-medium">Python</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="git-branch" class="text-orange-600" width="36" height="36"></i>
+                    <span class="text-sm font-medium">Git</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="flame" class="text-yellow-500" width="36" height="36"></i>
+                    <span class="text-sm font-medium">Firebase</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
+                    <i data-lucide="coffee" class="text-red-500" width="36" height="36"></i>
+                    <span class="text-sm font-medium">Java</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Values + Education Container -->
+              <div class="flex flex-col gap-6 lg:col-span-7">
+                
+                <!-- Values Cards -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3" data-reveal>
+                  <div class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default">
+                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue/10 text-blue">
+                      <i data-lucide="code-2" width="32"></i>
+                    </div>
+                    <h4 class="mb-2 text-lg font-bold">Clean Code</h4>
+                    <p class="text-sm leading-relaxed text-gray">Readable, maintainable, and tested.</p>
+                  </div>
+                  <div class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default">
+                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple/10 text-purple">
+                      <i data-lucide="users" width="32"></i>
+                    </div>
+                    <h4 class="mb-2 text-lg font-bold">User-First</h4>
+                    <p class="text-sm leading-relaxed text-gray">Intuitive experiences that delight.</p>
+                  </div>
+                  <div class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default">
+                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
+                      <i data-lucide="book-open" width="32"></i>
+                    </div>
+                    <h4 class="mb-2 text-lg font-bold">Keep Learning</h4>
+                    <p class="text-sm leading-relaxed text-gray">Always exploring new tech.</p>
+                  </div>
+                </div>
+
+                <!-- Education Card -->
+                <div
+                  class="group relative flex flex-col gap-6 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 sm:flex-row sm:items-center"
+                  data-reveal
+                >
+                  <div class="flex items-center gap-6">
+                    <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-blue/10 text-blue">
+                      <i data-lucide="graduation-cap" width="32"></i>
+                    </div>
+                    <div>
+                      <h4 class="text-xl font-bold">King Fahd University of Petroleum & Minerals</h4>
+                      <p class="mt-1 text-sm text-gray">B.S. in Software Engineering</p>
+                      <div class="mt-2 flex flex-wrap items-center gap-4 text-sm text-gray">
+                        <span class="flex items-center gap-2">
+                          <i data-lucide="calendar" width="14"></i>
+                          Class of 2027
+                        </span>
+                        <span class="flex items-center gap-2">
+                          <i data-lucide="award" width="14"></i>
+                          Dean's List
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hidden sm:block h-16 w-px bg-white/10 mx-4"></div>
+                  <div class="flex items-center gap-3 sm:flex-col sm:gap-1">
+                    <span class="text-4xl font-bold text-copy">3.5</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray">GPA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
       </div>
@@ -486,6 +601,7 @@
         </div>
       </footer>
     </main>
-    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/main.js"></script>
+
   </body>
 </html>
