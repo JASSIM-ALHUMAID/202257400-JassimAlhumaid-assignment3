@@ -39,7 +39,7 @@
         >
           <!-- Mobile view toggle/menu -->
           <div class="flex items-center gap-4 md:hidden">
-            <a href="#home" class="text-xs font-bold tracking-widest uppercase">JA</a>
+            <a href="#home" class="text-sm font-bold tracking-widest uppercase">JA</a>
             <button
               id="mobile-menu-button"
               class="text-copy"
@@ -50,7 +50,7 @@
           </div>
 
           <!-- Desktop Links -->
-          <ul class="nav-links hidden items-center gap-8 text-xs font-bold tracking-wide uppercase md:flex">
+          <ul class="nav-links hidden items-center gap-8 text-sm font-bold tracking-wide uppercase md:flex">
             <li><a href="#home" class="hover:text-blue transition-colors">Home</a></li>
             <li><a href="#about" class="hover:text-blue transition-colors">About</a></li>
             <li><a href="#projects" class="hover:text-blue transition-colors">Projects</a></li>
@@ -65,8 +65,8 @@
             class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-copy transition-all hover:bg-white/10"
             data-theme-toggle
           >
-            <span data-theme-icon="sun" class="flex"><i class="fa-solid fa-sun text-xs"></i></span>
-            <span data-theme-icon="moon" class="hidden"><i class="fa-solid fa-moon text-xs"></i></span>
+            <span data-theme-icon="sun" class="flex"><i class="fa-solid fa-sun text-sm"></i></span>
+            <span data-theme-icon="moon" class="hidden"><i class="fa-solid fa-moon text-sm"></i></span>
           </button>
         </div>
 
@@ -93,7 +93,7 @@
             <div class="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-purple/20 blur-[100px] motion-safe:animate-blob-drift" style="animation-delay: -5s;"></div>
           </div>
 
-          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-blue motion-safe:animate-fade-up">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-bold uppercase tracking-[0.2em] text-blue motion-safe:animate-fade-up">
             <span class="relative flex h-2 w-2">
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue opacity-75"></span>
               <span class="relative inline-flex h-2 w-2 rounded-full bg-blue"></span>
@@ -104,7 +104,7 @@
           <div
             class="flex flex-col items-center gap-4 motion-safe:animate-fade-up"
           >
-            <h1 class="text-xs font-bold uppercase tracking-[0.3em] text-gray" id="welcome-message"></h1>
+            <h1 class="text-sm font-bold uppercase tracking-[0.3em] text-gray" id="welcome-message"></h1>
             <h2 class="text-5xl font-extrabold tracking-tight sm:text-7xl md:text-8xl">
               I'm <span class="liner-gradient-bg">Jassim</span>
             </h2>
@@ -152,7 +152,7 @@
         >
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
             <div class="mb-6 rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
-              <span class="text-xs font-bold uppercase tracking-widest text-purple">About Me</span>
+              <span class="text-sm font-bold uppercase tracking-widest text-purple">About Me</span>
             </div>
             <h2 class="text-4xl font-bold md:text-6xl">The Story So Far</h2>
           </div>
@@ -178,7 +178,7 @@
                   <h3 class="text-2xl font-bold">Jassim Alhumaid</h3>
                   <p class="mt-1 text-sm text-gray">Software Engineer</p>
                 </div>
-                <div class="mt-4 flex items-center gap-2 text-xs text-gray">
+                <div class="mt-4 flex items-center gap-2 text-sm text-gray">
                   <i data-lucide="map-pin" width="14"></i>
                   <span>Dhahran, Saudi Arabia</span>
                 </div>
@@ -343,7 +343,7 @@
                   <div class="hidden sm:block h-16 w-px bg-white/10 mx-4"></div>
                   <div class="flex items-center gap-3 sm:flex-col sm:gap-1">
                     <span class="text-4xl font-bold text-copy">3.5</span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray">GPA</span>
+                    <span class="text-sm font-bold uppercase tracking-widest text-gray">GPA</span>
                   </div>
                 </div>
               </div>
@@ -364,7 +364,7 @@
               <div class="max-w-4xl mx-auto text-center px-8">
                 <div class="mb-12 flex flex-col items-center text-center">
                   <div class="bg-blue/10 px-4 py-1.5 rounded-full border border-blue/20 mb-6">
-                    <span class="text-xs font-bold tracking-widest text-blue uppercase">Portfolio</span>
+                    <span class="text-sm font-bold tracking-widest text-blue uppercase">Portfolio</span>
                   </div>
                   <h2 class="text-4xl md:text-7xl font-bold mb-8">Featured Projects</h2>
                   
@@ -373,7 +373,7 @@
                     Scroll sideways to explore the details of my work.
                   </p>
 
-                  <div class="flex items-center justify-center gap-4 text-blue font-bold text-xs uppercase tracking-[0.3em]">
+                  <div class="flex items-center justify-center gap-4 text-blue font-bold text-sm uppercase tracking-[0.3em]">
                     <span class="animate-pulse">Scroll to Explore</span>
                     <i data-lucide="arrow-right" width="16" class="animate-bounce"></i>
                   </div>
@@ -391,27 +391,43 @@
               data-reveal
               data-project-search="portfolio website html tailwind css javascript responsive glassmorphism animations"
             >
-              <div class="aspect-video overflow-hidden">
+              <div class="project-image-container aspect-video overflow-hidden">
                 <img
                   src="./assets/images/portfolio-image.png"
                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Portfolio Website"
                 />
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <div class="flex justify-between items-start mb-4">
-                  <h3 class="text-2xl font-bold group-hover:text-blue transition-colors">Portfolio Website</h3>
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
-                    <i data-lucide="external-link" width="20"></i>
+                <div class="project-image-overlay">
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
+                    View Project <i data-lucide="arrow-right" width="16"></i>
                   </a>
                 </div>
-                <p class="text-gray text-sm mb-6 flex-1">
+                <div class="absolute top-4 left-4 project-badge project-badge-year">2026</div>
+                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
+              </div>
+              <div class="flex flex-col flex-1 p-8">
+                <h3 class="text-2xl font-bold">Portfolio Website</h3>
+                <p class="text-gray text-sm mb-4 flex-1">
                   A modern, responsive portfolio website featuring glassmorphism design and smooth animations.
                 </p>
+                <div class="project-features mb-6">
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Glassmorphism UI Design</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Smooth Scroll Animations</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Dark/Light Theme Toggle</span>
+                  </div>
+                </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full bg-blue/10 px-3 py-1 text-[10px] font-bold text-blue">HTML</span>
-                  <span class="rounded-full bg-blue/10 px-3 py-1 text-[10px] font-bold text-blue">Tailwind CSS</span>
-                  <span class="rounded-full bg-blue/10 px-3 py-1 text-[10px] font-bold text-blue">JavaScript</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">HTML</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Tailwind CSS</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
                 </div>
               </div>
             </div>
@@ -423,26 +439,42 @@
               data-reveal
               data-project-search="job application tracker next.js tailwind css mongodb kanban full stack tutorial"
             >
-              <div class="aspect-video overflow-hidden">
+              <div class="project-image-container aspect-video overflow-hidden">
                 <img
                   src="./assets/images/job-tracker.png"
                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Job application tracker"
                 />
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <div class="flex justify-between items-start mb-4">
-                  <h3 class="text-2xl font-bold group-hover:text-purple transition-colors">Job Tracker</h3>
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
-                    <i data-lucide="external-link" width="20"></i>
+                <div class="project-image-overlay">
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
+                    View Project <i data-lucide="arrow-right" width="16"></i>
                   </a>
                 </div>
-                <p class="text-gray text-sm mb-6 flex-1">
+                <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
+                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
+              </div>
+              <div class="flex flex-col flex-1 p-8">
+                <h3 class="text-2xl font-bold">Job Tracker</h3>
+                <p class="text-gray text-sm mb-4 flex-1">
                   Full-stack Kanban board for tracking job applications built with Next.js and MongoDB.
                 </p>
+                <div class="project-features mb-6">
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Drag-and-Drop Kanban Board</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>RESTful API Integration</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Application Status Tracking</span>
+                  </div>
+                </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full bg-purple/10 px-3 py-1 text-[10px] font-bold text-purple">Next.js</span>
-                  <span class="rounded-full bg-purple/10 px-3 py-1 text-[10px] font-bold text-purple">MongoDB</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Next.js</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">MongoDB</span>
                 </div>
               </div>
             </div>
@@ -454,26 +486,42 @@
               data-reveal
               data-project-search="task manager react firebase tailwind productivity drag and drop reminders categories"
             >
-              <div class="aspect-video overflow-hidden">
+              <div class="project-image-container aspect-video overflow-hidden">
                 <img
                   src="./assets/images/task-manager.png"
                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Task manager"
                 />
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <div class="flex justify-between items-start mb-4">
-                  <h3 class="text-2xl font-bold group-hover:text-green-400 transition-colors">Task Manager</h3>
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
-                    <i data-lucide="external-link" width="20"></i>
+                <div class="project-image-overlay">
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
+                    View Project <i data-lucide="arrow-right" width="16"></i>
                   </a>
                 </div>
-                <p class="text-gray text-sm mb-6 flex-1">
+                <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
+                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
+              </div>
+              <div class="flex flex-col flex-1 p-8">
+                <h3 class="text-2xl font-bold">Task Manager</h3>
+                <p class="text-gray text-sm mb-4 flex-1">
                   Productivity tool with drag-and-drop task management and real-time Firebase sync.
                 </p>
+                <div class="project-features mb-6">
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Real-time Firebase Sync</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Drag-and-Drop Categories</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Reminder Notifications</span>
+                  </div>
+                </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full bg-green-500/10 px-3 py-1 text-[10px] font-bold text-green-400">React</span>
-                  <span class="rounded-full bg-green-500/10 px-3 py-1 text-[10px] font-bold text-green-400">Firebase</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">React</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Firebase</span>
                 </div>
               </div>
             </div>
@@ -485,26 +533,42 @@
               data-reveal
               data-project-search="expense tracker react firebase tailwind finance budgeting personal expenses"
             >
-              <div class="aspect-video overflow-hidden">
+              <div class="project-image-container aspect-video overflow-hidden">
                 <img
                   src="./assets/images/expencse-tracker.png"
                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Expense tracker"
                 />
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <div class="flex justify-between items-start mb-4">
-                  <h3 class="text-2xl font-bold group-hover:text-orange-400 transition-colors">Expense Tracker</h3>
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors">
-                    <i data-lucide="external-link" width="20"></i>
+                <div class="project-image-overlay">
+                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
+                    View Project <i data-lucide="arrow-right" width="16"></i>
                   </a>
                 </div>
+                <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
+                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
+              </div>
+              <div class="flex flex-col flex-1 p-8">
+                <h3 class="text-2xl font-bold">Expense Tracker</h3>
                 <p class="text-gray text-sm mb-4 flex-1">
                   Financial management application for tracking personal expenses and budgeting.
                 </p>
+                <div class="project-features mb-6">
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Expense Categorization</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Budget Setting & Alerts</span>
+                  </div>
+                  <div class="project-feature">
+                    <i data-lucide="check" width="14"></i>
+                    <span>Visual Spending Reports</span>
+                  </div>
+                </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full bg-orange-500/10 px-3 py-1 text-[10px] font-bold text-orange-400">React</span>
-                  <span class="rounded-full bg-orange-500/10 px-3 py-1 text-[10px] font-bold text-orange-400">Firebase</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">React</span>
+                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Firebase</span>
                 </div>
               </div>
             </div>
@@ -520,7 +584,7 @@
         <div class="max-w-4xl w-full">
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
             <div class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6">
-              <span class="text-xs font-bold tracking-widest text-green-400 uppercase">Contact</span>
+              <span class="text-sm font-bold tracking-widest text-green-400 uppercase">Contact</span>
             </div>
             <h2 class="text-4xl md:text-6xl font-bold">Let's build something.</h2>
           </div>
@@ -532,7 +596,7 @@
             <form class="space-y-8" data-contact-form>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-3">
-                  <label for="name" class="text-xs font-bold uppercase tracking-widest text-gray ml-1">Name</label>
+                  <label for="name" class="text-sm font-bold uppercase tracking-widest text-gray ml-1">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -543,7 +607,7 @@
                   />
                 </div>
                 <div class="space-y-3">
-                  <label for="email" class="text-xs font-bold uppercase tracking-widest text-gray ml-1">Email</label>
+                  <label for="email" class="text-sm font-bold uppercase tracking-widest text-gray ml-1">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -556,7 +620,7 @@
               </div>
 
               <div class="space-y-3">
-                <label for="message" class="text-xs font-bold uppercase tracking-widest text-gray ml-1">Message</label>
+                <label for="message" class="text-sm font-bold uppercase tracking-widest text-gray ml-1">Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -595,7 +659,7 @@
               <a href="mailto:jassim.m.alhumaid@gmail.com" class="text-gray hover:text-copy transition-colors"><i class="fa-solid fa-envelope text-xl"></i></a>
             </div>
           </div>
-          <div class="mt-12 pt-8 border-t border-white/5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gray/50">
+          <div class="mt-12 pt-8 border-t border-white/5 text-center text-sm font-bold uppercase tracking-[0.2em] text-gray/50">
             &copy; 2026 Jassim Alhumaid. All rights reserved.
           </div>
         </div>
