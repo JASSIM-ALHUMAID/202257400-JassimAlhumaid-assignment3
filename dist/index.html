@@ -1,0 +1,1396 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWE363 Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        document.documentElement.classList.add("js");
+
+        try {
+          var storedTheme = localStorage.getItem("portfolio-theme");
+          document.documentElement.dataset.theme =
+            storedTheme === "light" ? "light" : "dark";
+        } catch (error) {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-5iEllMyh.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D-L_tIjh.css">
+  </head>
+
+  <body>
+    <main
+      class="flex min-h-screen w-full flex-col items-center bg-primary text-copy overflow-x-hidden"
+    >
+      <!-- Nav Bar -->
+      <nav
+        id="site-nav"
+        class="fixed inset-x-0 top-6 z-50 flex justify-center px-4 transition-all duration-500"
+      >
+        <div
+          class="nav-shell mx-auto flex w-full max-w-fit items-center rounded-full border border-white/10 bg-primary/80 px-6 py-2 shadow-2xl shadow-black/40 backdrop-blur-xl motion-safe:animate-fade-down"
+          data-nav-shell
+        >
+          <!-- Mobile view toggle/menu -->
+          <div class="flex items-center gap-4 md:hidden">
+            <a href="#home" class="text-sm font-bold tracking-widest uppercase"
+              >JA</a
+            >
+            <button
+              id="mobile-menu-button"
+              class="text-copy"
+              aria-label="Toggle menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+            >
+              <i data-lucide="menu" width="20"></i>
+            </button>
+          </div>
+
+          <!-- Desktop Links -->
+          <ul
+            class="nav-links hidden items-center gap-8 text-sm font-bold tracking-wide uppercase md:flex"
+            data-nav-list
+          >
+            <span class="nav-links__indicator" data-nav-indicator aria-hidden="true"></span>
+            <li>
+              <a href="#home" class="hover:text-blue transition-colors" data-nav-link="home">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="hover:text-blue transition-colors" data-nav-link="about"
+                >About</a
+              >
+            </li>
+            <li>
+              <a href="#projects" class="hover:text-blue transition-colors" data-nav-link="projects"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-blue transition-colors" data-nav-link="contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+
+          <div class="ml-8 hidden h-4 w-px bg-white/10 md:block"></div>
+
+          <!-- Theme Toggle -->
+            <button
+              type="button"
+              class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-copy transition-all hover:bg-white/10"
+              data-theme-toggle
+            >
+              <span data-theme-icon="sun" class="flex"
+                ><i data-lucide="sun" class="text-sm" width="16"></i
+              ></span>
+              <span data-theme-icon="moon" class="hidden"
+                ><i data-lucide="moon" class="text-sm" width="16"></i
+              ></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Portal (simplified for now) -->
+        <div
+          id="mobile-menu"
+          class="hidden absolute top-16 inset-x-4 rounded-3xl border border-white/10 bg-primary/95 p-6 backdrop-blur-2xl shadow-2xl md:hidden"
+        >
+          <ul
+            class="flex flex-col gap-4 text-center text-sm font-bold uppercase tracking-widest"
+          >
+            <li><a href="#home" data-nav-link="home">Home</a></li>
+            <li><a href="#about" data-nav-link="about">About</a></li>
+            <li><a href="#projects" data-nav-link="projects">Projects</a></li>
+            <li><a href="#contact" data-nav-link="contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="w-full overflow-hidden">
+        <!-- Hero Section -->
+        <section
+          id="home"
+          class="hero-section relative z-0 flex min-h-screen w-full flex-col items-center justify-center gap-8 px-4 pb-16 pt-32 text-center sm:px-6 md:pt-36"
+        >
+          <!-- background blobs -->
+          <div class="absolute inset-0 z-[-1] overflow-hidden">
+            <div
+              class="ambient-orb ambient-orb--hero-primary absolute left-[8%] top-[12%] h-[28rem] w-[28rem] rounded-full bg-blue/20 blur-[100px] motion-safe:animate-blob-drift"
+            ></div>
+            <div
+              class="ambient-orb ambient-orb--hero-secondary absolute right-[10%] bottom-[14%] h-[24rem] w-[24rem] rounded-full bg-purple/20 blur-[100px] motion-safe:animate-blob-drift"
+              style="animation-delay: -5s"
+            ></div>
+            <div
+              class="ambient-orb ambient-orb--hero-tertiary absolute right-[22%] top-[18%] h-56 w-56 rounded-full bg-cyan-400/15 blur-[80px] motion-safe:animate-blob-drift"
+              style="animation-delay: -9s"
+            ></div>
+            <div
+              class="ambient-orb ambient-orb--hero-quaternary absolute left-[18%] bottom-[8%] h-64 w-64 rounded-full bg-fuchsia-400/15 blur-[90px] motion-safe:animate-blob-drift"
+              style="animation-delay: -12s"
+            ></div>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-bold uppercase tracking-[0.2em] text-blue"
+            data-hero-badge
+            data-hero-stage="1"
+          >
+            <span class="relative flex h-2 w-2">
+              <span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex h-2 w-2 rounded-full bg-blue"
+              ></span>
+            </span>
+            Available for new opportunities
+          </div>
+
+          <div class="flex flex-col items-center gap-4" data-hero-name data-hero-stage="2">
+            <h1
+              class="text-sm font-bold uppercase tracking-[0.3em] text-gray"
+              id="welcome-message"
+            ></h1>
+            <h2
+              class="text-5xl font-extrabold tracking-tight sm:text-7xl md:text-8xl"
+            >
+              I'm <span class="liner-gradient-bg">Jassim</span>
+            </h2>
+          </div>
+
+          <p class="max-w-xl px-2 text-base leading-relaxed text-gray sm:text-lg" data-hero-description data-hero-stage="3">
+            A Junior Software Engineering student at
+            <span class="text-copy font-semibold">KFUPM</span>, crafting
+            high-performance digital experiences with a focus on clean
+            architecture and intuitive design.
+          </p>
+
+          <div
+            class="flex flex-wrap items-center justify-center gap-4"
+            data-hero-actions
+            data-hero-stage="4"
+            aria-label="Hero actions"
+          >
+            <a
+              class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-blue px-8 py-4 font-bold text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              href="assets/CV/Jassim_Alhumaid_SWE.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Download CV</span>
+              <i data-lucide="arrow-down-to-line" width="18"></i>
+              <div
+                class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"
+              ></div>
+            </a>
+
+            <a
+              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 font-bold text-copy transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/10 active:translate-y-0"
+              href="#projects"
+            >
+              View Projects
+            </a>
+          </div>
+
+          <div
+            class="graduation-badge"
+            data-hero-stage="5"
+            aria-label="Expected graduation countdown"
+          >
+            <div class="graduation-badge__icon" aria-hidden="true">
+              <i data-lucide="graduation-cap" width="18"></i>
+            </div>
+            <div class="graduation-badge__content">
+              <p class="graduation-badge__eyebrow">Expected Graduation</p>
+              <p class="graduation-badge__value" data-graduation-countdown>...</p>
+              <p class="graduation-badge__meta">B.S. Software Engineering at KFUPM • Jun 2027</p>
+            </div>
+          </div>
+
+          <ul
+            class="flex flex-wrap items-center justify-center gap-3 px-4 text-sm font-bold text-gray"
+            data-hero-stage="6"
+            aria-label="Quick highlights"
+          >
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              React / Next.js
+            </li>
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              KFUPM SWE
+            </li>
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              5+ Projects
+            </li>
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              Open to internships
+            </li>
+          </ul>
+
+          <div
+            class="hero-scroll-cue absolute bottom-12 left-1/2 -translate-x-1/2"
+          >
+            <i data-lucide="chevron-down" class="text-gray" width="24"></i>
+          </div>
+        </section>
+
+        <!-- Redesigned About Section -->
+        <section
+          id="about"
+          class="about-section relative scroll-mt-16 flex w-full flex-col items-center px-4 py-24 sm:px-6 md:scroll-mt-24"
+        >
+          <div class="section-ambient section-ambient--about" aria-hidden="true">
+            <div class="ambient-orb ambient-orb--about-left"></div>
+            <div class="ambient-orb ambient-orb--about-right"></div>
+          </div>
+          <div class="mb-16 flex flex-col items-center text-center" data-reveal>
+            <button
+              type="button"
+              class="section-toggle-pill mb-6"
+              data-section-toggle="about"
+              aria-expanded="true"
+              aria-controls="about-content"
+            >
+              <span class="text-sm font-bold uppercase tracking-widest text-purple"
+                >About Me</span
+              >
+              <i data-lucide="chevron-down" width="16"></i>
+            </button>
+            <h2 class="text-4xl font-bold md:text-6xl">The Story So Far</h2>
+          </div>
+
+          <div
+            id="about-content"
+            class="section-collapse is-expanded"
+            data-section-content="about"
+          >
+            <div class="section-collapse__inner">
+              <div class="flex w-full max-w-6xl flex-col gap-6">
+            <!-- Top Row: Profile + Stats + Bio -->
+            <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12">
+              <!-- Profile Avatar -->
+              <div
+                class="group relative flex flex-col items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 lg:col-span-3"
+                data-reveal
+              >
+                <div class="avatar-container mb-6">
+                  <div
+                    class="avatar-ring relative h-40 w-40 rounded-full bg-gradient-to-br from-blue to-purple p-1"
+                  >
+                    <img
+                      src="/assets/personal-img-D6r-55v3.jpeg"
+                      alt="Portrait of Jassim Alhumaid"
+                      class="h-full w-full rounded-full object-cover object-center"
+                      width="480"
+                      height="640"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+                <div class="text-center">
+                  <h3 class="text-2xl font-bold">Jassim Alhumaid</h3>
+                  <p class="mt-1 text-sm text-gray">Software Engineer</p>
+                </div>
+                <div class="mt-4 flex items-center gap-2 text-sm text-gray">
+                  <i data-lucide="map-pin" width="14"></i>
+                  <span>Dhahran, Saudi Arabia</span>
+                </div>
+              </div>
+
+              <!-- Stats + Bio Container -->
+              <div class="flex flex-col gap-6 lg:col-span-9">
+                <!-- Stats Row -->
+                <div class="grid grid-cols-3 gap-4" data-reveal>
+                  <div
+                    class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default"
+                    data-stat
+                    data-target="5"
+                    data-suffix="+"
+                  >
+                    <i
+                      data-lucide="folder-code"
+                      class="mb-4 text-blue"
+                      width="32"
+                    ></i>
+                    <span class="stat-number text-5xl font-bold" data-count
+                      >0</span
+                    >
+                    <span
+                      class="text-sm mt-3 font-bold uppercase tracking-widest text-gray"
+                      >Projects</span
+                    >
+                  </div>
+                  <div
+                    class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default"
+                    data-stat
+                    data-target="250"
+                    data-suffix="+"
+                  >
+                    <i
+                      data-lucide="git-branch"
+                      class="mb-4 text-purple"
+                      width="32"
+                    ></i>
+                    <span class="stat-number text-5xl font-bold" data-count
+                      >0</span
+                    >
+                    <span
+                      class="text-sm mt-3 font-bold uppercase tracking-widest text-gray"
+                      >Commits</span
+                    >
+                  </div>
+                  <div
+                    class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default"
+                    data-stat
+                    data-target="10"
+                    data-suffix="+"
+                  >
+                    <i
+                      data-lucide="star"
+                      class="mb-4 text-green-400"
+                      width="32"
+                    ></i>
+                    <span class="stat-number text-5xl font-bold" data-count
+                      >0</span
+                    >
+                    <span
+                      class="text-sm mt-3 font-bold uppercase tracking-widest text-gray"
+                      >Repositories</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Bio Card -->
+                <div
+                  class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10"
+                  data-reveal
+                >
+                  <div class="flex h-full flex-col justify-between gap-6">
+                    <div>
+                      <h3 class="mb-4 text-2xl font-bold">
+                        Building digital experiences that matter.
+                      </h3>
+                      <p class="leading-relaxed text-gray">
+                        I'm a junior Software Engineering student at KFUPM with
+                        a passion for crafting performant web applications. My
+                        stack centers around React and Next.js, where I focus on
+                        building scalable solutions with clean architecture. I
+                        believe great software is invisible—it just works,
+                        beautifully.
+                      </p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                      <span
+                        class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue"
+                        >React</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue"
+                        >Next.js</span
+                      >
+                      <span
+                        class="rounded-full bg-purple/10 px-4 py-1.5 text-sm font-bold text-purple"
+                        >TypeScript</span
+                      >
+                      <span
+                        class="rounded-full bg-green-500/10 px-4 py-1.5 text-sm font-bold text-green-400"
+                        >Tailwind</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Row: Skills + Values + Education -->
+            <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12">
+              <!-- Tech Stack Section -->
+              <div
+                class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 lg:col-span-5"
+                data-reveal
+              >
+                <h4
+                  class="mb-6 text-sm font-bold uppercase tracking-widest text-gray"
+                >
+                  Tech Stack
+                </h4>
+                <div class="grid grid-cols-4 gap-4">
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cg%20fill='%2361DAFB'%3e%3ccircle%20cx='64'%20cy='64'%20r='11.4'/%3e%3cpath%20d='M107.3%2045.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4%201.1-4.8%201.5-7.1%202.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7%200-15.9%205.2-24.9%2013.9-9-8.7-17.9-13.9-24.9-13.9-2.4%200-4.5.5-6.4%201.6-6.4%203.7-8.7%2013-6.6%2026.1.4%202.3.9%204.7%201.5%207.1-2.4.7-4.7%201.4-6.9%202.3C8.2%2050%201.4%2056.6%201.4%2064s6.9%2014%2019.3%2018.8c2.2.8%204.5%201.6%206.9%202.3-.6%202.4-1.1%204.8-1.5%207.1-2.1%2013.2.2%2022.5%206.6%2026.1%201.9%201.1%204%201.6%206.4%201.6%207.1%200%2016-5.2%2024.9-13.9%209%208.7%2017.9%2013.9%2024.9%2013.9%202.4%200%204.5-.5%206.4-1.6%206.4-3.7%208.7-13%206.6-26.1-.4-2.3-.9-4.7-1.5-7.1%202.4-.7%204.7-1.4%206.9-2.3%2012.5-4.8%2019.3-11.4%2019.3-18.8s-6.8-14-19.3-18.8zM92.5%2014.7c4.1%202.4%205.5%209.8%203.8%2020.3-.3%202.1-.8%204.3-1.4%206.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13%207.4-7.3%2014.9-12.3%2021-12.3%201.3%200%202.5.3%203.5.9zM81.3%2074c-1.8%203.2-3.9%206.4-6.1%209.6-3.7.3-7.4.4-11.2.4-3.9%200-7.6-.1-11.2-.4-2.2-3.2-4.2-6.4-6-9.6-1.9-3.3-3.7-6.7-5.3-10%201.6-3.3%203.4-6.7%205.3-10%201.8-3.2%203.9-6.4%206.1-9.6%203.7-.3%207.4-.4%2011.2-.4%203.9%200%207.6.1%2011.2.4%202.2%203.2%204.2%206.4%206%209.6%201.9%203.3%203.7%206.7%205.3%2010-1.7%203.3-3.4%206.6-5.3%2010zm8.3-3.3c1.5%203.5%202.7%206.9%203.8%2010.3-3.4.8-7%201.4-10.8%201.9%201.2-1.9%202.5-3.9%203.6-6%201.2-2.1%202.3-4.2%203.4-6.2zM64%2097.8c-2.4-2.6-4.7-5.4-6.9-8.3%202.3.1%204.6.2%206.9.2%202.3%200%204.6-.1%206.9-.2-2.2%202.9-4.5%205.7-6.9%208.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9%201.1-3.3%202.3-6.8%203.8-10.3%201.1%202%202.2%204.1%203.4%206.1%201.2%202.2%202.4%204.1%203.6%206.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3%203.4-.8%207-1.4%2010.8-1.9-1.2%201.9-2.5%203.9-3.6%206-1.2%202.1-2.3%204.2-3.4%206.2zM64%2030.2c2.4%202.6%204.7%205.4%206.9%208.3-2.3-.1-4.6-.2-6.9-.2-2.3%200-4.6.1-6.9.2%202.2-2.9%204.5-5.7%206.9-8.3zm22.2%2021l-3.6-6c3.8.5%207.4%201.1%2010.8%201.9-1.1%203.3-2.3%206.8-3.8%2010.3-1.1-2.1-2.2-4.2-3.4-6.2zM31.7%2035c-1.7-10.5-.3-17.9%203.8-20.3%201-.6%202.2-.9%203.5-.9%206%200%2013.5%204.9%2021%2012.3-3.5%203.8-7%208.2-10.4%2013-5.8.5-11.3%201.4-16.5%202.5-.6-2.3-1-4.5-1.4-6.6zM7%2064c0-4.7%205.7-9.7%2015.7-13.4%202-.8%204.2-1.5%206.4-2.1%201.6%205%203.6%2010.3%206%2015.6-2.4%205.3-4.5%2010.5-6%2015.5C15.3%2075.6%207%2069.6%207%2064zm28.5%2049.3c-4.1-2.4-5.5-9.8-3.8-20.3.3-2.1.8-4.3%201.4-6.6%205.2%201.2%2010.7%202%2016.5%202.5%203.4%204.8%206.9%209.1%2010.4%2013-7.4%207.3-14.9%2012.3-21%2012.3-1.3%200-2.5-.3-3.5-.9zM96.3%2093c1.7%2010.5.3%2017.9-3.8%2020.3-1%20.6-2.2.9-3.5.9-6%200-13.5-4.9-21-12.3%203.5-3.8%207-8.2%2010.4-13%205.8-.5%2011.3-1.4%2016.5-2.5.6%202.3%201%204.5%201.4%206.6zm9-15.6c-2%20.8-4.2%201.5-6.4%202.1-1.6-5-3.6-10.3-6-15.6%202.4-5.3%204.5-10.5%206-15.5%2013.8%204%2022.1%2010%2022.1%2015.6%200%204.7-5.8%209.7-15.7%2013.4z'/%3e%3c/g%3e%3c/svg%3e"
+                      alt="React logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">React</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3ccircle%20cx='64'%20cy='64'%20r='64'/%3e%3cpath%20fill='url(%23a)'%20d='M106.317%20112.014%2049.167%2038.4H38.4v51.179h8.614v-40.24l52.54%2067.884a64.216%2064.216%200%200%200%206.763-5.209z'/%3e%3cpath%20fill='url(%23b)'%20d='M81.778%2038.4h8.533v51.2h-8.533z'/%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='109'%20x2='144.5'%20y1='116.5'%20y2='160.5'%20gradientTransform='scale(.71111)'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23fff'/%3e%3cstop%20offset='1'%20stop-color='%23fff'%20stop-opacity='0'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='121'%20x2='120.799'%20y1='54'%20y2='106.875'%20gradientTransform='scale(.71111)'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23fff'/%3e%3cstop%20offset='1'%20stop-color='%23fff'%20stop-opacity='0'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"
+                      alt="Next.js logo"
+                      class="tech-stack-icon tech-stack-icon--invert"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">Next.js</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cpath%20fill='%23fff'%20d='M22.67%2047h99.67v73.67H22.67z'/%3e%3cpath%20data-name='original'%20fill='%23007acc'%20d='M1.5%2063.91v62.5h125v-125H1.5zm100.73-5a15.56%2015.56%200%20017.82%204.5%2020.58%2020.58%200%20013%204c0%20.16-5.4%203.81-8.69%205.85-.12.08-.6-.44-1.13-1.23a7.09%207.09%200%2000-5.87-3.53c-3.79-.26-6.23%201.73-6.21%205a4.58%204.58%200%2000.54%202.34c.83%201.73%202.38%202.76%207.24%204.86%208.95%203.85%2012.78%206.39%2015.16%2010%202.66%204%203.25%2010.46%201.45%2015.24-2%205.2-6.9%208.73-13.83%209.9a38.32%2038.32%200%2001-9.52-.1%2023%2023%200%2001-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a9.34%209.34%200%20011.15-.73L82%20101l3.59-2.08.75%201.11a16.78%2016.78%200%20004.74%204.54c4%202.1%209.46%201.81%2012.16-.62a5.43%205.43%200%2000.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48%2016.48%200%2001-3.43-6.25%2025%2025%200%2001-.22-8c1.33-6.23%206-10.58%2012.82-11.87a31.66%2031.66%200%20019.49.26zm-29.34%205.24v5.12H56.66v46.23H45.15V69.26H28.88v-5a49.19%2049.19%200%2001.12-5.17C29.08%2059%2039%2059%2051%2059h21.83z'/%3e%3c/svg%3e"
+                      alt="TypeScript logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">TypeScript</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cpath%20d='M64.004%2025.602c-17.067%200-27.73%208.53-32%2025.597%206.398-8.531%2013.867-11.73%2022.398-9.597%204.871%201.214%208.352%204.746%2012.207%208.66C72.883%2056.629%2080.145%2064%2096.004%2064c17.066%200%2027.73-8.531%2032-25.602-6.399%208.536-13.867%2011.735-22.399%209.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004%2064c-17.066%200-27.73%208.531-32%2025.602C6.402%2081.066%2013.87%2077.867%2022.402%2080c4.871%201.215%208.352%204.746%2012.207%208.66%206.274%206.367%2013.536%2013.738%2029.395%2013.738%2017.066%200%2027.73-8.53%2032-25.597-6.399%208.531-13.867%2011.73-22.399%209.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128%2071.371%2047.868%2064%2032.004%2064zm0%200'%20fill='%2338bdf8'/%3e%3c/svg%3e"
+                      alt="Tailwind CSS logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">Tailwind</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cpath%20fill='%23F0DB4F'%20d='M1.408%201.408h125.184v125.185H1.408z'/%3e%3cpath%20fill='%23323330'%20d='M116.347%2096.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32%204.784-4.355%207.925-3.403%202.023.678%203.938%202.237%205.093%204.724%205.402-3.498%205.391-3.475%209.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902%202.748-8.877%205.235-5.926%206.724-4.236%2018.492%202.975%2023.335%207.104%205.332%2017.54%206.545%2018.873%2011.531%201.297%206.104-4.486%208.08-10.234%207.378-4.236-.881-6.592-3.034-9.139-6.949-4.688%202.713-4.688%202.713-9.508%205.485%201.143%202.499%202.344%203.63%204.26%205.795%209.068%209.198%2031.76%208.746%2035.83-5.176.165-.478%201.261-3.666.38-8.581zM69.462%2058.943H57.753l-.048%2030.272c0%206.438.333%2012.34-.714%2014.149-1.713%203.558-6.152%203.117-8.175%202.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52%205.83c1.583%203.249%203.915%206.069%206.902%207.901%204.462%202.678%2010.459%203.499%2016.731%202.059%204.082-1.189%207.604-3.652%209.448-7.401%202.666-4.915%202.094-10.864%202.07-17.444.06-10.735.001-21.468.001-32.237z'/%3e%3c/svg%3e"
+                      alt="JavaScript logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">JavaScript</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cpath%20fill='%23E44D26'%20d='M19.037%20113.876L9.032%201.661h109.936l-10.016%20112.198-45.019%2012.48z'/%3e%3cpath%20fill='%23F16529'%20d='M64%20116.8l36.378-10.086%208.559-95.878H64z'/%3e%3cpath%20fill='%23EBEBEB'%20d='M64%2052.455H45.788L44.53%2038.361H64V24.599H29.489l.33%203.692%203.382%2037.927H64zm0%2035.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928%2021.609%2028.193%207.826.063-.017z'/%3e%3cpath%20fill='%23fff'%20d='M63.952%2052.455v13.763h16.947l-1.597%2017.849-15.35%204.143v14.319l28.215-7.82.207-2.325%203.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z'/%3e%3c/svg%3e"
+                      alt="HTML5 logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">HTML</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cpath%20fill='%231572B6'%20d='M18.814%20114.123L8.76%201.352h110.48l-10.064%20112.754-45.243%2012.543-45.119-12.526z'/%3e%3cpath%20fill='%2333A9DC'%20d='M64.001%20117.062l36.559-10.136%208.601-96.354h-45.16v106.49z'/%3e%3cpath%20fill='%23fff'%20d='M64.001%2051.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332%203.711-3.4%2038.114h-30.95V51.429z'/%3e%3cpath%20fill='%23EBEBEB'%20d='M64.083%2087.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937%2021.717%2028.331%207.863.063-.018v-14.39z'/%3e%3cpath%20fill='%23fff'%20d='M81.127%2064.675l-1.666%2018.522-15.426%204.164v14.39l28.354-7.858.208-2.337%202.406-26.881H81.127z'/%3e%3cpath%20fill='%23EBEBEB'%20d='M64.048%2023.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711h34.646zm-.047%2027.996v13.831H48.792l-.277-3.108-.631-7.012-.33-3.711h16.447z'/%3e%3c/svg%3e"
+                      alt="CSS3 logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">CSS</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3clinearGradient%20id='python-original-a'%20gradientUnits='userSpaceOnUse'%20x1='70.252'%20y1='1237.476'%20x2='170.659'%20y2='1151.089'%20gradientTransform='matrix(.563%200%200%20-.568%20-29.215%20707.817)'%3e%3cstop%20offset='0'%20stop-color='%235A9FD4'/%3e%3cstop%20offset='1'%20stop-color='%23306998'/%3e%3c/linearGradient%3e%3clinearGradient%20id='python-original-b'%20gradientUnits='userSpaceOnUse'%20x1='209.474'%20y1='1098.811'%20x2='173.62'%20y2='1149.537'%20gradientTransform='matrix(.563%200%200%20-.568%20-29.215%20707.817)'%3e%3cstop%20offset='0'%20stop-color='%23FFD43B'/%3e%3cstop%20offset='1'%20stop-color='%23FFE873'/%3e%3c/linearGradient%3e%3cpath%20fill='url(%23python-original-a)'%20d='M63.391%201.988c-4.222.02-8.252.379-11.8%201.007-10.45%201.846-12.346%205.71-12.346%2012.837v9.411h24.693v3.137H29.977c-7.176%200-13.46%204.313-15.426%2012.521-2.268%209.405-2.368%2015.275%200%2025.096%201.755%207.311%205.947%2012.519%2013.124%2012.519h8.491V67.234c0-8.151%207.051-15.34%2015.426-15.34h24.665c6.866%200%2012.346-5.654%2012.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037%209.557c2.55%200%204.634%202.117%204.634%204.721%200%202.593-2.083%204.69-4.634%204.69-2.56%200-4.633-2.097-4.633-4.69-.001-2.604%202.073-4.721%204.633-4.721z'%20transform='translate(0%2010.26)'/%3e%3cpath%20fill='url(%23python-original-b)'%20d='M91.682%2028.38v10.966c0%208.5-7.208%2015.655-15.426%2015.655H51.591c-6.756%200-12.346%205.783-12.346%2012.549v23.515c0%206.691%205.818%2010.628%2012.346%2012.547%207.816%202.297%2015.312%202.713%2024.665%200%206.216-1.801%2012.346-5.423%2012.346-12.547v-9.412H63.938v-3.138h37.012c7.176%200%209.852-5.005%2012.348-12.519%202.578-7.735%202.467-15.174%200-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809%2087.927c2.561%200%204.634%202.097%204.634%204.692%200%202.602-2.074%204.719-4.634%204.719-2.55%200-4.633-2.117-4.633-4.719%200-2.595%202.083-4.692%204.633-4.692z'%20transform='translate(0%2010.26)'/%3e%3cradialGradient%20id='python-original-c'%20cx='1825.678'%20cy='444.45'%20r='26.743'%20gradientTransform='matrix(0%20-.24%20-1.055%200%20532.979%20557.576)'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23B8B8B8'%20stop-opacity='.498'/%3e%3cstop%20offset='1'%20stop-color='%237F7F7F'%20stop-opacity='0'/%3e%3c/radialGradient%3e%3cpath%20opacity='.444'%20fill='url(%23python-original-c)'%20d='M97.309%20119.597c0%203.543-14.816%206.416-33.091%206.416-18.276%200-33.092-2.873-33.092-6.416%200-3.544%2014.815-6.417%2033.092-6.417%2018.275%200%2033.091%202.872%2033.091%206.417z'/%3e%3c/svg%3e"
+                      alt="Python logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">Python</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cpath%20fill='%23F34F29'%20d='M124.737%2058.378L69.621%203.264c-3.172-3.174-8.32-3.174-11.497%200L46.68%2014.71l14.518%2014.518c3.375-1.139%207.243-.375%209.932%202.314%202.703%202.706%203.461%206.607%202.294%209.993l13.992%2013.993c3.385-1.167%207.292-.413%209.994%202.295%203.78%203.777%203.78%209.9%200%2013.679a9.673%209.673%200%2001-13.683%200%209.677%209.677%200%2001-2.105-10.521L68.574%2047.933l-.002%2034.341a9.708%209.708%200%20012.559%201.828c3.778%203.777%203.778%209.898%200%2013.683-3.779%203.777-9.904%203.777-13.679%200-3.778-3.784-3.778-9.905%200-13.683a9.65%209.65%200%20013.167-2.11V47.333a9.581%209.581%200%2001-3.167-2.111c-2.862-2.86-3.551-7.06-2.083-10.576L41.056%2020.333%203.264%2058.123a8.133%208.133%200%20000%2011.5l55.117%2055.114c3.174%203.174%208.32%203.174%2011.499%200l54.858-54.858a8.135%208.135%200%2000-.001-11.501z'/%3e%3c/svg%3e"
+                      alt="Git logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">Git</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="/assets/mongodb-Dijo5B3J.svg"
+                      alt="MongoDB logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">MongoDB</span>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20128%20128'%3e%3cpath%20fill='%230074BD'%20d='M47.617%2098.12s-4.767%202.774%203.397%203.71c9.892%201.13%2014.947.968%2025.845-1.092%200%200%202.871%201.795%206.873%203.351-24.439%2010.47-55.308-.607-36.115-5.969zm-2.988-13.665s-5.348%203.959%202.823%204.805c10.567%201.091%2018.91%201.18%2033.354-1.6%200%200%201.993%202.025%205.132%203.131-29.542%208.64-62.446.68-41.309-6.336z'/%3e%3cpath%20fill='%23EA2D2E'%20d='M69.802%2061.271c6.025%206.935-1.58%2013.17-1.58%2013.17s15.289-7.891%208.269-17.777c-6.559-9.215-11.587-13.792%2015.635-29.58%200%20.001-42.731%2010.67-22.324%2034.187z'/%3e%3cpath%20fill='%230074BD'%20d='M102.123%20108.229s3.529%202.91-3.888%205.159c-14.102%204.272-58.706%205.56-71.094.171-4.451-1.938%203.899-4.625%206.526-5.192%202.739-.593%204.303-.485%204.303-.485-4.953-3.487-32.013%206.85-13.743%209.815%2049.821%208.076%2090.817-3.637%2077.896-9.468zM49.912%2070.294s-22.686%205.389-8.033%207.348c6.188.828%2018.518.638%2030.011-.326%209.39-.789%2018.813-2.474%2018.813-2.474s-3.308%201.419-5.704%203.053c-23.042%206.061-67.544%203.238-54.731-2.958%2010.832-5.239%2019.644-4.643%2019.644-4.643zm40.697%2022.747c23.421-12.167%2012.591-23.86%205.032-22.285-1.848.385-2.677.72-2.677.72s.688-1.079%202-1.543c14.953-5.255%2026.451%2015.503-4.823%2023.725%200-.002.359-.327.468-.617z'/%3e%3cpath%20fill='%23EA2D2E'%20d='M76.491%201.587S89.459%2014.563%2064.188%2034.51c-20.266%2016.006-4.621%2025.13-.007%2035.559-11.831-10.673-20.509-20.07-14.688-28.815C58.041%2028.42%2081.722%2022.195%2076.491%201.587z'/%3e%3cpath%20fill='%230074BD'%20d='M52.214%20126.021c22.476%201.437%2057-.8%2057.817-11.436%200%200-1.571%204.032-18.577%207.231-19.186%203.612-42.854%203.191-56.887.874%200%20.001%202.875%202.381%2017.647%203.331z'/%3e%3c/svg%3e"
+                      alt="Java logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="text-sm font-medium">Java</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Values + Education Container -->
+              <div class="flex flex-col gap-6 lg:col-span-7">
+                <!-- Values Cards -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3" data-reveal>
+                  <div
+                    class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default"
+                  >
+                    <div
+                      class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue/10 text-blue"
+                    >
+                      <i data-lucide="code-2" width="32"></i>
+                    </div>
+                    <h4 class="mb-2 text-lg font-bold">Clean Code</h4>
+                    <p class="text-sm leading-relaxed text-gray">
+                      Readable, maintainable, and tested.
+                    </p>
+                  </div>
+                  <div
+                    class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default"
+                  >
+                    <div
+                      class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple/10 text-purple"
+                    >
+                      <i data-lucide="users" width="32"></i>
+                    </div>
+                    <h4 class="mb-2 text-lg font-bold">User-First</h4>
+                    <p class="text-sm leading-relaxed text-gray">
+                      Intuitive experiences that delight.
+                    </p>
+                  </div>
+                  <div
+                    class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default"
+                  >
+                    <div
+                      class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                    >
+                      <i data-lucide="book-open" width="32"></i>
+                    </div>
+                    <h4 class="mb-2 text-lg font-bold">Keep Learning</h4>
+                    <p class="text-sm leading-relaxed text-gray">
+                      Always exploring new tech.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Education Card -->
+                <div
+                  class="group relative flex flex-col gap-6 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 sm:flex-row sm:items-center"
+                  data-reveal
+                >
+                  <div class="flex items-center gap-6">
+                    <div
+                      class="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-blue/10 text-blue"
+                    >
+                      <i data-lucide="graduation-cap" width="32"></i>
+                    </div>
+                    <div>
+                      <h4 class="text-xl font-bold">
+                        King Fahd University of Petroleum & Minerals
+                      </h4>
+                      <p class="mt-1 text-sm text-gray">
+                        B.S. in Software Engineering
+                      </p>
+                      <div
+                        class="mt-2 flex flex-wrap items-center gap-4 text-sm text-gray"
+                      >
+                        <span class="flex items-center gap-2">
+                          <i data-lucide="calendar" width="14"></i>
+                          Class of 2022
+                        </span>
+                        <span class="flex items-center gap-2">
+                          <i data-lucide="award" width="14"></i>
+                          Dean's List
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hidden sm:block h-16 w-px bg-white/10 mx-4"></div>
+                  <div class="flex items-center gap-3 sm:flex-col sm:gap-1">
+                    <span class="text-4xl font-bold text-copy">3.65</span>
+                    <span
+                      class="text-sm font-bold uppercase tracking-widest text-gray"
+                      >GPA</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- Projects Section -->
+      <section
+        id="projects"
+        class="projects-section scroll-mt-16 w-full px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-24"
+      >
+          <div class="section-ambient section-ambient--projects" aria-hidden="true">
+            <div class="ambient-orb ambient-orb--projects-top"></div>
+            <div class="ambient-orb ambient-orb--projects-bottom"></div>
+          </div>
+          <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
+            <div class="flex flex-col items-center text-center" data-reveal>
+              <button
+                type="button"
+                class="section-toggle-pill mb-6 border-blue/20 bg-blue/10"
+                data-section-toggle="projects"
+                aria-expanded="true"
+                aria-controls="projects-content"
+              >
+                <span
+                  class="text-sm font-bold tracking-widest text-blue uppercase"
+                  >Projects</span
+                >
+                <i data-lucide="chevron-down" width="16"></i>
+              </button>
+              <h2 class="mt-6 text-4xl font-bold md:text-6xl">
+                Featured Projects
+              </h2>
+            </div>
+
+          <div
+            id="projects-content"
+            class="section-collapse is-expanded"
+            data-section-content="projects"
+          >
+            <div class="section-collapse__inner">
+          <div
+            class="project-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8"
+            data-reveal
+          >
+            <div class="project-toolbar">
+              <div class="grid w-full gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <label
+                  class="project-control-group sm:col-span-2 xl:col-span-1"
+                >
+                  <span class="project-control-label">Search</span>
+                  <div class="project-control-shell">
+                    <span class="project-control-icon" aria-hidden="true"
+                      ><i data-lucide="search" width="18"></i
+                    ></span>
+                    <input
+                      type="search"
+                      class="project-control project-control--search"
+                      data-project-search-input
+                      aria-label="Search projects"
+                      placeholder="Title, stack, or keyword"
+                    />
+                  </div>
+                </label>
+
+                <label class="project-control-group">
+                  <span class="project-control-label">Filter</span>
+                  <div class="project-control-shell">
+                    <span class="project-control-icon" aria-hidden="true"
+                      ><i data-lucide="funnel" width="18"></i
+                    ></span>
+                    <select
+                      class="project-control project-control--select"
+                      data-project-filter
+                      aria-label="Filter projects by technology"
+                    >
+                      <option value="all">All stacks</option>
+                      <option value="html">HTML</option>
+                      <option value="javascript">JavaScript</option>
+                      <option value="react">React</option>
+                      <option value="nextjs">Next.js</option>
+                      <option value="firebase">Firebase</option>
+                      <option value="mongodb">MongoDB</option>
+                    </select>
+                    <span class="project-control-chevron" aria-hidden="true"
+                      ><i data-lucide="chevron-down" width="16"></i
+                    ></span>
+                  </div>
+                </label>
+
+                <label class="project-control-group">
+                  <span class="project-control-label">Sort By</span>
+                  <div class="project-control-shell">
+                    <span class="project-control-icon" aria-hidden="true"
+                      ><i data-lucide="arrow-up-down" width="18"></i
+                    ></span>
+                    <select
+                      class="project-control project-control--select"
+                      data-project-sort
+                      aria-label="Sort portfolio projects"
+                    >
+                      <option value="activity">Recent GitHub push</option>
+                      <option value="stars">GitHub stars</option>
+                      <option value="name">Name</option>
+                    </select>
+                    <span class="project-control-chevron" aria-hidden="true"
+                      ><i data-lucide="chevron-down" width="16"></i
+                    ></span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="project-toolbar-meta mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p class="text-sm font-bold uppercase tracking-[0.18em] text-gray" data-project-results>
+                Showing all projects
+              </p>
+              <button
+                type="button"
+                class="project-link-button hidden"
+                data-project-clear
+              >
+                Clear Filters
+              </button>
+            </div>
+
+            <div class="mt-8 hidden project-feedback-card" data-project-loading>
+              <p class="project-feedback-title">Loading GitHub data...</p>
+              <p class="project-feedback-copy">
+                Syncing stars, latest pushes, and repository metadata.
+              </p>
+            </div>
+
+            <div
+              class="mt-8 hidden project-feedback-card project-feedback-error"
+              data-project-error
+            >
+              <p class="project-feedback-title">
+                GitHub insights are unavailable right now.
+              </p>
+              <p class="project-feedback-copy" data-project-error-message>
+                The portfolio is still fully viewable, but repository stats
+                could not be loaded.
+              </p>
+            </div>
+
+            <div class="mt-8 hidden project-feedback-card" data-project-empty>
+              <p class="project-feedback-title">
+                No projects match this filter.
+              </p>
+              <p class="project-feedback-copy">
+                Try another stack, search term, or sort order.
+              </p>
+            </div>
+
+            <div class="mt-8 grid gap-6 md:grid-cols-2" data-project-grid>
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="portfolio"
+                data-project-year="2026"
+                data-project-filter-values="html javascript tailwind"
+                data-project-search="portfolio website html tailwind css javascript responsive glassmorphism animations"
+                tabindex="0"
+                role="link"
+                aria-label="Open Portfolio Website repository"
+              >
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
+                  <img
+                    src="/assets/portfolio-image-vDdU2ou9.webp"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Portfolio Website"
+                    width="1280"
+                    height="829"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                  <div class="project-image-overlay">
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2026
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">Portfolio Website</h3>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Responsive portfolio experience</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Interactive theme and animation system</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>GitHub-integrated project metadata</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >HTML</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="training-application-tracker"
+                data-project-year="2025"
+                data-project-filter-values="nextjs mongodb javascript"
+                data-project-search="training application tracker next.js tailwind css mongodb dashboard hiring workflow applications"
+                tabindex="0"
+                role="link"
+                aria-label="Open Training Application Tracker repository"
+              >
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
+                  <img
+                    src="/assets/dashboard-DjFp2K7-.webp"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Training Application Tracker"
+                    width="1280"
+                    height="705"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                  <div class="project-image-overlay">
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2025
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">
+                      Training Application Tracker
+                    </h3>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Dashboard-driven application workflow</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Submission and review tracking</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Clear progress visibility</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >Next.js</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >MongoDB</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="task-manager"
+                data-project-year="2025"
+                data-project-filter-values="react firebase javascript"
+                data-project-search="task manager react firebase tailwind productivity drag and drop reminders categories"
+                tabindex="0"
+                role="link"
+                aria-label="Open Task Manager repository"
+              >
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
+                  <img
+                    src="/assets/task-manager-pxUNfD6w.webp"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Task Manager"
+                    width="1058"
+                    height="659"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                  <div class="project-image-overlay">
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2025
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">Task Manager</h3>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Real-time Firebase sync</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Drag-and-drop task categories</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Reminder-friendly productivity flow</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >React</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >Firebase</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="swe363-project"
+                data-project-year="2025"
+                data-project-filter-values="javascript react express"
+                data-project-search="comptihub swe363 project javascript react express web application competition student teams participation"
+                tabindex="0"
+                role="link"
+                aria-label="Open ComptiHub repository"
+              >
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
+                    <img
+                      src="/assets/SWE3636-project-BIJRtyXC.webp"
+                      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      alt="ComptiHub"
+                      width="1280"
+                      height="729"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                  <div class="project-image-overlay">
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/SWE363-project"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2025
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">ComptiHub</h3>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Structured web application flow</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Responsive interface design</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Course-focused implementation</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >React</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >Express</span
+                    >
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="contact-section scroll-mt-12 flex min-h-screen w-full items-center justify-center px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-20"
+      >
+        <div class="section-ambient section-ambient--contact" aria-hidden="true">
+          <div class="ambient-orb ambient-orb--contact-left"></div>
+          <div class="ambient-orb ambient-orb--contact-right"></div>
+        </div>
+        <div class="max-w-4xl w-full">
+          <div class="mb-16 flex flex-col items-center text-center" data-reveal>
+            <button
+              type="button"
+              class="section-toggle-pill mb-6"
+              data-section-toggle="contact"
+              aria-expanded="true"
+              aria-controls="contact-content"
+            >
+              <span
+                class="text-sm font-bold tracking-widest text-green-400 uppercase"
+                >Contact</span
+              >
+              <i data-lucide="chevron-down" width="16"></i>
+            </button>
+            <h2 class="text-4xl md:text-6xl font-bold">
+              Let's build something.
+            </h2>
+          </div>
+
+          <div
+            id="contact-content"
+            class="section-collapse is-expanded"
+            data-section-content="contact"
+          >
+            <div class="section-collapse__inner">
+              <div
+                class="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl motion-safe:[animation-delay:180ms] sm:p-12"
+                data-reveal
+              >
+                <form class="space-y-8" data-contact-form novalidate>
+                  <div class="space-y-3 text-center sm:text-left">
+                    <p class="text-sm font-bold uppercase tracking-widest text-blue">Get in touch</p>
+                    <p class="max-w-2xl text-base leading-relaxed text-gray sm:text-lg">
+                      For projects, internships, and collaboration opportunities.
+                    </p>
+                  </div>
+
+                  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <div class="space-y-3">
+                      <label
+                        for="name"
+                        class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                        >Name</label
+                      >
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                        placeholder="John Doe"
+                        autocomplete="name"
+                        required
+                      />
+                    </div>
+                    <div class="space-y-3">
+                      <label
+                        for="email"
+                        class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                        >Email</label
+                      >
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                        placeholder="john@example.com"
+                        autocomplete="email"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="space-y-3">
+                    <label
+                      for="subject"
+                      class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                      >Subject</label
+                    >
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                      placeholder="Portfolio inquiry"
+                      maxlength="120"
+                    />
+                  </div>
+
+                  <div class="space-y-3">
+                    <label
+                      for="message"
+                      class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                      >Message</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      class="w-full resize-none rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                      placeholder="Tell me about your project..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-blue py-5 font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span>Open Email Draft</span>
+                    <i data-lucide="send" width="18"></i>
+                    <div
+                      class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"
+                    ></div>
+                  </button>
+                  <p class="contact-feedback text-sm text-gray" data-contact-feedback data-state="neutral" aria-live="polite">
+                    Opens your default email app with subject and message prefilled.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="w-full py-12 border-t border-white/10">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div
+            class="flex flex-col items-center justify-between gap-8 md:flex-row"
+          >
+            <div class="flex flex-col items-center gap-4 md:items-start">
+              <a href="#home" class="text-xl font-bold tracking-tighter"
+                >JA<span class="text-blue">.</span></a
+              >
+              <p class="text-sm text-gray text-center md:text-left">
+                Building the future of the web, one pixel at a time.
+              </p>
+            </div>
+
+            <div class="flex items-center gap-6">
+              <a
+                href="https://github.com/JASSIM-ALHUMAID"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
+                class="footer-social-link text-gray hover:text-copy transition-colors"
+                >
+                <span class="footer-brand-icon footer-brand-icon--github" aria-hidden="true"></span></a
+              >
+              <a
+                href="https://www.linkedin.com/in/jassim-m-alhumaid/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                class="footer-social-link text-gray hover:text-copy transition-colors"
+                >
+                <span class="footer-brand-icon footer-brand-icon--linkedin" aria-hidden="true"></span></a
+              >
+              <a
+                href="mailto:jassim.m.alhumaid@gmail.com"
+                aria-label="Send email"
+                class="text-gray hover:text-copy transition-colors"
+                ><i data-lucide="mail" class="text-xl" width="20"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="mt-12 pt-8 border-t border-white/5 text-center text-sm font-bold uppercase tracking-[0.2em] text-gray/50"
+          >
+            &copy; 2026 Jassim Alhumaid. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
