@@ -62,6 +62,29 @@
       filter: blur(80px);
     }
   }
+
+  @keyframes hero-rise-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 22px, 0) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes hero-scroll-drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.55;
+    }
+    50% {
+      transform: translate3d(0, 8px, 0);
+      opacity: 0.95;
+    }
+  }
 }
 
 :root {
@@ -136,6 +159,66 @@ body::before {
   );
   color: transparent;
   background-clip: text;
+}
+
+.hero-section [data-hero-stage] {
+  will-change: transform, opacity;
+}
+
+.js .hero-section [data-hero-stage] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0) scale(0.985);
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage] {
+  animation: hero-rise-in 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage="1"] {
+  animation-delay: 90ms;
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage="2"] {
+  animation-delay: 180ms;
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage="3"] {
+  animation-delay: 290ms;
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage="4"] {
+  animation-delay: 400ms;
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage="5"] {
+  animation-delay: 520ms;
+}
+
+.js .hero-section.hero-is-ready [data-hero-actions] > a {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.js .hero-section.hero-is-ready [data-hero-actions] > a:hover {
+  box-shadow: 0 18px 40px -26px rgba(79, 70, 229, 0.65);
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage="5"] li {
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.js .hero-section.hero-is-ready [data-hero-stage="5"] li:hover {
+  transform: translateY(-2px);
+  border-color: var(--surface-border-strong-color);
+  background: color-mix(in srgb, var(--surface-hover-color) 88%, transparent);
+}
+
+.hero-scroll-cue {
+  opacity: 0.72;
+}
+
+.motion-safe .hero-scroll-cue,
+.hero-scroll-cue {
+  animation: hero-scroll-drift 2.8s ease-in-out infinite;
 }
 
 .nav-links li a {
@@ -1118,14 +1201,17 @@ textarea:focus-visible {
   }
 
   .js [data-reveal],
-  .js [data-stat] {
+  .js [data-stat],
+  .js .hero-section [data-hero-stage] {
     opacity: 1;
     transform: none;
   }
 
   .section-collapse,
-  .section-toggle-pill .icon {
+  .section-toggle-pill .icon,
+  .hero-scroll-cue {
     transition: none;
+    animation: none;
   }
 }
 

@@ -50,6 +50,7 @@ const welcomeMessage = document.getElementById("welcome-message");
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+const heroSection = document.getElementById("home");
 const contactForm = document.querySelector("[data-contact-form]");
 const contactFeedback = document.querySelector("[data-contact-feedback]");
 const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
@@ -718,6 +719,14 @@ const initGreeting = () => {
   welcomeMessage.textContent = greeting;
 };
 
+const initHeroMotion = () => {
+  if (!heroSection || supportsReducedMotion) return;
+
+  window.requestAnimationFrame(() => {
+    heroSection.classList.add("hero-is-ready");
+  });
+};
+
 const initContactForm = () => {
   if (!contactForm) return;
 
@@ -890,6 +899,7 @@ const init = () => {
   renderIcons();
   initThemeToggle();
   initGreeting();
+  initHeroMotion();
   initMobileMenu();
   initSectionToggles();
   initActiveNav();
