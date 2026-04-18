@@ -3,6 +3,7 @@ import "../css/styles.css";
 const THEME_STORAGE_KEY = "portfolio-theme";
 const PROJECT_PREFERENCES_KEY = "portfolio-project-preferences";
 const PROJECT_GITHUB_CACHE_KEY = "portfolio-project-github-cache-v1";
+const SECTION_COLLAPSE_STORAGE_KEY = "portfolio-section-collapse-v1";
 const PROJECT_GITHUB_CACHE_TTL = 1000 * 60 * 60;
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 const GITHUB_USERNAME = "JASSIM-ALHUMAID";
@@ -60,6 +61,7 @@ const projectErrorMessage = document.querySelector("[data-project-error-message]
 const projectEmpty = document.querySelector("[data-project-empty]");
 const projectGrid = document.querySelector("[data-project-grid]");
 const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
+const sectionToggles = Array.from(document.querySelectorAll("[data-section-toggle]"));
 
 const projectState = {
   filter: "all",
@@ -170,6 +172,22 @@ const loadGithubCache = () => {
     safeLocalStorageRemove(PROJECT_GITHUB_CACHE_KEY);
     return null;
   }
+};
+
+const loadSectionCollapseState = () => {
+  const raw = safeLocalStorageGet(SECTION_COLLAPSE_STORAGE_KEY);
+  if (!raw) return {};
+
+  try {
+    return JSON.parse(raw) || {};
+  } catch {
+    safeLocalStorageRemove(SECTION_COLLAPSE_STORAGE_KEY);
+    return {};
+  }
+};
+
+const saveSectionCollapseState = (state) => {
+  safeLocalStorageSet(SECTION_COLLAPSE_STORAGE_KEY, JSON.stringify(state));
 };
 
 const saveGithubCache = () => {
@@ -598,6 +616,51 @@ const initContactForm = () => {
   });
 };
 
+const setSectionCollapsed = (sectionId, collapsed, persist = true) => {
+  const toggle = document.querySelector(`[data-section-toggle="${sectionId}"]`);
+  const content = document.querySelector(`[data-section-content="${sectionId}"]`);
+  if (!toggle || !content) return;
+
+  toggle.setAttribute("aria-expanded", String(!collapsed));
+  content.classList.toggle("is-collapsed", collapsed);
+  content.classList.toggle("is-expanded", !collapsed);
+  content.setAttribute("aria-hidden", String(collapsed));
+
+  if (persist) {
+    const state = loadSectionCollapseState();
+    state[sectionId] = collapsed;
+    saveSectionCollapseState(state);
+  }
+};
+
+const expandSectionFromHash = () => {
+  const sectionId = window.location.hash.replace("#", "");
+  if (!sectionId) return;
+  if (!document.querySelector(`[data-section-content="${sectionId}"]`)) return;
+  setSectionCollapsed(sectionId, false);
+};
+
+const initSectionToggles = () => {
+  if (sectionToggles.length === 0) return;
+
+  const savedState = loadSectionCollapseState();
+
+  sectionToggles.forEach((toggle) => {
+    const sectionId = toggle.dataset.sectionToggle;
+    const collapsed = savedState[sectionId] === true;
+
+    setSectionCollapsed(sectionId, collapsed, false);
+
+    toggle.addEventListener("click", () => {
+      const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+      setSectionCollapsed(sectionId, isExpanded);
+    });
+  });
+
+  expandSectionFromHash();
+  window.addEventListener("hashchange", expandSectionFromHash);
+};
+
 const defer = (callback) => {
   if ("requestIdleCallback" in window) {
     window.requestIdleCallback(callback, { timeout: 1200 });
@@ -611,6 +674,7 @@ const init = () => {
   initThemeToggle();
   initGreeting();
   initMobileMenu();
+  initSectionToggles();
   initContactForm();
   initProjectControls();
   revealElements("[data-reveal]");

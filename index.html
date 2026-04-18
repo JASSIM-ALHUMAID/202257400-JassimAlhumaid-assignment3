@@ -198,18 +198,28 @@
           class="scroll-mt-16 flex w-full flex-col items-center px-4 py-24 sm:px-6 md:scroll-mt-24"
         >
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
-            <div
-              class="mb-6 rounded-full border border-white/10 bg-white/5 px-4 py-1.5"
+            <button
+              type="button"
+              class="section-toggle-pill mb-6"
+              data-section-toggle="about"
+              aria-expanded="true"
+              aria-controls="about-content"
             >
-              <span
-                class="text-sm font-bold uppercase tracking-widest text-purple"
+              <span class="text-sm font-bold uppercase tracking-widest text-purple"
                 >About Me</span
               >
-            </div>
+              <i data-lucide="chevron-down" width="16"></i>
+            </button>
             <h2 class="text-4xl font-bold md:text-6xl">The Story So Far</h2>
           </div>
 
-          <div class="flex w-full max-w-6xl flex-col gap-6">
+          <div
+            id="about-content"
+            class="section-collapse is-expanded"
+            data-section-content="about"
+          >
+            <div class="section-collapse__inner">
+              <div class="flex w-full max-w-6xl flex-col gap-6">
             <!-- Top Row: Profile + Stats + Bio -->
             <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12">
               <!-- Profile Avatar -->
@@ -602,6 +612,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </div>
         </section>
       </div>
       <!-- Projects Section -->
@@ -609,21 +621,32 @@
         id="projects"
         class="scroll-mt-16 w-full px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-24"
       >
-        <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
-          <div class="flex flex-col items-center text-center" data-reveal>
-            <div
-              class="bg-blue/10 px-4 py-1.5 rounded-full border border-blue/20"
-            >
-              <span
-                class="text-sm font-bold tracking-widest text-blue uppercase"
-                >Portfolio</span
+          <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
+            <div class="flex flex-col items-center text-center" data-reveal>
+              <button
+                type="button"
+                class="section-toggle-pill mb-6 border-blue/20 bg-blue/10"
+                data-section-toggle="projects"
+                aria-expanded="true"
+                aria-controls="projects-content"
               >
+                <span
+                  class="text-sm font-bold tracking-widest text-blue uppercase"
+                  >Portfolio</span
+                >
+                <i data-lucide="chevron-down" width="16"></i>
+              </button>
+              <h2 class="mt-6 text-4xl font-bold md:text-6xl">
+                Featured Projects
+              </h2>
             </div>
-            <h2 class="mt-6 text-4xl font-bold md:text-6xl">
-              Featured Projects
-            </h2>
-          </div>
 
+          <div
+            id="projects-content"
+            class="section-collapse is-expanded"
+            data-section-content="projects"
+          >
+            <div class="section-collapse__inner">
           <div
             class="project-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8"
             data-reveal
@@ -1176,6 +1199,8 @@
               </a>
             </div>
           </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1186,19 +1211,30 @@
       >
         <div class="max-w-4xl w-full">
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
-            <div
-              class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6"
+            <button
+              type="button"
+              class="section-toggle-pill mb-6"
+              data-section-toggle="contact"
+              aria-expanded="true"
+              aria-controls="contact-content"
             >
               <span
                 class="text-sm font-bold tracking-widest text-green-400 uppercase"
                 >Contact</span
               >
-            </div>
+              <i data-lucide="chevron-down" width="16"></i>
+            </button>
             <h2 class="text-4xl md:text-6xl font-bold">
               Let's build something.
             </h2>
           </div>
 
+          <div
+            id="contact-content"
+            class="section-collapse is-expanded"
+            data-section-content="contact"
+          >
+            <div class="section-collapse__inner">
           <div
             class="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl motion-safe:[animation-delay:180ms] sm:p-12"
             data-reveal
@@ -1264,6 +1300,8 @@
                 ></div>
               </button>
             </form>
+          </div>
+            </div>
           </div>
         </div>
       </section>

@@ -138,6 +138,59 @@ body::before {
   background-color: var(--surface-panel-color);
 }
 
+.section-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid var(--surface-border-color);
+  background: color-mix(in srgb, var(--surface-color) 92%, transparent);
+  padding: 0.45rem 0.95rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.section-toggle-pill:hover {
+  transform: translateY(-1px);
+  border-color: var(--surface-border-strong-color);
+  background: color-mix(in srgb, var(--surface-hover-color) 90%, transparent);
+}
+
+.section-toggle-pill:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-blue) 18%, transparent);
+}
+
+.section-toggle-pill .icon {
+  transition: transform 0.25s ease;
+}
+
+.section-toggle-pill[aria-expanded="false"] .icon {
+  transform: rotate(-90deg);
+}
+
+.section-collapse {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition: grid-template-rows 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
+}
+
+.section-collapse__inner {
+  overflow: hidden;
+}
+
+.section-collapse.is-collapsed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-top: -1rem;
+}
+
+.section-collapse.is-collapsed [data-reveal],
+.section-collapse.is-collapsed [data-stat] {
+  opacity: 1;
+  transform: none;
+}
+
 .icon {
   display: inline-block;
   flex-shrink: 0;
@@ -664,6 +717,11 @@ body::before {
   .js [data-stat] {
     opacity: 1;
     transform: none;
+  }
+
+  .section-collapse,
+  .section-toggle-pill .icon {
+    transition: none;
   }
 }
 
