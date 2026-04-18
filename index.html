@@ -355,320 +355,344 @@
       <!-- Projects Section -->
       <section
         id="projects"
-        class="scroll-mt-16 min-h-screen w-full relative z-0 md:scroll-mt-24"
-      >
-        <div class="projects-viewport">
-          <div id="projects-track" class="projects-track">
-            <!-- Full-Width Intro Card -->
-            <div class="projects-intro-card">
-              <div class="max-w-4xl mx-auto text-center px-8">
-                <div class="mb-12 flex flex-col items-center text-center">
-                  <div class="bg-blue/10 px-4 py-1.5 rounded-full border border-blue/20 mb-6">
-                    <span class="text-sm font-bold tracking-widest text-blue uppercase">Portfolio</span>
-                  </div>
-                  <h2 class="text-4xl md:text-7xl font-bold mb-8">Featured Projects</h2>
-                  
-                  <p class="text-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
-                    A selection of digital experiences where engineering meets design. 
-                    Scroll sideways to explore the details of my work.
-                  </p>
-
-                  <div class="flex items-center justify-center gap-4 text-blue font-bold text-sm uppercase tracking-[0.3em]">
-                    <span class="animate-pulse">Scroll to Explore</span>
-                    <i data-lucide="arrow-right" width="16" class="animate-bounce"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-            <!-- Project Cards -->
-            <!-- Project 1 -->
-            <div
-              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
-              data-project-card
-              data-reveal
-              data-project-search="portfolio website html tailwind css javascript responsive glassmorphism animations"
-            >
-              <div class="project-image-container aspect-video overflow-hidden">
-                <img
-                  src="./assets/images/portfolio-image.png"
-                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  alt="Portfolio Website"
-                />
-                <div class="project-image-overlay">
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
-                    View Project <i data-lucide="arrow-right" width="16"></i>
-                  </a>
-                </div>
-                <div class="absolute top-4 left-4 project-badge project-badge-year">2026</div>
-                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <h3 class="text-2xl font-bold">Portfolio Website</h3>
-                <p class="text-gray text-sm mb-4 flex-1">
-                  A modern, responsive portfolio website featuring glassmorphism design and smooth animations.
-                </p>
-                <div class="project-features mb-6">
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Glassmorphism UI Design</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Smooth Scroll Animations</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Dark/Light Theme Toggle</span>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">HTML</span>
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Tailwind CSS</span>
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div
-              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
-              data-project-card
-              data-reveal
-              data-project-search="job application tracker next.js tailwind css mongodb kanban full stack tutorial"
-            >
-              <div class="project-image-container aspect-video overflow-hidden">
-                <img
-                  src="./assets/images/job-tracker.png"
-                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  alt="Job application tracker"
-                />
-                <div class="project-image-overlay">
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
-                    View Project <i data-lucide="arrow-right" width="16"></i>
-                  </a>
-                </div>
-                <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
-                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <h3 class="text-2xl font-bold">Job Tracker</h3>
-                <p class="text-gray text-sm mb-4 flex-1">
-                  Full-stack Kanban board for tracking job applications built with Next.js and MongoDB.
-                </p>
-                <div class="project-features mb-6">
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Drag-and-Drop Kanban Board</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>RESTful API Integration</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Application Status Tracking</span>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Next.js</span>
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">MongoDB</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div
-              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
-              data-project-card
-              data-reveal
-              data-project-search="task manager react firebase tailwind productivity drag and drop reminders categories"
-            >
-              <div class="project-image-container aspect-video overflow-hidden">
-                <img
-                  src="./assets/images/task-manager.png"
-                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  alt="Task manager"
-                />
-                <div class="project-image-overlay">
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
-                    View Project <i data-lucide="arrow-right" width="16"></i>
-                  </a>
-                </div>
-                <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
-                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <h3 class="text-2xl font-bold">Task Manager</h3>
-                <p class="text-gray text-sm mb-4 flex-1">
-                  Productivity tool with drag-and-drop task management and real-time Firebase sync.
-                </p>
-                <div class="project-features mb-6">
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Real-time Firebase Sync</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Drag-and-Drop Categories</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Reminder Notifications</span>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">React</span>
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Firebase</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div
-              class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
-              data-project-card
-              data-reveal
-              data-project-search="expense tracker react firebase tailwind finance budgeting personal expenses"
-            >
-              <div class="project-image-container aspect-video overflow-hidden">
-                <img
-                  src="./assets/images/expencse-tracker.png"
-                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  alt="Expense tracker"
-                />
-                <div class="project-image-overlay">
-                  <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="project-view-cta">
-                    View Project <i data-lucide="arrow-right" width="16"></i>
-                  </a>
-                </div>
-                <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
-                <div class="absolute top-4 right-4 project-badge project-badge-status">Live</div>
-              </div>
-              <div class="flex flex-col flex-1 p-8">
-                <h3 class="text-2xl font-bold">Expense Tracker</h3>
-                <p class="text-gray text-sm mb-4 flex-1">
-                  Financial management application for tracking personal expenses and budgeting.
-                </p>
-                <div class="project-features mb-6">
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Expense Categorization</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Budget Setting & Alerts</span>
-                  </div>
-                  <div class="project-feature">
-                    <i data-lucide="check" width="14"></i>
-                    <span>Visual Spending Reports</span>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">React</span>
-                  <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Firebase</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="github-projects"
-        class="scroll-mt-16 w-full px-4 py-24 sm:px-6 md:scroll-mt-24"
+        class="scroll-mt-16 w-full px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-24"
       >
         <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
           <div class="flex flex-col items-center text-center" data-reveal>
-            <div class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
-              <span class="text-sm font-bold uppercase tracking-widest text-blue">GitHub API</span>
+            <div class="bg-blue/10 px-4 py-1.5 rounded-full border border-blue/20">
+              <span class="text-sm font-bold tracking-widest text-blue uppercase">Portfolio</span>
             </div>
-            <h2 class="mt-6 text-4xl font-bold md:text-6xl">Live Repository Feed</h2>
+            <h2 class="mt-6 text-4xl font-bold md:text-6xl">Featured Projects</h2>
             <p class="mt-5 max-w-2xl text-base leading-relaxed text-gray sm:text-lg">
-              This section loads my repositories directly from GitHub and lets visitors filter,
-              sort, and refine the results without leaving the page.
+              A curated set of projects with live GitHub signals built into each card, plus controls
+              to filter and sort the collection.
             </p>
           </div>
 
-          <div
-            class="github-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8"
-            data-reveal
-          >
-            <div class="github-toolbar flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div class="project-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8" data-reveal>
+            <div class="project-toolbar flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <p class="text-sm font-bold uppercase tracking-[0.25em] text-gray">Repository Explorer</p>
-                <p class="mt-2 text-sm leading-relaxed text-gray">
-                  Filter by language, change the sort order, and browse the latest repositories from GitHub.
+                <p class="text-sm font-bold uppercase tracking-[0.25em] text-gray">Project Explorer</p>
+                <p class="mt-2 max-w-2xl text-sm leading-relaxed text-gray">
+                  Filter the portfolio by stack and sort the cards by name, year, stars, or recent GitHub activity.
                 </p>
               </div>
 
               <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                <label class="github-control-group">
-                  <span class="github-control-label">Language</span>
-                  <select
-                    class="github-control"
-                    data-github-language-filter
-                    aria-label="Filter GitHub repositories by language"
-                  >
-                    <option value="all">All languages</option>
+                <label class="project-control-group sm:col-span-2 xl:col-span-1">
+                  <span class="project-control-label">Search</span>
+                  <input
+                    type="search"
+                    class="project-control"
+                    data-project-search-input
+                    aria-label="Search projects"
+                    placeholder="Search projects or stacks"
+                  />
+                </label>
+
+                <label class="project-control-group">
+                  <span class="project-control-label">Filter</span>
+                  <select class="project-control" data-project-filter aria-label="Filter projects by technology">
+                    <option value="all">All projects</option>
+                    <option value="html">HTML</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="react">React</option>
+                    <option value="nextjs">Next.js</option>
+                    <option value="firebase">Firebase</option>
+                    <option value="mongodb">MongoDB</option>
                   </select>
                 </label>
 
-                <label class="github-control-group">
-                  <span class="github-control-label">Sort By</span>
-                  <select
-                    class="github-control"
-                    data-github-sort
-                    aria-label="Sort GitHub repositories"
-                  >
-                    <option value="updated">Recently updated</option>
+                <label class="project-control-group">
+                  <span class="project-control-label">Sort By</span>
+                  <select class="project-control" data-project-sort aria-label="Sort portfolio projects">
+                    <option value="year">Newest first</option>
                     <option value="name">Name</option>
-                    <option value="stars">Stars</option>
+                    <option value="stars">GitHub stars</option>
+                    <option value="activity">Recent GitHub activity</option>
                   </select>
                 </label>
-
-                <div class="github-control-group sm:col-span-2 xl:col-span-1">
-                  <span class="github-control-label">Status</span>
-                  <p class="github-status-text" data-github-status>
-                    Loading repositories from GitHub...
-                  </p>
-                </div>
               </div>
             </div>
 
-            <div class="mt-8 hidden github-feedback-card" data-github-loading>
-              <p class="github-feedback-title">Loading repositories...</p>
-              <p class="github-feedback-copy">
-                Fetching the latest project data from GitHub.
+            <div class="mt-8 hidden project-feedback-card" data-project-loading>
+              <p class="project-feedback-title">Loading GitHub data...</p>
+              <p class="project-feedback-copy">
+                Pulling repository activity and project metadata from GitHub.
               </p>
             </div>
 
-            <div class="mt-8 hidden github-feedback-card github-feedback-error" data-github-error>
-              <p class="github-feedback-title">GitHub data is unavailable right now.</p>
-              <p class="github-feedback-copy" data-github-error-message>
-                Please try again later or visit my GitHub profile directly.
+            <div class="mt-8 hidden project-feedback-card project-feedback-error" data-project-error>
+              <p class="project-feedback-title">GitHub insights are unavailable right now.</p>
+              <p class="project-feedback-copy" data-project-error-message>
+                The portfolio is still fully viewable, but repository stats could not be loaded.
               </p>
+            </div>
+
+            <div class="mt-8 hidden project-feedback-card" data-project-empty>
+              <p class="project-feedback-title">No projects match this filter.</p>
+              <p class="project-feedback-copy">
+                Try a different technology filter or change the sort order.
+              </p>
+            </div>
+
+            <div class="mt-8 grid gap-6 md:grid-cols-2" data-project-grid>
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="portfolio"
+                data-project-year="2026"
+                data-project-filter-values="html javascript tailwind"
+                data-project-search="portfolio website html tailwind css javascript responsive glassmorphism animations"
+              >
+                <div class="project-image-container aspect-video overflow-hidden">
+                  <img
+                    src="./assets/images/portfolio-image.png"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Portfolio Website"
+                    loading="lazy"
+                  />
+                  <div class="project-image-overlay">
+                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
+                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div class="absolute top-4 left-4 project-badge project-badge-year">2026</div>
+                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">Portfolio Website</h3>
+                    <p class="text-gray text-sm flex-1">
+                      A modern, responsive portfolio website featuring glassmorphism design, animation, and an integrated GitHub-powered project system.
+                    </p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Responsive portfolio experience</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Interactive theme and animation system</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>GitHub-integrated project metadata</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">HTML</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Tailwind CSS</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                  </div>
+                  <div class="project-link-row mt-6">
+                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="training-application-tracker"
+                data-project-year="2025"
+                data-project-filter-values="nextjs mongodb javascript"
+                data-project-search="training application tracker next.js tailwind css mongodb dashboard hiring workflow applications"
+              >
+                <div class="project-image-container aspect-video overflow-hidden">
+                  <img
+                    src="./assets/images/dashboard.png"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Training Application Tracker"
+                    loading="lazy"
+                  />
+                  <div class="project-image-overlay">
+                    <a href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
+                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
+                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">Training Application Tracker</h3>
+                    <p class="text-gray text-sm flex-1">
+                      A training-focused application dashboard for tracking submissions, reviewing progress, and managing application flow in one place.
+                    </p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Dashboard-driven application workflow</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Submission and review tracking</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Clear progress visibility</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Next.js</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">MongoDB</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                  </div>
+                  <div class="project-link-row mt-6">
+                    <a href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="task-manager"
+                data-project-year="2025"
+                data-project-filter-values="react firebase javascript"
+                data-project-search="task manager react firebase tailwind productivity drag and drop reminders categories"
+              >
+                <div class="project-image-container aspect-video overflow-hidden">
+                  <img
+                    src="./assets/images/task-manager.png"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Task Manager"
+                    loading="lazy"
+                  />
+                  <div class="project-image-overlay">
+                    <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
+                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
+                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">Task Manager</h3>
+                    <p class="text-gray text-sm flex-1">
+                      Productivity tool with drag-and-drop task management, categorized workflows, and real-time synchronization.
+                    </p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Real-time Firebase sync</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Drag-and-drop task categories</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Reminder-friendly productivity flow</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">React</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Firebase</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                  </div>
+                  <div class="project-link-row mt-6">
+                    <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+                data-project-card
+                data-reveal
+                data-project-key="swe363-project"
+                data-project-year="2025"
+                data-project-filter-values="javascript html css"
+                data-project-search="swe363 project javascript html css web application university course project"
+              >
+                <div class="project-image-container aspect-video overflow-hidden">
+                  <img
+                    src="./assets/images/SWE3636-project.png"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="SWE363 Project"
+                    loading="lazy"
+                  />
+                  <div class="project-image-overlay">
+                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-project" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
+                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    </a>
+                  </div>
+                  <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
+                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                </div>
+                <div class="flex flex-col flex-1 p-8">
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-2xl font-bold">SWE363 Project</h3>
+                    <p class="text-gray text-sm flex-1">
+                      A course project built for SWE363 that focuses on delivering a structured web application with clean interaction flow and polished presentation.
+                    </p>
+                  </div>
+                  <div class="project-features mt-6 mb-6">
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Structured web application flow</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Responsive interface design</span>
+                    </div>
+                    <div class="project-feature">
+                      <i data-lucide="check" width="14"></i>
+                      <span>Course-focused implementation</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">HTML</span>
+                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">CSS</span>
+                  </div>
+                  <div class="project-meta-row mt-6" data-project-meta>
+                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
+                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                  </div>
+                  <div class="project-link-row mt-6">
+                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-project" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="mt-8 flex justify-center">
               <a
                 href="https://github.com/JASSIM-ALHUMAID"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue transition-colors hover:text-purple"
+                class="project-cta-button"
               >
-                Visit GitHub Profile
+                See More on GitHub
                 <i data-lucide="arrow-up-right" width="16"></i>
               </a>
             </div>
-
-            <div class="mt-8 hidden github-feedback-card" data-github-empty>
-              <p class="github-feedback-title">No repositories match the current filters.</p>
-              <p class="github-feedback-copy">
-                Try another language or sort option to see more projects.
-              </p>
-            </div>
-
-            <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3" data-github-grid></div>
           </div>
         </div>
       </section>

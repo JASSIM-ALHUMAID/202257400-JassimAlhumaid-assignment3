@@ -8,7 +8,7 @@ AI assistance was used during Assignment 3 for:
 
 - comparing the current portfolio against the assignment requirements
 - identifying missing functionality such as API integration and stronger application logic
-- planning the GitHub API feature with minimal disruption to the existing design
+- planning how to integrate GitHub API data into the existing featured projects section
 - refining JavaScript logic for filtering, sorting, and local state persistence
 - updating documentation so it matches the final implementation
 
@@ -22,7 +22,7 @@ GitHub Copilot was used for:
 
 ### Design-Oriented AI Support
 
-AI-guided design feedback was used to preserve the visual style of the portfolio while introducing a new GitHub section. This was especially useful for deciding how to add controls, feedback states, and cards without breaking the existing aesthetic.
+AI-guided design feedback was used to preserve the visual style of the portfolio while restructuring the projects area. This was especially useful for deciding how to combine curated cards, GitHub metadata, and filter/sort controls without breaking the existing aesthetic.
 
 ## 2. Benefits and Challenges
 
@@ -67,8 +67,8 @@ The final implementation was reviewed and adapted manually to ensure:
 Examples of responsible modifications include:
 
 - choosing GitHub API integration because it is directly relevant to a portfolio
-- keeping the new feature in a separate section so the original featured projects remain visible
-- simplifying the final GitHub explorer to language filtering, sorting, and a 6-repository limit for a cleaner user experience
+- integrating GitHub metadata into curated project cards instead of treating repositories as a competing second projects section
+- using project-level filter and sort controls to satisfy the complex logic requirement in a more natural way
 - rewriting stale documentation that still referenced Assignment 2 and outdated file names
 
 ## 5. Reflection

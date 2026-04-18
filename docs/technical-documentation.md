@@ -4,16 +4,16 @@
 
 This portfolio is a single-page personal website built for SWE363 Assignment 3. The project keeps the existing visual identity from the earlier assignment and adds more advanced functionality to meet the new requirements.
 
-The main Assignment 3 enhancement is a live GitHub repository explorer that fetches public repositories from GitHub and renders them dynamically on the page. Visitors can change the repository view through filtering and sorting controls, while the application stores their preferences locally.
+The main Assignment 3 enhancement is an integrated projects explorer. Instead of separating curated projects from GitHub data, the portfolio now fetches repository information from GitHub and injects relevant metadata directly into the featured project cards. Visitors can filter and sort the project grid while the application stores their preferences locally.
 
 ## 2. Technology Stack
 
 - **HTML5**: Semantic page structure and form markup.
 - **Tailwind CSS v4**: Core layout, spacing, color, and responsive styling.
-- **Custom CSS**: Additional component styling for project cards, GitHub cards, and themed UI controls.
+- **Custom CSS**: Additional component styling for project cards, metadata rows, and themed UI controls.
 - **Vanilla JavaScript**: API integration, state management, form handling, and UI updates.
 - **Vite**: Development server and production bundling.
-- **GSAP + ScrollTrigger**: Hero animation, section reveal effects, counters, parallax blobs, and horizontal project scroll.
+- **GSAP + ScrollTrigger**: Hero animation, section reveal effects, counters, and parallax blobs.
 - **Lucide + Font Awesome**: Icons used throughout the interface.
 
 ## 3. Project Structure
@@ -69,33 +69,33 @@ https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
 
 The application:
 
-- requests public repositories
+- requests repository data from GitHub
 - handles non-success responses
 - shows loading, error, and empty states
-- renders repository cards dynamically into the GitHub section
+- maps repository metadata into the featured project cards
 
 ### Complex Logic
 
-The GitHub explorer demonstrates multi-step client-side logic by combining:
+The projects explorer demonstrates multi-step client-side logic by combining:
 
-- dynamic language filtering
+- filtering by technology stack
 - multiple sorting options
-- a 6-item result limit applied after filtering and sorting
+- GitHub-based ranking using stars and recent activity
 
-This creates a more advanced interaction than a simple one-click action because the result set changes based on several active conditions.
+This creates a more advanced interaction than a simple one-click action because the visible order and contents of the project grid change based on several active conditions.
 
 ### State Management
 
 The project stores interface preferences in `localStorage`.
 
 - `portfolio-theme` stores the selected light or dark theme.
-- `portfolio-github-preferences` stores the chosen GitHub language filter and sort option.
+- `portfolio-project-preferences` stores the chosen project filter and sort option.
 
 This allows the portfolio to restore the user’s last selected view when they revisit or refresh the page.
 
 ### Performance and UX
 
-The site keeps the new feature lightweight by using a single GitHub API request and client-side rendering. Existing animations remain intact, and the repository explorer uses clear UI feedback states so visitors understand what is happening.
+The site keeps the new feature lightweight by using one repository request and targeted commit-count requests only for matched projects. Existing animations remain intact, and the integrated project explorer uses clear UI feedback states so visitors understand what is happening.
 
 The current implementation also avoids full-page reloads for filter and sort interactions.
 
@@ -116,35 +116,29 @@ The current implementation also avoids full-page reloads for filter and sort int
 - hero animation sequence
 - section reveal animations
 - parallax background blob motion
-- horizontal project scrolling on desktop
 - animated counters in the About section
 
-### GitHub API Module
+### Project Explorer Module
 
-The GitHub-related logic in `main.js` performs these steps:
+The projects logic in `main.js` performs these steps:
 
-1. Read saved GitHub preferences from `localStorage`.
+1. Read saved project preferences from `localStorage`.
 2. Fetch repository data from GitHub.
-3. Build language filter options dynamically from the returned repository data.
-4. Filter and sort repositories based on the selected UI controls.
-5. Limit the visible set to the 6 most relevant repositories in the current view.
-6. Render repository cards into the page.
+3. Match GitHub repositories to curated featured projects.
+4. Fetch commit counts only for matched repositories.
+5. Filter and sort the project cards based on the selected controls.
+6. Render GitHub metadata into each project card.
 7. Persist updated preferences after each interaction.
 8. Show friendly fallback feedback if the API request fails.
 
-## 7. GitHub Repository Card Data
+## 7. Project Card Metadata
 
-Each rendered GitHub card may display:
+Each featured project card may display:
 
-- repository name
-- description
-- primary language
-- last updated date
-- star count
-- fork count
-- visibility
 - repository link
-- live demo link when a homepage URL exists
+- star count
+- commit count
+- last commit date
 
 ## 8. Styling Notes
 
@@ -152,10 +146,9 @@ The project uses Tailwind for most layout and spacing, while `css/styles.css` in
 
 - animated project cards
 - stat cards and value cards
-- horizontal projects section
-- GitHub controls
-- GitHub feedback states
-- GitHub repository cards
+- project explorer controls
+- project feedback states
+- project metadata rows
 - theme-sensitive surface colors
 
 ## 9. Error Handling

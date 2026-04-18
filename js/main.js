@@ -1,6 +1,6 @@
 /**
  * SWE363 Portfolio - Main Script
- * Assignment 3 enhancements with GitHub API integration
+ * Assignment 3 portfolio with integrated GitHub metadata
  */
 
 import "../css/styles.css";
@@ -10,11 +10,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const THEME_STORAGE_KEY = "portfolio-theme";
-const GITHUB_PREFERENCES_KEY = "portfolio-github-preferences";
+const PROJECT_PREFERENCES_KEY = "portfolio-project-preferences";
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 const GITHUB_USERNAME = "JASSIM-ALHUMAID";
 const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-const MAX_VISIBLE_GITHUB_REPOS = 6;
+
+const PROJECT_REPO_MAP = {
+  portfolio: ["SWE363-portfolio-1", "swe363-portfolio", "portfolio"],
+  "training-application-tracker": ["Training-Application-Tracker", "training-application-tracker", "application-tracker"],
+  "task-manager": ["task-manager", "taskmanager"],
+  "swe363-project": ["SWE363-project", "swe363project", "project"],
+};
 
 const rootElement = document.documentElement;
 const welcomeMessage = document.getElementById("welcome-message");
@@ -23,20 +29,64 @@ const mobileMenu = document.getElementById("mobile-menu");
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 const contactForm = document.querySelector("[data-contact-form]");
 
-const githubLanguageFilter = document.querySelector("[data-github-language-filter]");
-const githubSortSelect = document.querySelector("[data-github-sort]");
-const githubStatus = document.querySelector("[data-github-status]");
-const githubLoading = document.querySelector("[data-github-loading]");
-const githubError = document.querySelector("[data-github-error]");
-const githubErrorMessage = document.querySelector("[data-github-error-message]");
-const githubEmpty = document.querySelector("[data-github-empty]");
-const githubGrid = document.querySelector("[data-github-grid]");
+const projectFilterSelect = document.querySelector("[data-project-filter]");
+const projectSortSelect = document.querySelector("[data-project-sort]");
+const projectSearchInput = document.querySelector("[data-project-search-input]");
+const projectLoading = document.querySelector("[data-project-loading]");
+const projectError = document.querySelector("[data-project-error]");
+const projectErrorMessage = document.querySelector("[data-project-error-message]");
+const projectEmpty = document.querySelector("[data-project-empty]");
+const projectGrid = document.querySelector("[data-project-grid]");
+const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
 
-const githubState = {
-  repos: [],
-  language: "all",
-  sort: "updated",
-  commitCounts: {},
+const projectState = {
+  filter: "all",
+  sort: "year",
+  search: "",
+  reposByProjectKey: {},
+  commitCountsByRepo: {},
+};
+
+const normalizeName = (value = "") => value.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+const setProjectBlockVisibility = (element, isVisible) => {
+  if (!element) return;
+  element.classList.toggle("hidden", !isVisible);
+};
+
+const saveProjectPreferences = () => {
+  localStorage.setItem(
+    PROJECT_PREFERENCES_KEY,
+    JSON.stringify({
+      filter: projectState.filter,
+      sort: projectState.sort,
+      search: projectState.search,
+    })
+  );
+};
+
+const loadProjectPreferences = () => {
+  try {
+    const raw = localStorage.getItem(PROJECT_PREFERENCES_KEY);
+    if (!raw) return;
+
+    const parsed = JSON.parse(raw);
+    if (parsed.filter) projectState.filter = parsed.filter;
+    if (parsed.sort) projectState.sort = parsed.sort;
+    if (parsed.search) projectState.search = parsed.search;
+  } catch (error) {
+    localStorage.removeItem(PROJECT_PREFERENCES_KEY);
+  }
+};
+
+const formatRepoDate = (dateValue) => {
+  if (!dateValue) return "Unavailable";
+
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date(dateValue));
 };
 
 const applyTheme = (theme) => {
@@ -71,24 +121,6 @@ themeToggleButtons.forEach((button) => {
 const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 applyTheme(savedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
 
-const initNavScroll = () => {
-  const allProjectsLinks = document.querySelectorAll('a[href="#projects"]');
-
-  allProjectsLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const scrollTrigger = ScrollTrigger.getById("projects-pin");
-
-      if (scrollTrigger && window.innerWidth >= 768) {
-        event.preventDefault();
-        window.scrollTo({
-          top: scrollTrigger.start,
-          behavior: "smooth",
-        });
-      }
-    });
-  });
-};
-
 const initHeroAnimations = () => {
   const timeline = gsap.timeline({ defaults: { ease: "power4.out" } });
 
@@ -106,11 +138,6 @@ const initScrollReveals = () => {
   const revealItems = document.querySelectorAll("[data-reveal]");
 
   revealItems.forEach((item) => {
-    if (window.innerWidth >= 768 && (item.closest(".projects-track") || item.closest("#projects"))) {
-      gsap.set(item, { opacity: 1, y: 0 });
-      return;
-    }
-
     gsap.from(item, {
       scrollTrigger: {
         trigger: item,
@@ -126,7 +153,7 @@ const initScrollReveals = () => {
 };
 
 const initMagneticButtons = () => {
-  const buttons = document.querySelectorAll("#home a, [data-contact-form] button");
+  const buttons = document.querySelectorAll("#home a, [data-contact-form] button, .project-cta-button");
 
   buttons.forEach((button) => {
     button.addEventListener("mousemove", (event) => {
@@ -163,40 +190,6 @@ const initParallaxBlobs = () => {
     },
     y: (index) => (index % 2 === 0 ? 200 : -200),
     ease: "none",
-  });
-};
-
-const initHorizontalScroll = () => {
-  const track = document.getElementById("projects-track");
-  const section = document.getElementById("projects");
-
-  if (!track || !section) return;
-
-  const mediaMatch = gsap.matchMedia();
-
-  mediaMatch.add("(min-width: 768px)", () => {
-    const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
-
-    gsap.to(track, {
-      x: getScrollAmount,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        pin: true,
-        scrub: 1,
-        start: "top top",
-        end: () => `+=${track.scrollWidth}`,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-        pinSpacing: true,
-        id: "projects-pin",
-      },
-    });
-
-    return () => {
-      const scrollTrigger = ScrollTrigger.getById("projects-pin");
-      if (scrollTrigger) scrollTrigger.kill();
-    };
   });
 };
 
@@ -249,109 +242,12 @@ const initValueCardEffects = () => {
   });
 };
 
-const setGithubBlockVisibility = (element, isVisible) => {
-  if (!element) return;
-  element.classList.toggle("hidden", !isVisible);
-};
-
-const setGithubStatus = (message) => {
-  if (githubStatus) githubStatus.textContent = message;
-};
-
-const saveGithubPreferences = () => {
-  localStorage.setItem(
-    GITHUB_PREFERENCES_KEY,
-    JSON.stringify({
-      language: githubState.language,
-      sort: githubState.sort,
-    })
-  );
-};
-
-const loadGithubPreferences = () => {
-  try {
-    const rawPreferences = localStorage.getItem(GITHUB_PREFERENCES_KEY);
-    if (!rawPreferences) return;
-
-    const parsedPreferences = JSON.parse(rawPreferences);
-
-    if (parsedPreferences.language) githubState.language = parsedPreferences.language;
-    if (parsedPreferences.sort) githubState.sort = parsedPreferences.sort;
-  } catch (error) {
-    localStorage.removeItem(GITHUB_PREFERENCES_KEY);
-  }
-};
-
-const escapeHtml = (value = "") =>
-  value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-
-const formatRepoDate = (dateValue) => {
-  if (!dateValue) return "Unknown";
-
-  return new Intl.DateTimeFormat("en", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(new Date(dateValue));
-};
-
-const getRepoTopics = (repo) => {
-  const topics = Array.isArray(repo.topics) ? repo.topics.slice(0, 3) : [];
-
-  if (topics.length > 0) {
-    return topics;
-  }
-
-  if (repo.language) {
-    return [repo.language, "GitHub API"];
-  }
-
-  return ["Open Source"];
-};
-
-const getLanguageOptions = (repos) => {
-  const languages = repos
-    .map((repo) => repo.language)
-    .filter(Boolean)
-    .sort((left, right) => left.localeCompare(right));
-
-  return ["all", ...new Set(languages)];
-};
-
-const getVisibleGithubRepos = () => {
-  const filteredRepos = githubState.repos.filter((repo) => {
-    return githubState.language === "all" || repo.language === githubState.language;
-  });
-
-  return filteredRepos.sort((left, right) => {
-    if (githubState.sort === "name") {
-      return left.name.localeCompare(right.name);
-    }
-
-    if (githubState.sort === "stars") {
-      if (right.stargazers_count !== left.stargazers_count) {
-        return right.stargazers_count - left.stargazers_count;
-      }
-      return new Date(right.updated_at) - new Date(left.updated_at);
-    }
-
-    return new Date(right.updated_at) - new Date(left.updated_at);
-  }).slice(0, MAX_VISIBLE_GITHUB_REPOS);
-};
-
 const getCommitCountApiUrl = (repo) =>
   `https://api.github.com/repos/${encodeURIComponent(GITHUB_USERNAME)}/${encodeURIComponent(repo.name)}/commits?sha=${encodeURIComponent(repo.default_branch)}&per_page=1`;
 
 const fetchRepoCommitCount = async (repo) => {
   const response = await fetch(getCommitCountApiUrl(repo), {
-    headers: {
-      Accept: "application/vnd.github+json",
-    },
+    headers: { Accept: "application/vnd.github+json" },
   });
 
   if (!response.ok) {
@@ -371,179 +267,202 @@ const fetchRepoCommitCount = async (repo) => {
   return Array.isArray(commits) ? commits.length : null;
 };
 
-const ensureVisibleRepoCommitCounts = async () => {
-  const visibleRepos = getVisibleGithubRepos();
-  const reposMissingCounts = visibleRepos.filter((repo) => githubState.commitCounts[repo.full_name] === undefined);
+const getRepoForProjectKey = (projectKey, repos) => {
+  const candidates = PROJECT_REPO_MAP[projectKey] || [];
+  const normalizedCandidates = candidates.map(normalizeName);
 
-  if (reposMissingCounts.length === 0) {
+  return (
+    repos.find((repo) => normalizedCandidates.includes(normalizeName(repo.name))) ||
+    repos.find((repo) => normalizeName(repo.name).includes(normalizeName(projectKey))) ||
+    null
+  );
+};
+
+const getProjectCardData = (card) => {
+  const projectKey = card.dataset.projectKey;
+  const repo = projectState.reposByProjectKey[projectKey] || null;
+  const commitCount = repo ? projectState.commitCountsByRepo[repo.full_name] : null;
+
+  return {
+    card,
+    key: projectKey,
+    title: card.querySelector("h3")?.textContent?.trim() || "",
+    year: Number.parseInt(card.dataset.projectYear || "0", 10),
+    filters: (card.dataset.projectFilterValues || "").split(/\s+/).filter(Boolean),
+    repo,
+    stars: repo?.stargazers_count ?? -1,
+    activity: repo?.pushed_at ? new Date(repo.pushed_at).getTime() : 0,
+    commitCount,
+  };
+};
+
+const updateProjectCardMeta = (card) => {
+  const projectKey = card.dataset.projectKey;
+  const repo = projectState.reposByProjectKey[projectKey] || null;
+  const starsElement = card.querySelector("[data-project-stars]");
+  const commitsElement = card.querySelector("[data-project-commits]");
+  const dateElement = card.querySelector("[data-project-date]");
+  const primaryRepoLink = card.querySelector("[data-project-repo-link]");
+  const secondaryRepoLink = card.querySelector("[data-project-repo-link-secondary]");
+
+  if (!repo) {
+    if (starsElement) starsElement.textContent = "-";
+    if (commitsElement) commitsElement.textContent = "-";
+    if (dateElement) dateElement.textContent = "Not linked";
     return;
   }
+
+  if (starsElement) starsElement.textContent = String(repo.stargazers_count ?? 0);
+
+  if (commitsElement) {
+    const commitCount = projectState.commitCountsByRepo[repo.full_name];
+    commitsElement.textContent = commitCount === undefined ? "..." : String(commitCount ?? "-");
+  }
+
+  if (dateElement) {
+    dateElement.textContent = formatRepoDate(repo.pushed_at || repo.updated_at);
+  }
+
+  [primaryRepoLink, secondaryRepoLink].forEach((link) => {
+    if (!link) return;
+    link.href = repo.html_url;
+  });
+};
+
+const renderProjectCards = () => {
+  if (!projectGrid) return;
+
+  const cardsData = projectCards.map(getProjectCardData);
+  const filteredCards = cardsData.filter((item) => {
+    const matchesFilter = projectState.filter === "all" || item.filters.includes(projectState.filter);
+    const matchesSearch =
+      projectState.search === "" ||
+      item.card.dataset.projectSearch?.toLowerCase().includes(projectState.search) ||
+      item.title.toLowerCase().includes(projectState.search);
+
+    return matchesFilter && matchesSearch;
+  });
+
+  filteredCards.sort((left, right) => {
+    if (projectState.sort === "name") {
+      return left.title.localeCompare(right.title);
+    }
+
+    if (projectState.sort === "stars") {
+      if (right.stars !== left.stars) return right.stars - left.stars;
+      return right.year - left.year;
+    }
+
+    if (projectState.sort === "activity") {
+      if (right.activity !== left.activity) return right.activity - left.activity;
+      return right.year - left.year;
+    }
+
+    if (right.year !== left.year) return right.year - left.year;
+    return left.title.localeCompare(right.title);
+  });
+
+  projectCards.forEach((item) => {
+    item.classList.add("hidden");
+  });
+
+  filteredCards.forEach((item) => {
+    item.card.classList.remove("hidden");
+    projectGrid.appendChild(item.card);
+  });
+
+  setProjectBlockVisibility(projectEmpty, filteredCards.length === 0);
+
+  projectCards.forEach(updateProjectCardMeta);
+  lucide.createIcons();
+};
+
+const syncProjectUI = () => {
+  if (projectFilterSelect) projectFilterSelect.value = projectState.filter;
+  if (projectSortSelect) projectSortSelect.value = projectState.sort;
+  if (projectSearchInput) projectSearchInput.value = projectState.search;
+
+  renderProjectCards();
+  saveProjectPreferences();
+};
+
+const ensureProjectCommitCounts = async () => {
+  const repos = Object.values(projectState.reposByProjectKey).filter(Boolean);
+  const reposMissingCounts = repos.filter((repo) => projectState.commitCountsByRepo[repo.full_name] === undefined);
+
+  if (reposMissingCounts.length === 0) return;
 
   await Promise.all(
     reposMissingCounts.map(async (repo) => {
       const commitCount = await fetchRepoCommitCount(repo);
-      githubState.commitCounts[repo.full_name] = commitCount;
+      projectState.commitCountsByRepo[repo.full_name] = commitCount;
     })
   );
 
-  renderGithubRepos();
+  renderProjectCards();
 };
 
-const renderGithubLanguageOptions = () => {
-  if (!githubLanguageFilter) return;
+const loadProjectGithubData = async () => {
+  if (!projectGrid) return;
 
-  const languageOptions = getLanguageOptions(githubState.repos);
-
-  githubLanguageFilter.innerHTML = languageOptions
-    .map((language) => {
-      const isSelected = githubState.language === language ? " selected" : "";
-      const label = language === "all" ? "All languages" : language;
-      return `<option value="${escapeHtml(language)}"${isSelected}>${escapeHtml(label)}</option>`;
-    })
-    .join("");
-};
-
-const renderGithubControls = () => {
-  if (githubSortSelect) githubSortSelect.value = githubState.sort;
-  if (githubLanguageFilter) githubLanguageFilter.value = githubState.language;
-};
-
-const renderGithubRepos = () => {
-  if (!githubGrid) return;
-
-  const visibleRepos = getVisibleGithubRepos();
-  const totalRepos = githubState.repos.length;
-
-  setGithubBlockVisibility(githubLoading, false);
-  setGithubBlockVisibility(githubError, false);
-  setGithubBlockVisibility(githubEmpty, visibleRepos.length === 0);
-  githubGrid.innerHTML = "";
-
-  if (visibleRepos.length === 0) {
-    setGithubStatus(`0 of ${totalRepos} repositories match the current view.`);
-    return;
-  }
-
-  setGithubStatus(`Showing ${visibleRepos.length} recent repositories from ${totalRepos} total.`);
-
-  githubGrid.innerHTML = visibleRepos
-    .map((repo) => {
-      const repoDescription = repo.description || "No description provided for this repository yet.";
-      const repoTopics = getRepoTopics(repo);
-      const demoLink = repo.homepage
-        ? `<a href="${escapeHtml(repo.homepage)}" target="_blank" rel="noopener noreferrer" class="github-card-link github-card-link-secondary">Live Demo</a>`
-        : "";
-
-      return `
-        <article class="github-card">
-          <div class="github-card-topline">
-            <span class="github-card-badge">${escapeHtml(repo.language || "Multi-stack")}</span>
-            <span class="github-card-badge github-card-badge-muted">${escapeHtml(formatRepoDate(repo.pushed_at || repo.updated_at))}</span>
-          </div>
-
-          <div class="github-card-body">
-            <div>
-              <h3 class="github-card-title">${escapeHtml(repo.name)}</h3>
-              <p class="github-card-description">${escapeHtml(repoDescription)}</p>
-            </div>
-
-            <div class="github-card-metrics" aria-label="Repository metrics">
-              <span><i data-lucide="star" width="14"></i>${repo.stargazers_count}</span>
-              <span><i data-lucide="git-fork" width="14"></i>${githubState.commitCounts[repo.full_name] ?? "..."}</span>
-            </div>
-
-            <div class="github-card-topics">
-              ${repoTopics
-                .map((topic) => `<span class="github-topic-pill">${escapeHtml(topic)}</span>`)
-                .join("")}
-            </div>
-          </div>
-
-          <div class="github-card-actions">
-            <a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener noreferrer" class="github-card-link">
-              View Repository
-            </a>
-            ${demoLink}
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-
-  lucide.createIcons();
-};
-
-const showGithubError = (message) => {
-  if (githubErrorMessage) githubErrorMessage.textContent = message;
-
-  setGithubBlockVisibility(githubLoading, false);
-  setGithubBlockVisibility(githubEmpty, false);
-  setGithubBlockVisibility(githubError, true);
-
-  if (githubGrid) githubGrid.innerHTML = "";
-
-  setGithubStatus("GitHub repositories could not be loaded.");
-};
-
-const syncGithubUI = () => {
-  renderGithubControls();
-  renderGithubRepos();
-  saveGithubPreferences();
-  ensureVisibleRepoCommitCounts();
-};
-
-const loadGithubRepos = async () => {
-  if (!githubGrid) return;
-
-  loadGithubPreferences();
-  renderGithubControls();
-  setGithubBlockVisibility(githubLoading, true);
-  setGithubBlockVisibility(githubError, false);
-  setGithubBlockVisibility(githubEmpty, false);
-  setGithubStatus("Loading repositories from GitHub...");
+  loadProjectPreferences();
+  syncProjectUI();
+  setProjectBlockVisibility(projectLoading, true);
+  setProjectBlockVisibility(projectError, false);
+  setProjectBlockVisibility(projectEmpty, false);
 
   try {
     const response = await fetch(GITHUB_API_URL, {
-      headers: {
-        Accept: "application/vnd.github+json",
-      },
+      headers: { Accept: "application/vnd.github+json" },
     });
 
     if (!response.ok) {
       if (response.status === 403) {
-        throw new Error("GitHub API rate limit reached. Please try again later or view the GitHub profile directly.");
+        throw new Error("GitHub API rate limit reached. Try again later.");
       }
-
-      throw new Error("GitHub returned an unexpected response while loading repositories.");
+      throw new Error("GitHub returned an unexpected response while loading project metadata.");
     }
 
     const repos = await response.json();
+    const publicRepos = Array.isArray(repos) ? repos.filter((repo) => !repo.private) : [];
 
-    githubState.repos = Array.isArray(repos) ? repos.filter((repo) => !repo.private) : [];
-    renderGithubLanguageOptions();
+    projectCards.forEach((card) => {
+      const key = card.dataset.projectKey;
+      projectState.reposByProjectKey[key] = getRepoForProjectKey(key, publicRepos);
+    });
 
-    if (!getLanguageOptions(githubState.repos).includes(githubState.language)) {
-      githubState.language = "all";
-    }
-
-    syncGithubUI();
+    setProjectBlockVisibility(projectLoading, false);
+    syncProjectUI();
+    await ensureProjectCommitCounts();
   } catch (error) {
-    showGithubError(error.message || "GitHub data is unavailable right now.");
+    setProjectBlockVisibility(projectLoading, false);
+    setProjectBlockVisibility(projectError, true);
+    if (projectErrorMessage) {
+      projectErrorMessage.textContent = error.message || "Project metadata could not be loaded from GitHub.";
+    }
+    syncProjectUI();
   }
 };
 
-const initGithubControls = () => {
-  if (githubLanguageFilter) {
-    githubLanguageFilter.addEventListener("change", (event) => {
-      githubState.language = event.target.value;
-      syncGithubUI();
+const initProjectControls = () => {
+  if (projectFilterSelect) {
+    projectFilterSelect.addEventListener("change", (event) => {
+      projectState.filter = event.target.value;
+      syncProjectUI();
     });
   }
 
-  if (githubSortSelect) {
-    githubSortSelect.addEventListener("change", (event) => {
-      githubState.sort = event.target.value;
-      syncGithubUI();
+  if (projectSortSelect) {
+    projectSortSelect.addEventListener("change", (event) => {
+      projectState.sort = event.target.value;
+      syncProjectUI();
+    });
+  }
+
+  if (projectSearchInput) {
+    projectSearchInput.addEventListener("input", (event) => {
+      projectState.search = event.target.value.trim().toLowerCase();
+      syncProjectUI();
     });
   }
 };
@@ -594,12 +513,10 @@ const init = () => {
   initScrollReveals();
   initMagneticButtons();
   initParallaxBlobs();
-  initHorizontalScroll();
-  initNavScroll();
   initStatCounters();
   initValueCardEffects();
-  initGithubControls();
-  loadGithubRepos();
+  initProjectControls();
+  loadProjectGithubData();
   lucide.createIcons();
 };
 

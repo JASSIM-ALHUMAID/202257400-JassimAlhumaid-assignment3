@@ -1,24 +1,24 @@
 # SWE363 Portfolio - Assignment 3
 
-This project is a responsive personal portfolio website built for SWE363 Assignment 3. It extends the earlier portfolio with live GitHub API integration, client-side filtering and sorting logic, persisted UI state, and refreshed technical documentation.
+This project is a responsive personal portfolio website built for SWE363 Assignment 3. It extends the earlier portfolio with integrated GitHub API metadata, client-side project filtering and sorting logic, persisted UI state, and refreshed technical documentation.
 
 ## Project Description
 
 The portfolio presents personal information, featured projects, and contact details in a polished single-page experience. Assignment 3 enhancements focus on advanced functionality rather than redesigning the full site.
 
-The main addition is a live GitHub repository explorer that fetches public repositories from the GitHub API and lets visitors:
+The main addition is an integrated project explorer that fetches GitHub repository data and uses it inside the featured project cards. Visitors can:
 
-- view the 6 most recent repositories
-- filter repositories by language
-- sort repositories by recently updated, name, or stars
+- filter featured projects by technology
+- sort featured projects by year, name, GitHub stars, or recent GitHub activity
+- view GitHub metadata directly inside each project card
 - keep their selected view using `localStorage`
 
 ## Assignment 3 Features
 
-- **GitHub API Integration**: Loads public repositories from GitHub using the REST API.
-- **User-Friendly Error Handling**: Shows loading, empty, and error states if the API request is delayed, fails, or returns no matching repositories.
-- **Complex Logic**: Combines API data, language filtering, result limiting, and multiple sorting rules to produce different repository views from the same dataset.
-- **State Management**: Persists theme preference and GitHub explorer preferences with `localStorage`.
+- **GitHub API Integration**: Loads repository data from GitHub using the REST API and maps it to curated portfolio cards.
+- **User-Friendly Error Handling**: Shows loading, empty, and error states if GitHub metadata cannot be loaded.
+- **Complex Logic**: Combines project filtering, multiple sorting rules, and GitHub activity data inside a single curated projects section.
+- **State Management**: Persists theme preference and project explorer preferences with `localStorage`.
 - **Responsive Design**: Works across mobile and desktop layouts while preserving the existing portfolio design language.
 - **Interactive UI**: Includes GSAP-powered animation, counters, hover effects, and smooth transitions.
 
@@ -89,7 +89,7 @@ npm run build
 
 ## GitHub API Details
 
-The live repository section fetches data from:
+The portfolio fetches repository data from:
 
 ```text
 https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
@@ -97,10 +97,10 @@ https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
 
 The page then applies client-side logic to:
 
-- build the language filter options dynamically
-- sort repositories by multiple rules
-- limit the rendered output to the 6 most relevant repositories in the current view
-- update the UI without reloading the page
+- match GitHub repositories to curated featured projects
+- load commit counts for matched repositories
+- sort projects by multiple rules
+- update the project grid without reloading the page
 
 ## AI Usage Summary
 
@@ -119,5 +119,5 @@ Detailed information is available in `docs/ai-usage-report.md`.
 
 ## Notes
 
-- The GitHub API is public, so the repository feed may be temporarily limited by GitHub rate limits.
-- If that happens, the site shows a fallback message and provides a direct link to the GitHub profile.
+- The GitHub API may be temporarily limited by rate limits.
+- If that happens, the portfolio still works and shows a fallback message for the missing metadata.
