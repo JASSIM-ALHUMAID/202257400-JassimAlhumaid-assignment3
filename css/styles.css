@@ -910,6 +910,7 @@ textarea:focus-visible {
 }
 
 [data-project-card][data-project-search*="portfolio"] { --card-accent: var(--color-blue); }
+[data-project-card][data-project-key="campus-route-visualizer"] { --card-accent: var(--color-blue); }
 [data-project-card][data-project-key="training-application-tracker"] { --card-accent: #0f766e; }
 [data-project-card][data-project-search*="task"] { --card-accent: #16a34a; }
 [data-project-card][data-project-search*="expense"] { --card-accent: #ea580c; }
@@ -917,6 +918,7 @@ textarea:focus-visible {
 
 [data-theme="light"] [data-project-card][data-project-search*="task"] { --card-accent: #15803d; }
 [data-theme="light"] [data-project-card][data-project-search*="portfolio"] { --card-accent: #4338ca; }
+[data-theme="light"] [data-project-card][data-project-key="campus-route-visualizer"] { --card-accent: #4338ca; }
 [data-theme="light"] [data-project-card][data-project-key="training-application-tracker"] { --card-accent: #0f766e; }
 [data-theme="light"] [data-project-card][data-project-search*="expense"] { --card-accent: #c2410c; }
 [data-theme="light"] [data-project-card][data-project-search*="swe363"] { --card-accent: #facc15; }
@@ -1116,24 +1118,6 @@ textarea:focus-visible {
   background-color: color-mix(in srgb, var(--card-accent) 15%, transparent);
   color: var(--card-accent);
   border: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
-}
-
-.project-tech-pill--java {
-  background-color: color-mix(in srgb, #f89820 16%, transparent);
-  color: #ffb14a;
-  border-color: color-mix(in srgb, #f89820 30%, transparent);
-}
-
-.project-tech-pill--javafx {
-  background-color: color-mix(in srgb, #4aa3ff 16%, transparent);
-  color: #7fc0ff;
-  border-color: color-mix(in srgb, #4aa3ff 30%, transparent);
-}
-
-.project-tech-pill--excel {
-  background-color: color-mix(in srgb, #21a366 16%, transparent);
-  color: #63d89a;
-  border-color: color-mix(in srgb, #21a366 30%, transparent);
 }
 
 [data-project-card]:hover .project-tech-pill {
