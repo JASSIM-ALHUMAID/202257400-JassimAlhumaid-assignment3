@@ -52,10 +52,12 @@ const mobileMenu = document.getElementById("mobile-menu");
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 const contactForm = document.querySelector("[data-contact-form]");
 const contactFeedback = document.querySelector("[data-contact-feedback]");
-const copyEmailButtons = Array.from(document.querySelectorAll("[data-copy-email]"));
+const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
 const projectFilterSelect = document.querySelector("[data-project-filter]");
 const projectSortSelect = document.querySelector("[data-project-sort]");
 const projectSearchInput = document.querySelector("[data-project-search-input]");
+const projectResults = document.querySelector("[data-project-results]");
+const projectClearButton = document.querySelector("[data-project-clear]");
 const projectLoading = document.querySelector("[data-project-loading]");
 const projectError = document.querySelector("[data-project-error]");
 const projectErrorMessage = document.querySelector("[data-project-error-message]");
@@ -73,6 +75,7 @@ const projectState = {
 };
 
 const supportsReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const contactEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const normalizeName = (value = "") => value.toLowerCase().replace(/[^a-z0-9]/g, "");
 
@@ -103,6 +106,71 @@ const safeLocalStorageRemove = (key) => {
 const setProjectBlockVisibility = (element, isVisible) => {
   if (!element) return;
   element.classList.toggle("hidden", !isVisible);
+};
+
+const updateContactFeedback = (message, state = "neutral") => {
+  if (!contactFeedback) return;
+
+  contactFeedback.textContent = message;
+  contactFeedback.dataset.state = state;
+};
+
+const getContactFormValues = () => {
+  if (!contactForm) {
+    return {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    };
+  }
+
+  const formData = new FormData(contactForm);
+
+  return {
+    name: String(formData.get("name") || "").trim(),
+    email: String(formData.get("email") || "").trim(),
+    subject: String(formData.get("subject") || "").trim(),
+    message: String(formData.get("message") || "").trim(),
+  };
+};
+
+const focusContactField = (fieldName) => {
+  contactForm?.querySelector(`[name="${fieldName}"]`)?.focus();
+};
+
+const validateContactValues = (values) => {
+  if (!values.name) {
+    focusContactField("name");
+    return "Enter your name.";
+  }
+
+  if (!values.email || !contactEmailPattern.test(values.email)) {
+    focusContactField("email");
+    return "Enter valid email address.";
+  }
+
+  if (!values.message) {
+    focusContactField("message");
+    return "Enter message.";
+  }
+
+  if (values.message.length < 10) {
+    focusContactField("message");
+    return "Message too short. Add more detail.";
+  }
+
+  return "";
+};
+
+const buildContactDraft = (values) => {
+  const subject = values.subject || `Portfolio inquiry from ${values.name}`;
+  const body = `Name: ${values.name}\nEmail: ${values.email}\n\n${values.message}`;
+
+  return {
+    subject,
+    body,
+  };
 };
 
 const createIconSvg = (name, width = 24, className = "") => {
@@ -354,17 +422,19 @@ const updateProjectCardMeta = (card) => {
   const starsElement = card.querySelector("[data-project-stars]");
   const commitsElement = card.querySelector("[data-project-commits]");
   const dateElement = card.querySelector("[data-project-date]");
+  const descriptionElement = card.querySelector("[data-project-description]");
   const primaryRepoLink = card.querySelector("[data-project-repo-link]");
-  const secondaryRepoLink = card.querySelector("[data-project-repo-link-secondary]");
 
   if (!repo) {
     if (starsElement) starsElement.textContent = "-";
     if (commitsElement) commitsElement.textContent = "-";
     if (dateElement) dateElement.textContent = "Not linked";
+    if (descriptionElement) descriptionElement.textContent = "";
     return;
   }
 
   if (starsElement) starsElement.textContent = String(repo.stargazers_count ?? 0);
+  if (descriptionElement) descriptionElement.textContent = repo.description || "";
 
   if (commitsElement) {
     const commitCount = projectState.commitCountsByRepo[repo.full_name];
@@ -375,7 +445,7 @@ const updateProjectCardMeta = (card) => {
     dateElement.textContent = formatRepoDate(repo.pushed_at || repo.updated_at);
   }
 
-  [primaryRepoLink, secondaryRepoLink].forEach((link) => {
+  [primaryRepoLink].forEach((link) => {
     if (!link) return;
     link.href = repo.html_url;
   });
@@ -420,6 +490,18 @@ const renderProjectCards = () => {
     item.card.classList.remove("hidden");
     projectGrid.appendChild(item.card);
   });
+
+  const hasFilters = projectState.filter !== "all" || projectState.sort !== "activity" || projectState.search !== "";
+  if (projectResults) {
+    const projectLabel = filteredCards.length === 1 ? "project" : "projects";
+    projectResults.textContent = hasFilters
+      ? `Showing ${filteredCards.length} ${projectLabel} for current filters`
+      : `Showing all ${filteredCards.length} ${projectLabel}`;
+  }
+
+  if (projectClearButton) {
+    projectClearButton.classList.toggle("hidden", !hasFilters);
+  }
 
   setProjectBlockVisibility(projectEmpty, filteredCards.length === 0);
   projectCards.forEach(updateProjectCardMeta);
@@ -544,6 +626,15 @@ const initProjectControls = () => {
       syncProjectUI();
     });
   }
+
+  if (projectClearButton) {
+    projectClearButton.addEventListener("click", () => {
+      projectState.filter = "all";
+      projectState.sort = "activity";
+      projectState.search = "";
+      syncProjectUI();
+    });
+  }
 };
 
 const initThemeToggle = () => {
@@ -628,33 +719,34 @@ const initGreeting = () => {
 };
 
 const initContactForm = () => {
-  copyEmailButtons.forEach((button) => {
-    button.addEventListener("click", async () => {
-      const email = button.dataset.emailValue || CONTACT_EMAIL;
-
-      try {
-        await navigator.clipboard.writeText(email);
-        if (contactFeedback) {
-          contactFeedback.textContent = `Email copied: ${email}`;
-        }
-      } catch {
-        if (contactFeedback) {
-          contactFeedback.textContent = `Copy failed. Email: ${email}`;
-        }
-      }
-    });
-  });
-
   if (!contactForm) return;
 
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const formData = new FormData(contactForm);
-    const body = `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\n\nMessage:\n${formData.get("message")}`;
-    if (contactFeedback) {
-      contactFeedback.textContent = "Opening default email app with message prefilled.";
+
+    const values = getContactFormValues();
+    const validationMessage = validateContactValues(values);
+
+    if (validationMessage) {
+      updateContactFeedback(validationMessage, "error");
+      return;
     }
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=Portfolio Inquiry&body=${encodeURIComponent(body)}`;
+
+    const draft = buildContactDraft(values);
+    const encodedSubject = encodeURIComponent(draft.subject);
+    const encodedBody = encodeURIComponent(draft.body);
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`;
+
+    if (mailtoUrl.length > 1800) {
+      updateContactFeedback(
+        "Message too long for reliable mailto. Shorten message, then try again.",
+        "error"
+      );
+      return;
+    }
+
+    updateContactFeedback("Opening default email app with draft prefilled.", "success");
+    window.location.href = mailtoUrl;
   });
 };
 
@@ -694,6 +786,82 @@ const initSectionToggles = () => {
   window.addEventListener("hashchange", expandSectionFromHash);
 };
 
+const initActiveNav = () => {
+  if (navLinks.length === 0) return;
+
+  const sections = ["home", "about", "projects", "contact"]
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+  const sectionIds = new Set(sections.map((section) => section.id));
+
+  const setActiveSection = (sectionId) => {
+    navLinks.forEach((link) => {
+      const isActive = link.dataset.navLink === sectionId;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  if (sections.length === 0) return;
+
+  const syncActiveSectionFromHash = () => {
+    const sectionId = window.location.hash.replace("#", "");
+    if (!sectionIds.has(sectionId)) return false;
+    setActiveSection(sectionId);
+    return true;
+  };
+
+  const syncActiveSectionFromScroll = () => {
+    const navbarOffset = 120;
+    const viewportMarker = window.scrollY + navbarOffset + window.innerHeight * 0.2;
+
+    let activeSectionId = sections[0].id;
+
+    sections.forEach((section) => {
+      if (section.offsetTop <= viewportMarker) {
+        activeSectionId = section.id;
+      }
+    });
+
+    setActiveSection(activeSectionId);
+  };
+
+  let ticking = false;
+
+  const requestActiveNavSync = () => {
+    if (ticking) return;
+
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      syncActiveSectionFromScroll();
+      ticking = false;
+    });
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const sectionId = link.dataset.navLink;
+      if (sectionId) setActiveSection(sectionId);
+    });
+  });
+
+  if (!syncActiveSectionFromHash()) {
+    syncActiveSectionFromScroll();
+  }
+
+  window.addEventListener("hashchange", () => {
+    if (!syncActiveSectionFromHash()) {
+      requestActiveNavSync();
+    }
+  });
+  window.addEventListener("scroll", requestActiveNavSync, { passive: true });
+  window.addEventListener("resize", requestActiveNavSync);
+};
+
 const initProjectCardLinks = () => {
   projectCards.forEach((card) => {
     card.addEventListener("click", (event) => {
@@ -724,6 +892,7 @@ const init = () => {
   initGreeting();
   initMobileMenu();
   initSectionToggles();
+  initActiveNav();
   initContactForm();
   initProjectControls();
   initProjectCardLinks();

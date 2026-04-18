@@ -142,6 +142,28 @@ body::before {
   @apply cursor-pointer transition-colors duration-500 hover:text-purple;
 }
 
+[data-nav-link] {
+  position: relative;
+}
+
+[data-nav-link].is-active,
+[data-nav-link][aria-current="page"] {
+  color: var(--color-copy);
+}
+
+[data-nav-link].is-active::after,
+[data-nav-link][aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.6rem;
+  width: 1.65rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-purple));
+  transform: translateX(-50%);
+}
+
 a:focus-visible,
 button:focus-visible,
 [role="link"]:focus-visible,
@@ -160,8 +182,8 @@ textarea:focus-visible {
   pointer-events: none;
   position: absolute;
   border-radius: 9999px;
-  opacity: 0.8;
-  filter: blur(90px);
+  opacity: 0.95;
+  filter: blur(82px);
 }
 
 .section-ambient {
@@ -190,92 +212,116 @@ textarea:focus-visible {
   pointer-events: none;
 }
 
-:root[data-theme="light"] .hero-section::before {
-  background:
-    radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.9), transparent 28%),
-    linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(168, 85, 247, 0.03) 45%, transparent 72%);
-}
-
-:root[data-theme="light"] .about-section::before {
-  background:
-    radial-gradient(circle at 16% 22%, rgba(129, 140, 248, 0.12), transparent 22%),
-    radial-gradient(circle at 88% 68%, rgba(244, 114, 182, 0.08), transparent 20%);
-}
-
-:root[data-theme="light"] .projects-section::before {
-  background:
-    linear-gradient(135deg, rgba(99, 102, 241, 0.07), transparent 38%),
-    radial-gradient(circle at 78% 18%, rgba(56, 189, 248, 0.1), transparent 20%);
-}
-
-:root[data-theme="light"] .contact-section::before {
-  background:
-    radial-gradient(circle at 18% 72%, rgba(34, 197, 94, 0.12), transparent 24%),
-    radial-gradient(circle at 86% 18%, rgba(99, 102, 241, 0.1), transparent 20%);
-}
-
-:root[data-theme="light"] .ambient-orb--hero-primary {
-  background: rgba(99, 102, 241, 0.22);
-}
-
-:root[data-theme="light"] .ambient-orb--hero-secondary {
-  background: rgba(217, 70, 239, 0.18);
-}
-
-:root[data-theme="light"] .ambient-orb--hero-tertiary {
-  background: rgba(56, 189, 248, 0.18);
-}
-
-:root[data-theme="light"] .ambient-orb--hero-quaternary {
-  background: rgba(244, 114, 182, 0.14);
-}
-
-:root[data-theme="light"] .ambient-orb--about-left {
+.ambient-orb--about-left {
   left: -8%;
   top: 12%;
   width: 24rem;
   height: 24rem;
-  background: rgba(99, 102, 241, 0.16);
+  background: rgba(79, 70, 229, 0.24);
 }
 
-:root[data-theme="light"] .ambient-orb--about-right {
+.ambient-orb--about-right {
   right: -5%;
   bottom: 8%;
   width: 21rem;
   height: 21rem;
-  background: rgba(244, 114, 182, 0.12);
+  background: rgba(168, 85, 247, 0.18);
 }
 
-:root[data-theme="light"] .ambient-orb--projects-top {
+.ambient-orb--projects-top {
   left: 10%;
   top: 4%;
   width: 22rem;
   height: 22rem;
-  background: rgba(129, 140, 248, 0.16);
+  background: rgba(99, 102, 241, 0.24);
 }
 
-:root[data-theme="light"] .ambient-orb--projects-bottom {
+.ambient-orb--projects-bottom {
   right: 2%;
   bottom: 10%;
   width: 26rem;
   height: 26rem;
-  background: rgba(56, 189, 248, 0.12);
+  background: rgba(56, 189, 248, 0.18);
 }
 
-:root[data-theme="light"] .ambient-orb--contact-left {
+.ambient-orb--contact-left {
   left: 0;
   bottom: 12%;
   width: 20rem;
   height: 20rem;
-  background: rgba(34, 197, 94, 0.13);
+  background: rgba(34, 197, 94, 0.18);
 }
 
-:root[data-theme="light"] .ambient-orb--contact-right {
+.ambient-orb--contact-right {
   right: -4%;
   top: 12%;
   width: 24rem;
   height: 24rem;
-  background: rgba(99, 102, 241, 0.14);
+  background: rgba(99, 102, 241, 0.2);
+}
+
+:root[data-theme="light"] .hero-section::before {
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.95), transparent 30%),
+    linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05) 45%, transparent 72%);
+}
+
+:root[data-theme="light"] .about-section::before {
+  background:
+    radial-gradient(circle at 16% 22%, rgba(129, 140, 248, 0.18), transparent 24%),
+    radial-gradient(circle at 88% 68%, rgba(244, 114, 182, 0.12), transparent 22%);
+}
+
+:root[data-theme="light"] .projects-section::before {
+  background:
+    linear-gradient(135deg, rgba(99, 102, 241, 0.11), transparent 40%),
+    radial-gradient(circle at 78% 18%, rgba(56, 189, 248, 0.15), transparent 22%);
+}
+
+:root[data-theme="light"] .contact-section::before {
+  background:
+    radial-gradient(circle at 18% 72%, rgba(34, 197, 94, 0.18), transparent 26%),
+    radial-gradient(circle at 86% 18%, rgba(99, 102, 241, 0.14), transparent 22%);
+}
+
+:root[data-theme="light"] .ambient-orb--hero-primary {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+:root[data-theme="light"] .ambient-orb--hero-secondary {
+  background: rgba(217, 70, 239, 0.24);
+}
+
+:root[data-theme="light"] .ambient-orb--hero-tertiary {
+  background: rgba(56, 189, 248, 0.24);
+}
+
+:root[data-theme="light"] .ambient-orb--hero-quaternary {
+  background: rgba(244, 114, 182, 0.2);
+}
+
+:root[data-theme="light"] .ambient-orb--about-left {
+  background: rgba(99, 102, 241, 0.24);
+}
+
+:root[data-theme="light"] .ambient-orb--about-right {
+  background: rgba(244, 114, 182, 0.18);
+}
+
+:root[data-theme="light"] .ambient-orb--projects-top {
+  background: rgba(129, 140, 248, 0.24);
+}
+
+:root[data-theme="light"] .ambient-orb--projects-bottom {
+  background: rgba(56, 189, 248, 0.18);
+}
+
+:root[data-theme="light"] .ambient-orb--contact-left {
+  background: rgba(34, 197, 94, 0.2);
+}
+
+:root[data-theme="light"] .ambient-orb--contact-right {
+  background: rgba(99, 102, 241, 0.2);
 }
 
 .section-toggle-pill {
@@ -421,10 +467,11 @@ textarea:focus-visible {
 :root[data-theme="light"] [data-project-card],
 :root[data-theme="light"] .value-card,
 :root[data-theme="light"] .stat-card,
-:root[data-theme="light"] .project-feedback-card,
-:root[data-theme="light"] .project-meta-item,
-:root[data-theme="light"] .project-link-button,
-:root[data-theme="light"] .project-control,
+ :root[data-theme="light"] .contact-feedback,
+ :root[data-theme="light"] .project-feedback-card,
+ :root[data-theme="light"] .project-meta-item,
+ :root[data-theme="light"] .project-link-button,
+ :root[data-theme="light"] .project-control,
 :root[data-theme="light"] #contact-content > .section-collapse__inner > div,
 :root[data-theme="light"] #about-content .rounded-\[2\.5rem\],
 :root[data-theme="light"] #about-content .rounded-\[2rem\] {
@@ -462,7 +509,8 @@ textarea:focus-visible {
 
 :root[data-theme="light"] .project-control,
 :root[data-theme="light"] .project-link-button,
-:root[data-theme="light"] .project-meta-item {
+:root[data-theme="light"] .project-meta-item,
+:root[data-theme="light"] .contact-feedback {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.72));
 }
 
@@ -562,14 +610,16 @@ textarea:focus-visible {
 }
 
 [data-project-card][data-project-search*="portfolio"] { --card-accent: var(--color-blue); }
-[data-project-card][data-project-search*="job"] { --card-accent: var(--color-purple); }
+[data-project-card][data-project-key="training-application-tracker"] { --card-accent: #0f766e; }
 [data-project-card][data-project-search*="task"] { --card-accent: #16a34a; }
 [data-project-card][data-project-search*="expense"] { --card-accent: #ea580c; }
+[data-project-card][data-project-search*="swe363"] { --card-accent: #facc15; }
 
 [data-theme="light"] [data-project-card][data-project-search*="task"] { --card-accent: #15803d; }
 [data-theme="light"] [data-project-card][data-project-search*="portfolio"] { --card-accent: #4338ca; }
-[data-theme="light"] [data-project-card][data-project-search*="job"] { --card-accent: #7c3aed; }
+[data-theme="light"] [data-project-card][data-project-key="training-application-tracker"] { --card-accent: #0f766e; }
 [data-theme="light"] [data-project-card][data-project-search*="expense"] { --card-accent: #c2410c; }
+[data-theme="light"] [data-project-card][data-project-search*="swe363"] { --card-accent: #facc15; }
 
 [data-theme="light"] [data-project-card]::before {
   background: linear-gradient(135deg, var(--card-accent, var(--color-blue)) 0%, rgba(255,255,255,0.3) 100%);
@@ -905,6 +955,7 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   gap: 0.5rem;
   min-height: 2.85rem;
   border-radius: 9999px;
@@ -935,10 +986,55 @@ textarea:focus-visible {
   min-width: 7rem;
 }
 
+.contact-feedback {
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
+  margin: 0;
+  border: 1px solid var(--surface-border-color);
+  border-radius: 1.25rem;
+  padding: 0.9rem 1rem;
+  background: color-mix(in srgb, var(--surface-color) 92%, transparent);
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.contact-feedback[data-state="success"] {
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(20, 83, 45, 0.24);
+}
+
+.contact-feedback[data-state="warning"] {
+  color: #fcd34d;
+  border-color: rgba(245, 158, 11, 0.3);
+  background: rgba(120, 53, 15, 0.22);
+}
+
+.contact-feedback[data-state="error"] {
+  color: #fda4af;
+  border-color: rgba(244, 63, 94, 0.28);
+  background: rgba(127, 29, 29, 0.24);
+}
+
+:root[data-theme="light"] .contact-feedback[data-state="success"] {
+  color: #166534;
+  background: rgba(220, 252, 231, 0.92);
+}
+
+:root[data-theme="light"] .contact-feedback[data-state="warning"] {
+  color: #92400e;
+  background: rgba(254, 243, 199, 0.95);
+}
+
+:root[data-theme="light"] .contact-feedback[data-state="error"] {
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.95);
+}
+
 @media (max-width: 767px) {
   :root[data-theme="light"] .ambient-orb {
-    opacity: 0.5;
-    filter: blur(72px);
+    opacity: 0.72;
+    filter: blur(64px);
   }
 
   :root[data-theme="light"] .ambient-orb--hero-primary {
@@ -984,6 +1080,11 @@ textarea:focus-visible {
   .project-meta-row,
   .project-link-row {
     gap: 0.65rem;
+  }
+
+  [data-nav-link].is-active::after,
+  [data-nav-link][aria-current="page"]::after {
+    bottom: -0.35rem;
   }
 }
 

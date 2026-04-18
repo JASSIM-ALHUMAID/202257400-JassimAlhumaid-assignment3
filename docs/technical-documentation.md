@@ -163,9 +163,9 @@ Examples:
 
 ## 10. Contact Flow
 
-The contact form currently uses a `mailto:` flow. When submitted, JavaScript builds a prefilled email draft addressed to `jassim.m.alhumaid@gmail.com`.
+The contact form uses client-side validation plus a `mailto:` flow. When submitted, JavaScript trims the input, validates required fields, includes optional subject field, builds prefilled draft addressed to `jassim.m.alhumaid@gmail.com`, and opens it in the visitor's default mail client.
 
-This is lightweight and works without a backend, but it depends on the visitor having a configured mail client.
+The section stays intentionally minimal: fields for name, email, subject, and message, followed by single submit action. Subject is passed through mail subject line, while body includes sender name, sender email, and message content for clearer professional context.
 
 ## 11. Maintainability Notes
 

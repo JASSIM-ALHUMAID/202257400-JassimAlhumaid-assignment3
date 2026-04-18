@@ -58,20 +58,20 @@
             class="nav-links hidden items-center gap-8 text-sm font-bold tracking-wide uppercase md:flex"
           >
             <li>
-              <a href="#home" class="hover:text-blue transition-colors">Home</a>
+              <a href="#home" class="hover:text-blue transition-colors" data-nav-link="home">Home</a>
             </li>
             <li>
-              <a href="#about" class="hover:text-blue transition-colors"
+              <a href="#about" class="hover:text-blue transition-colors" data-nav-link="about"
                 >About</a
               >
             </li>
             <li>
-              <a href="#projects" class="hover:text-blue transition-colors"
+              <a href="#projects" class="hover:text-blue transition-colors" data-nav-link="projects"
                 >Projects</a
               >
             </li>
             <li>
-              <a href="#contact" class="hover:text-blue transition-colors"
+              <a href="#contact" class="hover:text-blue transition-colors" data-nav-link="contact"
                 >Contact</a
               >
             </li>
@@ -102,10 +102,10 @@
           <ul
             class="flex flex-col gap-4 text-center text-sm font-bold uppercase tracking-widest"
           >
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" data-nav-link="home">Home</a></li>
+            <li><a href="#about" data-nav-link="about">About</a></li>
+            <li><a href="#projects" data-nav-link="projects">Projects</a></li>
+            <li><a href="#contact" data-nav-link="contact">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -668,7 +668,7 @@
               >
                 <span
                   class="text-sm font-bold tracking-widest text-blue uppercase"
-                  >Portfolio</span
+                  >Projects</span
                 >
                 <i data-lucide="chevron-down" width="16"></i>
               </button>
@@ -755,6 +755,19 @@
               </div>
             </div>
 
+            <div class="project-toolbar-meta mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p class="text-sm font-bold uppercase tracking-[0.18em] text-gray" data-project-results>
+                Showing all projects
+              </p>
+              <button
+                type="button"
+                class="project-link-button hidden"
+                data-project-clear
+              >
+                Clear Filters
+              </button>
+            </div>
+
             <div class="mt-8 hidden project-feedback-card" data-project-loading>
               <p class="project-feedback-title">Loading GitHub data...</p>
               <p class="project-feedback-copy">
@@ -836,11 +849,7 @@
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
                     <h3 class="text-2xl font-bold">Portfolio Website</h3>
-                    <p class="text-gray text-sm flex-1">
-                      A modern, responsive portfolio website featuring
-                      glassmorphism design, animation, and an integrated
-                      GitHub-powered project system.
-                    </p>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
                   </div>
                   <div class="project-features mt-6 mb-6">
                     <div class="project-feature">
@@ -882,16 +891,6 @@
                     <span class="project-meta-item"
                       ><i data-lucide="calendar" width="14"></i
                       ><span data-project-date>...</span></span
-                    >
-                  </div>
-                  <div class="project-link-row mt-6">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="project-link-button"
-                      data-project-repo-link-secondary
-                      >GitHub</a
                     >
                   </div>
                 </div>
@@ -950,11 +949,7 @@
                     <h3 class="text-2xl font-bold">
                       Training Application Tracker
                     </h3>
-                    <p class="text-gray text-sm flex-1">
-                      A training-focused application dashboard for tracking
-                      submissions, reviewing progress, and managing application
-                      flow in one place.
-                    </p>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
                   </div>
                   <div class="project-features mt-6 mb-6">
                     <div class="project-feature">
@@ -996,16 +991,6 @@
                     <span class="project-meta-item"
                       ><i data-lucide="calendar" width="14"></i
                       ><span data-project-date>...</span></span
-                    >
-                  </div>
-                  <div class="project-link-row mt-6">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="project-link-button"
-                      data-project-repo-link-secondary
-                      >GitHub</a
                     >
                   </div>
                 </div>
@@ -1062,10 +1047,7 @@
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
                     <h3 class="text-2xl font-bold">Task Manager</h3>
-                    <p class="text-gray text-sm flex-1">
-                      Productivity tool with drag-and-drop task management,
-                      categorized workflows, and real-time synchronization.
-                    </p>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
                   </div>
                   <div class="project-features mt-6 mb-6">
                     <div class="project-feature">
@@ -1109,16 +1091,6 @@
                       ><span data-project-date>...</span></span
                     >
                   </div>
-                  <div class="project-link-row mt-6">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="project-link-button"
-                      data-project-repo-link-secondary
-                      >GitHub</a
-                    >
-                  </div>
                 </div>
               </article>
 
@@ -1128,21 +1100,21 @@
                 data-reveal
                 data-project-key="swe363-project"
                 data-project-year="2025"
-                data-project-filter-values="javascript html css"
-                data-project-search="swe363 project javascript html css web application university course project"
+                data-project-filter-values="javascript react express"
+                data-project-search="comptihub swe363 project javascript react express web application competition student teams participation"
                 tabindex="0"
                 role="link"
-                aria-label="Open SWE363 Project repository"
+                aria-label="Open ComptiHub repository"
               >
                 <div
                   class="project-image-container aspect-video overflow-hidden"
                 >
-                  <img
-                    src="./assets/images/SWE3636-project.webp"
-                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    alt="SWE363 Project"
-                    width="1280"
-                    height="729"
+                    <img
+                      src="./assets/images/SWE3636-project.webp"
+                      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      alt="ComptiHub"
+                      width="1280"
+                      height="729"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
@@ -1172,12 +1144,8 @@
                 </div>
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
-                    <h3 class="text-2xl font-bold">SWE363 Project</h3>
-                    <p class="text-gray text-sm flex-1">
-                      A course project built for SWE363 that focuses on
-                      delivering a structured web application with clean
-                      interaction flow and polished presentation.
-                    </p>
+                    <h3 class="text-2xl font-bold">ComptiHub</h3>
+                    <p class="text-gray text-sm flex-1" data-project-description></p>
                   </div>
                   <div class="project-features mt-6 mb-6">
                     <div class="project-feature">
@@ -1200,11 +1168,11 @@
                     >
                     <span
                       class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
-                      >HTML</span
+                      >React</span
                     >
                     <span
                       class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
-                      >CSS</span
+                      >Express</span
                     >
                   </div>
                   <div class="project-meta-row mt-6" data-project-meta>
@@ -1221,30 +1189,11 @@
                       ><span data-project-date>...</span></span
                     >
                   </div>
-                  <div class="project-link-row mt-6">
-                    <a
-                      href="https://github.com/JASSIM-ALHUMAID/SWE363-project"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="project-link-button"
-                      data-project-repo-link-secondary
-                      >GitHub</a
-                    >
-                  </div>
                 </div>
               </article>
             </div>
 
             <div class="mt-8 flex justify-center">
-              <a
-                href="https://github.com/JASSIM-ALHUMAID"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-cta-button"
-              >
-                See More on GitHub
-                <i data-lucide="arrow-up-right" width="16"></i>
-              </a>
             </div>
           </div>
             </div>
@@ -1287,99 +1236,100 @@
             data-section-content="contact"
           >
             <div class="section-collapse__inner">
-          <div
-            class="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl motion-safe:[animation-delay:180ms] sm:p-12"
-            data-reveal
-          >
-            <div class="mb-8 flex flex-col gap-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p class="text-sm font-bold uppercase tracking-widest text-gray">Best contact path</p>
-                <p class="mt-2 text-sm leading-relaxed text-gray">
-                  Send direct email or open draft in mail app. If mail app does not open, use copy button.
-                </p>
-              </div>
-              <div class="flex flex-col gap-3 sm:items-end">
-                <a
-                  href="mailto:jassim.m.alhumaid@gmail.com"
-                  class="project-link-button"
-                >
-                  Email Directly
-                </a>
-                <button
-                  type="button"
-                  class="project-link-button"
-                  data-copy-email
-                  data-email-value="jassim.m.alhumaid@gmail.com"
-                >
-                  Copy Email
-                </button>
-              </div>
-            </div>
-            <form class="space-y-8" data-contact-form>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-3">
-                  <label
-                    for="name"
-                    class="text-sm font-bold uppercase tracking-widest text-gray ml-1"
-                    >Name</label
-                  >
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
-                    placeholder="John Doe"
-                    required
-                  />
-                </div>
-                <div class="space-y-3">
-                  <label
-                    for="email"
-                    class="text-sm font-bold uppercase tracking-widest text-gray ml-1"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div class="space-y-3">
-                <label
-                  for="message"
-                  class="text-sm font-bold uppercase tracking-widest text-gray ml-1"
-                  >Message</label
-                >
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  class="w-full resize-none rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
-                  placeholder="Tell me about your project..."
-                  required
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-blue py-5 font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+              <div
+                class="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl motion-safe:[animation-delay:180ms] sm:p-12"
+                data-reveal
               >
-                <span>Open Email Draft</span>
-                <i data-lucide="send" width="18"></i>
-                <div
-                  class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"
-                ></div>
-              </button>
-              <p class="text-sm text-gray" data-contact-feedback aria-live="polite">
-                Form opens your default email app with message prefilled.
-              </p>
-            </form>
-          </div>
+                <form class="space-y-8" data-contact-form novalidate>
+                  <div class="space-y-3 text-center sm:text-left">
+                    <p class="text-sm font-bold uppercase tracking-widest text-blue">Get in touch</p>
+                    <p class="max-w-2xl text-base leading-relaxed text-gray sm:text-lg">
+                      For projects, internships, and collaboration opportunities.
+                    </p>
+                  </div>
+
+                  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <div class="space-y-3">
+                      <label
+                        for="name"
+                        class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                        >Name</label
+                      >
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                        placeholder="John Doe"
+                        autocomplete="name"
+                        required
+                      />
+                    </div>
+                    <div class="space-y-3">
+                      <label
+                        for="email"
+                        class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                        >Email</label
+                      >
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                        placeholder="john@example.com"
+                        autocomplete="email"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="space-y-3">
+                    <label
+                      for="subject"
+                      class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                      >Subject</label
+                    >
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      class="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                      placeholder="Portfolio inquiry"
+                      maxlength="120"
+                    />
+                  </div>
+
+                  <div class="space-y-3">
+                    <label
+                      for="message"
+                      class="ml-1 text-sm font-bold uppercase tracking-widest text-gray"
+                      >Message</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      class="w-full resize-none rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-copy transition-all focus:bg-white/10 focus:border-blue/50 focus:outline-none"
+                      placeholder="Tell me about your project..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-blue py-5 font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span>Open Email Draft</span>
+                    <i data-lucide="send" width="18"></i>
+                    <div
+                      class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"
+                    ></div>
+                  </button>
+                  <p class="contact-feedback text-sm text-gray" data-contact-feedback data-state="neutral" aria-live="polite">
+                    Opens your default email app with subject and message prefilled.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </div>
