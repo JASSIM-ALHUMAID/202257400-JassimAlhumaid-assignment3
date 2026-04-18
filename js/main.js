@@ -47,6 +47,10 @@ const PROJECT_REPO_MAP = {
 };
 
 const rootElement = document.documentElement;
+const siteNav = document.getElementById("site-nav");
+const navShell = document.querySelector("[data-nav-shell]");
+const desktopNavList = document.querySelector("[data-nav-list]");
+const desktopNavIndicator = document.querySelector("[data-nav-indicator]");
 const welcomeMessage = document.getElementById("welcome-message");
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
@@ -202,6 +206,45 @@ const renderIcons = (root = document) => {
 const setMobileMenuIcon = (isOpen) => {
   if (!mobileMenuButton) return;
   mobileMenuButton.innerHTML = createIconSvg(isOpen ? "x" : "menu", 20);
+};
+
+const updateDesktopNavIndicator = () => {
+  if (!desktopNavList || !desktopNavIndicator) return;
+
+  const activeLink = desktopNavList.querySelector('[data-nav-link].is-active, [data-nav-link][aria-current="page"]');
+  if (!activeLink) {
+    desktopNavIndicator.style.opacity = "0";
+    return;
+  }
+
+  const listRect = desktopNavList.getBoundingClientRect();
+  const linkRect = activeLink.getBoundingClientRect();
+  const left = linkRect.left - listRect.left - 12;
+  const width = linkRect.width + 24;
+
+  desktopNavIndicator.style.width = `${width}px`;
+  desktopNavIndicator.style.transform = `translate3d(${left}px, -50%, 0)`;
+  desktopNavIndicator.style.opacity = "1";
+};
+
+const initNavbarMotion = () => {
+  if (!siteNav || !navShell) return;
+
+  const syncScrolledState = () => {
+    siteNav.classList.toggle("nav-scrolled", window.scrollY > 24);
+  };
+
+  syncScrolledState();
+  updateDesktopNavIndicator();
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      syncScrolledState();
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", updateDesktopNavIndicator);
 };
 
 const saveProjectPreferences = () => {
@@ -835,6 +878,8 @@ const initActiveNav = () => {
         link.removeAttribute("aria-current");
       }
     });
+
+    updateDesktopNavIndicator();
   };
 
   if (sections.length === 0) return;
@@ -890,7 +935,10 @@ const initActiveNav = () => {
     }
   });
   window.addEventListener("scroll", requestActiveNavSync, { passive: true });
-  window.addEventListener("resize", requestActiveNavSync);
+  window.addEventListener("resize", () => {
+    requestActiveNavSync();
+    updateDesktopNavIndicator();
+  });
 };
 
 const initProjectCardLinks = () => {
@@ -922,6 +970,7 @@ const init = () => {
   initThemeToggle();
   initGreeting();
   initHeroMotion();
+  initNavbarMotion();
   initGraduationCountdown();
   initMobileMenu();
   initSectionToggles();

@@ -1,114 +1,92 @@
-# SWE363 Portfolio - Assignment 3
+# SWE363 Portfolio
 
-This project is a single-page personal portfolio website built for SWE363 Assignment 3. It extends an earlier portfolio with advanced front-end functionality, external API integration, stronger client-side logic, local state persistence, and updated documentation.
+This project is a modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript. It presents personal information, featured projects, and contact details through an interactive interface that was extended for Assignment 3 with API integration, stronger application logic, state persistence, and updated documentation.
 
-## Project Description
+## Features
 
-The website presents personal information, featured projects, and contact details in a responsive portfolio experience. Assignment 3 focuses on adding practical application logic instead of redesigning the site from scratch.
+- **Responsive Layout**: Adapts across mobile, tablet, and desktop screen sizes.
+- **GitHub API Integration**: Loads repository metadata and recent activity for featured projects.
+- **Project Explorer Logic**: Supports project search, stack filtering, and multiple sorting modes.
+- **State Persistence**: Remembers theme and project explorer preferences using `localStorage`.
+- **Validated Contact Flow**: Validates contact fields before opening a prefilled email draft.
+- **Graduation Countdown**: Displays a live countdown to the expected graduation date in May 2027.
+- **CSS-Based Motion**: Uses staged hero motion, hover transitions, and reduced-motion-safe interactions.
 
-The main enhancement is a GitHub-powered project explorer. The page fetches repository data from the GitHub REST API and uses it to enrich curated project cards with live metadata such as stars, recent activity, and repository descriptions.
+## Assignment 3 Checklist
 
-## Assignment 3 Requirements Coverage
+The following checklist summarizes the Assignment 3 requirements implemented in this project, based on `portfolio assignment-3.md`:
 
-### 1. API Integration
-
-- Uses the GitHub REST API to fetch public repository data.
-- Displays meaningful portfolio-related data inside the projects section.
-- Handles loading, empty, and error states with user-friendly feedback.
-
-### 2. Complex Logic
-
-- Filters projects by stack.
-- Sorts projects by recent activity, stars, or name.
-- Validates the contact form before opening the email draft.
-- Shows a live graduation countdown in the hero section.
-
-### 3. State Management
-
-- Persists light/dark theme with `localStorage`.
-- Persists project filter, sort, and search preferences with `localStorage`.
-- Restores the saved UI state when the page reloads.
-
-### 4. Performance
-
-- Uses optimized `.webp` project images.
-- Caches GitHub metadata in `localStorage` to reduce repeated API calls.
-- Fetches commit counts only for matched repositories.
-- Bundles assets with Vite for production.
-
-## Key Features
-
-- Responsive single-page portfolio layout
-- GitHub repository metadata integration
-- Project search, filter, and sort controls
-- Loading, empty, and error states for GitHub data
-- Theme toggle with persisted preference
-- Contact form with validation and prefilled `mailto:` flow
-- Graduation countdown for May 2027
-- CSS-based hero animations and interactive UI polish
+- [x] Connected to an external API by fetching live repository data from the GitHub REST API.
+- [x] Handled API failures with loading, error, and fallback UI states.
+- [x] Added complex logic through project filtering, sorting, GitHub metadata mapping, contact validation, and graduation countdown behavior.
+- [x] Used state management with `localStorage` for theme and project explorer preferences.
+- [x] Applied performance improvements such as optimized images, GitHub response caching, and targeted metadata requests.
+- [x] Documented AI usage in `docs/ai-usage-report.md`.
+- [x] Updated `README.md` and technical documentation to match the final implementation.
 
 ## Tech Stack
 
-- **HTML5** for semantic markup
-- **Tailwind CSS v4** for utility-first styling
-- **Custom CSS** for component styling and animation details
-- **Vanilla JavaScript** for API logic, state, validation, and UI updates
-- **Vite** for development and production builds
-- **Lucide Icons** for general UI icons
-- **Official GitHub and LinkedIn SVG assets** for footer social icons
+- **HTML5**: Semantic page structure and accessible markup.
+- **Tailwind CSS v4**: Utility-first styling, spacing, transitions, and responsive layout.
+- **Custom CSS**: Hero motion, project card styling, countdown styling, and theme-sensitive surface design.
+- **Vanilla JavaScript**: API integration, project logic, local state management, countdown logic, and contact validation.
+- **Vite**: Development server and production build tooling.
+- **Lucide Icons**: General iconography across the interface.
+- **Official SVG Brand Assets**: GitHub and LinkedIn footer icons.
 
 ## Project Structure
 
 ```text
 SWE363-portfolio-1/
-├── README.md
-├── index.html
+├── index.html                         # Main HTML file
 ├── css/
-│   └── styles.css
+│   └── styles.css                     # Custom styles, themes, and animations
 ├── js/
-│   └── main.js
+│   └── main.js                        # API logic, state, countdown, and UI behavior
 ├── assets/
-│   ├── CV/
-│   └── images/
+│   ├── CV/                            # Resume PDF
+│   └── images/                        # Project images and SVG assets
 ├── docs/
-│   ├── ai-usage-report.md
-│   └── technical-documentation.md
-├── package.json
-├── portfolio assignment-3.md
-└── vite.config.js
+│   ├── ai-usage-report.md             # Detailed AI usage documentation
+│   └── technical-documentation.md     # Technical implementation details
+├── template/                          # Template docs used as documentation reference
+├── package.json                       # Project dependencies and scripts
+├── vite.config.js                     # Vite configuration
+└── portfolio assignment-3.md          # Assignment brief
 ```
 
 ## Setup Instructions
 
 ### Prerequisites
 
-- Node.js 18+ recommended
+- Node.js (v18 or higher recommended)
 - npm
 
-### Run Locally
+### Installation
 
-1. Clone the repository.
+1. **Clone the repository**
 
-```bash
-git clone <repository-url>
-cd SWE363-portfolio-1
-```
+   ```bash
+   git clone <repository-url>
+   cd SWE363-portfolio-1
+   ```
 
-2. Install dependencies.
+2. **Install dependencies**
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. Start the development server.
+3. **Start the development server**
 
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
-4. Open the local Vite URL shown in the terminal.
+4. **Open in browser**
+   - Open the local Vite URL shown in the terminal.
 
-### Production Build
+### Build for Production
 
 ```bash
 npm run build
@@ -120,50 +98,25 @@ npm run build
 npm run preview
 ```
 
-## GitHub API Integration Details
-
-Primary endpoint used:
-
-```text
-https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
-```
-
-Additional commit metadata is fetched only for repositories matched to featured projects.
-
-The application uses this API data to:
-
-- match repositories to curated portfolio cards
-- display repository descriptions
-- display star counts
-- display recent repository activity
-- support sorting by GitHub-based criteria
-
-If GitHub data cannot be loaded, the site still works and shows a friendly fallback message instead of breaking the page.
-
-## User Experience Notes
-
-- Project cards remain visible even if the API fails.
-- Search, filter, and sort controls update the page without a full reload.
-- The contact form validates user input before opening the email draft.
-- The graduation countdown adds a small dynamic milestone without distracting from the main content.
-
 ## AI Usage Summary
 
-AI tools were used to support implementation, troubleshooting, UI refinement, and documentation updates. They were used as assistants for ideation, comparison, debugging, and editing rather than as a replacement for manual development.
+AI tools were used to support requirement analysis, implementation planning, UI refinement, debugging, and documentation. Suggestions were reviewed, adapted, and tested manually before being kept in the project.
 
-Detailed information is available in `docs/ai-usage-report.md`.
+### Tools Used
 
-## Documentation
+- **AI Assistant**: Requirement analysis, implementation support, debugging, and documentation updates.
+- **GitHub Copilot**: Inline suggestions and repetitive code completion.
+- **Design-Oriented AI Support**: UI refinement for hero, projects, and contact sections.
 
-- Technical documentation: `docs/technical-documentation.md`
-- AI usage report: `docs/ai-usage-report.md`
+For detailed AI usage information, see [docs/ai-usage-report.md](docs/ai-usage-report.md).
 
 ## Live Deployment
 
-- GitHub Pages: `TBD`
+- **GitHub Pages**: `TBD`
 
-## Notes
+## Acknowledgments
 
-- GitHub API requests may occasionally be limited by GitHub rate limits.
-- Cached GitHub metadata is used to reduce repeat requests and improve resilience.
-- The portfolio is designed to remain usable even when live API data is unavailable.
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework.
+- [Lucide](https://lucide.dev/) for the icon set used across the interface.
+- [GitHub REST API](https://docs.github.com/en/rest) for live repository metadata.
+- AI tools for implementation support, UI refinement, and documentation assistance.

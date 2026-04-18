@@ -1,82 +1,111 @@
 # AI Usage Report
 
-## 1. Tools Used and Use Cases
+## 1. Overview
 
-### AI Assistant
+AI tools were used throughout this project to support requirement analysis, implementation, debugging, refinement, and documentation. The goal of using AI was to improve development speed and code quality while still understanding and reviewing each change before it was added to the portfolio.
 
-AI assistance was used during Assignment 3 for:
+## 2. Tools Used
 
-- comparing the current portfolio against the assignment requirements
-- identifying missing functionality such as API integration and stronger application logic
-- planning how to integrate GitHub API data into the existing featured projects section
-- refining JavaScript logic for filtering, sorting, and local state persistence
-- refining contact form UX, hero motion, and documentation so they match the final implementation
+- **AI Assistant**: Used for requirement analysis, implementation support, debugging, UI/UX refinement, animation planning, validation logic, and documentation updates.
+- **GitHub Copilot**: Used for inline code suggestions, repetitive markup completion, and small JavaScript assistance.
+- **Design-Oriented AI Support**: Used to compare UI options for the hero, projects, contact, and footer sections.
 
-### OpenCode
+## 3. How AI Was Used
 
-OpenCode was used for:
+AI was used as a support tool rather than a replacement for development. Suggestions were reviewed, adapted, and integrated manually to fit the portfolio structure, Assignment 3 requirements, and desired user experience.
 
-- inline suggestions while writing or refining JavaScript
-- speeding up repetitive markup and styling patterns
-- improving development flow during small edits
+The main areas where AI assistance was used include:
 
-### Design-Oriented AI Support
+- comparing the current project against Assignment 3 requirements
+- planning GitHub API integration for the projects section
+- refining filtering, sorting, caching, and state logic
+- improving contact form validation and mailto flow
+- tuning hero motion and other interaction details
+- updating documentation to match the final implementation
 
-AI-guided design feedback was used to preserve the visual style of the portfolio while restructuring the projects area and polishing the contact and hero sections. This was especially useful for deciding how to combine curated cards, GitHub metadata, filter/sort controls, and small motion details without breaking the existing aesthetic.
+## 4. Section-by-Section Contributions
 
-## 2. Benefits and Challenges
+### Navigation Section
 
-### Benefits
+- AI assisted with improving the responsive navigation structure for both desktop and mobile layouts.
+- AI helped refine active section highlighting and the mobile menu show/hide behavior.
+- AI also supported theme persistence using `localStorage` so the selected theme remains consistent across visits.
 
-- helped identify the shortest path from Assignment 2 to Assignment 3 compliance
-- reduced time spent deciding how to structure the GitHub feature
-- improved documentation quality and clarity
-- made it easier to compare different UI and logic options quickly
+### Hero Section
 
-### Challenges
+- AI helped refine spacing, typography balance, and the decorative blob background.
+- AI assisted with the time-based greeting logic.
+- AI also supported the CSS-based staged entrance motion and the graduation countdown card for May 2027.
 
-- AI suggestions sometimes described features that were not actually present in the codebase yet
-- some proposed changes were broader than necessary for the assignment
-- documentation suggestions needed manual correction to match real file names and implemented behavior
+### About Section
 
-Because of this, all suggestions had to be checked carefully before being used.
+- AI supported layout cleanup and responsiveness improvements in the About section.
+- AI helped organize content hierarchy for biography, focus areas, and stat cards.
+- AI also contributed to reveal motion and small visual polish decisions.
+
+### Projects Section
+
+- AI helped plan the GitHub API integration so live metadata could be merged into curated project cards.
+- AI assisted with search, filter, sort, and cached metadata behavior.
+- AI also supported implementation of loading, empty, and error states for project feedback.
+- GitHub Copilot was especially helpful for repetitive project card markup and utility class suggestions.
+
+### Contact Section
+
+- AI assisted with contact form layout and interaction design.
+- AI helped identify that the form needed stronger validation.
+- AI then supported validation for `name`, `email`, and `message`, plus subject handling in the prefilled draft.
+- AI also helped implement the JavaScript-generated `mailto:` workflow addressed to `jassim.m.alhumaid@gmail.com`.
+
+### Footer Section
+
+- AI helped refine the footer social links and hover behavior.
+- AI also supported the move from generic icon treatment to official GitHub and LinkedIn SVG brand assets.
+
+## 5. Cross-Cutting Features
+
+### Dynamic Content
+
+- AI assisted with the time-based greeting shown in the hero section.
+- AI also supported the graduation countdown and navigation behavior between sections.
+
+### Data Handling
+
+- AI helped implement theme persistence with `localStorage`.
+- AI supported project search, filtering, sorting, and GitHub metadata caching.
+- AI also assisted with form validation and input handling in JavaScript.
+
+### Animation and Transitions
+
+- AI helped design hover effects for buttons, cards, navigation links, and footer icons.
+- AI assisted in defining custom animation tokens and keyframes in `css/styles.css`.
+- AI also supported the CSS-only staged hero animation approach instead of adding an unnecessary animation library.
+
+### Error Handling and User Feedback
+
+- AI helped implement user-friendly GitHub loading, empty, and error states.
+- AI supported validation feedback in the contact section so invalid or incomplete input does not open the email draft.
+
+## 6. Documentation Support
+
+- AI was used to improve the structure and wording of `README.md`.
+- AI was also used to update `docs/technical-documentation.md` so it reflects Assignment 3 features accurately.
+- AI assisted in expanding this `docs/ai-usage-report.md` file to document how AI contributed across the project.
+
+## 7. Review and Adaptation
+
+All AI-generated suggestions were reviewed before being added to the project. In several cases, the AI output was modified to better match the intended behavior and design. Examples include:
+
+- choosing GitHub API integration because it is directly relevant to a portfolio website
+- integrating GitHub metadata into curated project cards instead of adding a disconnected repositories section
+- using CSS-based hero motion instead of introducing GSAP unnecessarily
+- simplifying the contact section when earlier UI ideas felt too heavy
+- correcting documentation when earlier drafts referenced outdated libraries or older assignment details
 
 Builds and manual code review were used after changes to confirm that AI suggestions matched the actual codebase and did not introduce broken behavior.
 
-## 3. Learning Outcomes
+## 8. Reflection
 
-Using AI during this assignment helped strengthen several skills:
+AI tools were valuable for speeding up implementation, comparing alternatives, and improving the polish of both the interface and the documentation. At the same time, the final decisions, testing, and integration work were handled manually to ensure the project remained understandable, functional, and aligned with Assignment 3 requirements.
 
-- understanding how to integrate a public REST API into a front-end project
-- designing client-side filtering and sorting logic for real data
-- managing UI state with `localStorage`
-- thinking more carefully about user feedback states such as loading, empty, and error messages
-- using CSS-based motion in a more controlled and professional way instead of adding unnecessary libraries
-- improving documentation accuracy by comparing the written description against the actual code
-
-The process also reinforced that AI is most useful when treated as a support tool rather than a source of final answers.
-
-## 4. Responsible Use and Modifications
-
-AI-generated suggestions were never copied blindly into the project.
-
-The final implementation was reviewed and adapted manually to ensure:
-
-- the GitHub feature fit the existing project structure
-- the new controls matched the site design
-- the logic actually satisfied Assignment 3 requirements
-- the documentation described the final code instead of a generic version
-
-Examples of responsible modifications include:
-
-- choosing GitHub API integration because it is directly relevant to a portfolio
-- integrating GitHub metadata into curated project cards instead of treating repositories as a competing second projects section
-- using project-level filter and sort controls to satisfy the complex logic requirement in a more natural way
-- revising AI suggestions when they referenced libraries or behaviors that were not actually present in the project
-- rewriting stale documentation that still referenced Assignment 2 and outdated file names
-
-## 5. Reflection
-
-AI was most helpful for narrowing down requirements, speeding up iteration, and improving the polish of both implementation and documentation. The most important part of the workflow was still manual review, testing, and adjustment.
-
-This assignment made it clear that responsible AI use means understanding every suggested change, validating it in context, and modifying it when necessary to produce an original and correct result.
+This assignment reinforced that responsible AI use means understanding every suggested change, validating it in context, and modifying it when necessary to produce an original and correct result.

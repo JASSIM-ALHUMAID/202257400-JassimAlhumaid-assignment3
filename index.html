@@ -35,7 +35,8 @@
         class="fixed inset-x-0 top-6 z-50 flex justify-center px-4 transition-all duration-500"
       >
         <div
-          class="mx-auto flex w-full max-w-fit items-center rounded-full border border-white/10 bg-primary/80 px-6 py-2 shadow-2xl shadow-black/40 backdrop-blur-xl motion-safe:animate-fade-down"
+          class="nav-shell mx-auto flex w-full max-w-fit items-center rounded-full border border-white/10 bg-primary/80 px-6 py-2 shadow-2xl shadow-black/40 backdrop-blur-xl motion-safe:animate-fade-down"
+          data-nav-shell
         >
           <!-- Mobile view toggle/menu -->
           <div class="flex items-center gap-4 md:hidden">
@@ -56,7 +57,9 @@
           <!-- Desktop Links -->
           <ul
             class="nav-links hidden items-center gap-8 text-sm font-bold tracking-wide uppercase md:flex"
+            data-nav-list
           >
+            <span class="nav-links__indicator" data-nav-indicator aria-hidden="true"></span>
             <li>
               <a href="#home" class="hover:text-blue transition-colors" data-nav-link="home">Home</a>
             </li>
@@ -178,7 +181,7 @@
           >
             <a
               class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-blue px-8 py-4 font-bold text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-              href="assets/CV/Jassim_Alhumaid_FlowCV_Resume_2026-03-29.pdf"
+              href="assets/CV/Jassim_Alhumaid_SWE.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -281,11 +284,15 @@
                   <div
                     class="avatar-ring relative h-40 w-40 rounded-full bg-gradient-to-br from-blue to-purple p-1"
                   >
-                    <div
-                      class="flex h-full w-full items-center justify-center rounded-full bg-primary text-4xl font-bold liner-gradient-bg"
-                    >
-                      JA
-                    </div>
+                    <img
+                      src="./assets/images/personal-img.jpeg"
+                      alt="Portrait of Jassim Alhumaid"
+                      class="h-full w-full rounded-full object-cover object-center"
+                      width="480"
+                      height="640"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 </div>
                 <div class="text-center">
@@ -652,7 +659,7 @@
                   </div>
                   <div class="hidden sm:block h-16 w-px bg-white/10 mx-4"></div>
                   <div class="flex items-center gap-3 sm:flex-col sm:gap-1">
-                    <span class="text-4xl font-bold text-copy">3.5</span>
+                    <span class="text-4xl font-bold text-copy">3.65</span>
                     <span
                       class="text-sm font-bold uppercase tracking-widest text-gray"
                       >GPA</span
@@ -858,11 +865,6 @@
                   >
                     2026
                   </div>
-                  <div
-                    class="absolute top-4 right-4 project-badge project-badge-status"
-                  >
-                    Featured
-                  </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
@@ -955,11 +957,6 @@
                     class="absolute top-4 left-4 project-badge project-badge-year"
                   >
                     2025
-                  </div>
-                  <div
-                    class="absolute top-4 right-4 project-badge project-badge-status"
-                  >
-                    Featured
                   </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
@@ -1056,11 +1053,6 @@
                   >
                     2025
                   </div>
-                  <div
-                    class="absolute top-4 right-4 project-badge project-badge-status"
-                  >
-                    Featured
-                  </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
@@ -1153,11 +1145,6 @@
                     class="absolute top-4 left-4 project-badge project-badge-year"
                   >
                     2025
-                  </div>
-                  <div
-                    class="absolute top-4 right-4 project-badge project-badge-status"
-                  >
-                    Featured
                   </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
