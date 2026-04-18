@@ -23,12 +23,6 @@
         }
       })();
     </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script
-      src="https://kit.fontawesome.com/1196a13403.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
 
   <body>
@@ -84,18 +78,18 @@
           <div class="ml-8 hidden h-4 w-px bg-white/10 md:block"></div>
 
           <!-- Theme Toggle -->
-          <button
-            type="button"
-            class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-copy transition-all hover:bg-white/10"
-            data-theme-toggle
-          >
-            <span data-theme-icon="sun" class="flex"
-              ><i class="fa-solid fa-sun text-sm"></i
-            ></span>
-            <span data-theme-icon="moon" class="hidden"
-              ><i class="fa-solid fa-moon text-sm"></i
-            ></span>
-          </button>
+            <button
+              type="button"
+              class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-copy transition-all hover:bg-white/10"
+              data-theme-toggle
+            >
+              <span data-theme-icon="sun" class="flex"
+                ><i data-lucide="sun" class="text-sm" width="16"></i
+              ></span>
+              <span data-theme-icon="moon" class="hidden"
+                ><i data-lucide="moon" class="text-sm" width="16"></i
+              ></span>
+            </button>
         </div>
 
         <!-- Mobile Menu Portal (simplified for now) -->
@@ -371,6 +365,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">React</span>
                   </div>
@@ -383,6 +379,8 @@
                       class="tech-stack-icon tech-stack-icon--invert"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">Next.js</span>
                   </div>
@@ -395,6 +393,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">TypeScript</span>
                   </div>
@@ -407,6 +407,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">Tailwind</span>
                   </div>
@@ -419,6 +421,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">JavaScript</span>
                   </div>
@@ -431,6 +435,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">HTML</span>
                   </div>
@@ -443,6 +449,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">CSS</span>
                   </div>
@@ -455,6 +463,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">Python</span>
                   </div>
@@ -467,6 +477,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">Git</span>
                   </div>
@@ -479,6 +491,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">MongoDB</span>
                   </div>
@@ -491,6 +505,8 @@
                       class="tech-stack-icon"
                       width="36"
                       height="36"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span class="text-sm font-medium">Java</span>
                   </div>
@@ -612,64 +628,70 @@
             class="project-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8"
             data-reveal
           >
-            <div
-              class="project-toolbar flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
-            >
-              <div>
-                <p
-                  class="text-sm font-bold uppercase tracking-[0.25em] text-gray"
-                >
-                  Project Explorer
-                </p>
-                <p class="mt-2 max-w-2xl text-sm leading-relaxed text-gray">
-                  Filter the portfolio by stack and sort the cards by name,
-                  year, stars, or recent GitHub activity.
-                </p>
-              </div>
-
-              <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <div class="project-toolbar">
+              <div class="grid w-full gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 <label
                   class="project-control-group sm:col-span-2 xl:col-span-1"
                 >
                   <span class="project-control-label">Search</span>
-                  <input
-                    type="search"
-                    class="project-control"
-                    data-project-search-input
-                    aria-label="Search projects"
-                    placeholder="Search projects or stacks"
-                  />
+                  <div class="project-control-shell">
+                    <span class="project-control-icon" aria-hidden="true"
+                      ><i data-lucide="search" width="18"></i
+                    ></span>
+                    <input
+                      type="search"
+                      class="project-control project-control--search"
+                      data-project-search-input
+                      aria-label="Search projects"
+                      placeholder="Title, stack, or keyword"
+                    />
+                  </div>
                 </label>
 
                 <label class="project-control-group">
                   <span class="project-control-label">Filter</span>
-                  <select
-                    class="project-control"
-                    data-project-filter
-                    aria-label="Filter projects by technology"
-                  >
-                    <option value="all">All projects</option>
-                    <option value="html">HTML</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="react">React</option>
-                    <option value="nextjs">Next.js</option>
-                    <option value="firebase">Firebase</option>
-                    <option value="mongodb">MongoDB</option>
-                  </select>
+                  <div class="project-control-shell">
+                    <span class="project-control-icon" aria-hidden="true"
+                      ><i data-lucide="funnel" width="18"></i
+                    ></span>
+                    <select
+                      class="project-control project-control--select"
+                      data-project-filter
+                      aria-label="Filter projects by technology"
+                    >
+                      <option value="all">All stacks</option>
+                      <option value="html">HTML</option>
+                      <option value="javascript">JavaScript</option>
+                      <option value="react">React</option>
+                      <option value="nextjs">Next.js</option>
+                      <option value="firebase">Firebase</option>
+                      <option value="mongodb">MongoDB</option>
+                    </select>
+                    <span class="project-control-chevron" aria-hidden="true"
+                      ><i data-lucide="chevron-down" width="16"></i
+                    ></span>
+                  </div>
                 </label>
 
                 <label class="project-control-group">
                   <span class="project-control-label">Sort By</span>
-                  <select
-                    class="project-control"
-                    data-project-sort
-                    aria-label="Sort portfolio projects"
-                  >
-                    <option value="year">Newest first</option>
-                    <option value="name">Name</option>
-                    <option value="stars">GitHub stars</option>
-                    <option value="activity">Recent GitHub activity</option>
-                  </select>
+                  <div class="project-control-shell">
+                    <span class="project-control-icon" aria-hidden="true"
+                      ><i data-lucide="arrow-up-down" width="18"></i
+                    ></span>
+                    <select
+                      class="project-control project-control--select"
+                      data-project-sort
+                      aria-label="Sort portfolio projects"
+                    >
+                      <option value="activity">Recent GitHub push</option>
+                      <option value="stars">GitHub stars</option>
+                      <option value="name">Name</option>
+                    </select>
+                    <span class="project-control-chevron" aria-hidden="true"
+                      ><i data-lucide="chevron-down" width="16"></i
+                    ></span>
+                  </div>
                 </label>
               </div>
             </div>
@@ -677,7 +699,7 @@
             <div class="mt-8 hidden project-feedback-card" data-project-loading>
               <p class="project-feedback-title">Loading GitHub data...</p>
               <p class="project-feedback-copy">
-                Pulling repository activity and project metadata from GitHub.
+                Syncing stars, latest pushes, and repository metadata.
               </p>
             </div>
 
@@ -699,7 +721,7 @@
                 No projects match this filter.
               </p>
               <p class="project-feedback-copy">
-                Try a different technology filter or change the sort order.
+                Try another stack, search term, or sort order.
               </p>
             </div>
 
@@ -717,10 +739,14 @@
                   class="project-image-container aspect-video overflow-hidden"
                 >
                   <img
-                    src="./assets/images/portfolio-image.png"
+                    src="./assets/images/portfolio-image.webp"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     alt="Portfolio Website"
+                    width="1280"
+                    height="829"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                   />
                   <div class="project-image-overlay">
                     <a
@@ -822,10 +848,14 @@
                   class="project-image-container aspect-video overflow-hidden"
                 >
                   <img
-                    src="./assets/images/dashboard.png"
+                    src="./assets/images/dashboard.webp"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     alt="Training Application Tracker"
+                    width="1280"
+                    height="705"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                   />
                   <div class="project-image-overlay">
                     <a
@@ -929,10 +959,14 @@
                   class="project-image-container aspect-video overflow-hidden"
                 >
                   <img
-                    src="./assets/images/task-manager.png"
+                    src="./assets/images/task-manager.webp"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     alt="Task Manager"
+                    width="1058"
+                    height="659"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                   />
                   <div class="project-image-overlay">
                     <a
@@ -1033,10 +1067,14 @@
                   class="project-image-container aspect-video overflow-hidden"
                 >
                   <img
-                    src="./assets/images/SWE3636-project.png"
+                    src="./assets/images/SWE3636-project.webp"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     alt="SWE363 Project"
+                    width="1280"
+                    height="729"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                   />
                   <div class="project-image-overlay">
                     <a
@@ -1250,18 +1288,18 @@
                 href="https://github.com/JASSIM-ALHUMAID"
                 target="_blank"
                 class="text-gray hover:text-copy transition-colors"
-                ><i class="fa-brands fa-github text-xl"></i
+                ><i data-lucide="github" class="text-xl" width="20"></i
               ></a>
               <a
                 href="https://www.linkedin.com/in/jassim-m-alhumaid/"
                 target="_blank"
                 class="text-gray hover:text-copy transition-colors"
-                ><i class="fa-brands fa-linkedin-in text-xl"></i
+                ><i data-lucide="linkedin" class="text-xl" width="20"></i
               ></a>
               <a
                 href="mailto:jassim.m.alhumaid@gmail.com"
                 class="text-gray hover:text-copy transition-colors"
-                ><i class="fa-solid fa-envelope text-xl"></i
+                ><i data-lucide="mail" class="text-xl" width="20"></i
               ></a>
             </div>
           </div>
