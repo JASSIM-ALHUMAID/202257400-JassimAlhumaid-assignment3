@@ -2,11 +2,11 @@
 
 ## 1. Project Overview
 
-The SWE363 Portfolio is a modern, responsive personal portfolio website designed to present projects, technical skills, and contact information in a clear and visually engaging format. The interface uses a polished glass-style design language and is structured to work effectively across different device sizes.
+The SWE363 Portfolio is a single-page personal website used to present my projects, background, and contact information in one place. The interface keeps the glass-style look from the earlier assignment, but the Assignment 3 work focused more on behavior than on redesigning the whole site.
 
-For Assignment 3, the project was extended with external API integration, more advanced client-side logic, state persistence, and lightweight dynamic content. The main enhancement is a GitHub-powered projects section that merges curated portfolio cards with live repository metadata.
+For Assignment 3, the main addition is a GitHub-powered projects section. Instead of replacing the curated cards with a plain repositories list, the site fetches live GitHub data and merges it into the existing featured projects. That made the portfolio feel more dynamic without losing the original presentation.
 
-The project is implemented using modern front-end tools with an emphasis on readability, maintainability, responsive behavior, and user-friendly feedback.
+The rest of the work follows the same idea: keep the interface familiar, then add stronger logic through filtering, sorting, validation, caching, and small dynamic elements like the graduation countdown.
 
 ## 2. Technology Stack
 
@@ -88,22 +88,22 @@ SWE363-portfolio-1/
   https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
   ```
 
-- The fetched data is matched to curated project cards.
+- The fetched data is matched to curated cards such as `Portfolio Website`, `Task Manager`, and the other featured projects already shown in the UI.
 - Additional commit metadata is fetched only for matched repositories.
 - Live GitHub data is used to display descriptions, star counts, and recent activity.
 
 ### Complex Logic
 
-- The projects section supports search, stack filtering, and multiple sorting modes.
+- The projects section supports search, stack filtering, and multiple sorting modes at the same time.
 - The contact form validates `name`, `email`, and `message` before allowing submission.
-- The form builds a prefilled `mailto:` draft using the contact data after validation passes.
+- The form builds a prefilled `mailto:` draft only after validation passes.
 - A graduation countdown calculates remaining time until May 2027 and updates the hero section dynamically.
 
 ### State Management
 
 - Theme preference is stored in `localStorage`.
 - Project search, filter, and sort preferences are stored in `localStorage`.
-- GitHub metadata is cached in `localStorage` to reduce repeated API calls and improve resilience.
+- GitHub metadata is cached in `localStorage` to reduce repeated API calls and make the project section more resilient when GitHub is temporarily unavailable.
 
 ### Performance
 
@@ -123,7 +123,7 @@ SWE363-portfolio-1/
 ### Hero Section
 
 - Displays a greeting that changes based on the current time of day.
-- Uses CSS-based staged entrance motion for badge, headline, copy, actions, countdown, and highlights.
+- Uses CSS-based staged entrance motion for the badge, headline, copy, actions, countdown, and quick highlights.
 - Includes a graduation countdown card for the expected graduation date in May 2027.
 
 ### About Section
@@ -135,13 +135,14 @@ SWE363-portfolio-1/
 
 - Combines curated project cards with live GitHub repository metadata.
 - Supports project search, stack filtering, and sorting by activity, stars, and name.
-- Includes loading, error, and empty-state feedback blocks.
+- Includes loading, error, and empty-state feedback blocks so the section still explains what is happening when GitHub data is delayed or unavailable.
 
 ### Contact Section
 
 - Validates user input on the client side.
 - Builds a `mailto:` draft addressed to `jassim.m.alhumaid@gmail.com`.
 - Uses `subject` as the mail subject line and includes sender details plus message in the draft body.
+- This stayed as a `mailto:` flow instead of adding a backend form handler because the assignment did not require a backend service.
 
 ### Footer Section
 
@@ -181,7 +182,7 @@ Updating these values changes the visual theme globally.
 
 ## 11. Maintainability Notes
 
-The project keeps advanced functionality inside one front-end codebase without introducing unnecessary libraries or a backend. This keeps the implementation focused while still satisfying Assignment 3 through:
+The project keeps all Assignment 3 functionality inside one front-end codebase without introducing a backend or extra heavy libraries. That choice kept the implementation smaller and easier to explain while still covering the assignment requirements through:
 
 - reusable local storage helpers
 - centralized project rendering logic

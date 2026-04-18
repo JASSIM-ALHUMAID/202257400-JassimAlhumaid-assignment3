@@ -92,7 +92,35 @@ The main areas where AI assistance was used include:
 - AI was also used to update `docs/technical-documentation.md` so it reflects Assignment 3 features accurately.
 - AI assisted in expanding this `docs/ai-usage-report.md` file to document how AI contributed across the project.
 
-## 7. Review and Adaptation
+## 7. Benefits & Challenges
+
+### Benefits
+
+- AI reduced time spent comparing implementation options for Assignment 3 features.
+- AI made it easier to break down larger tasks such as GitHub API integration and project filtering logic.
+- GitHub Copilot was useful for inline suggestions during repetitive coding work.
+- AI support also improved the structure and polish of the final documentation.
+
+### Challenges
+
+- Some AI suggestions were broader than necessary for the assignment.
+- Some suggestions referenced features or libraries that were not actually in the project yet.
+- Documentation suggestions sometimes needed correction so they matched the real file names and implemented behavior.
+
+These issues were handled by manually reviewing, editing, and testing suggested changes before keeping them.
+
+## 8. Learning Outcomes
+
+Using AI during this assignment helped strengthen several practical skills:
+
+- integrating a public REST API into a front-end project
+- designing client-side filtering and sorting for real data
+- validating form input before triggering follow-up behavior
+- using `localStorage` for theme, preferences, and lightweight caching
+- making CSS-based motion feel polished without adding unnecessary complexity
+- keeping documentation aligned with the actual code instead of generic descriptions
+
+## 9. Review and Adaptation
 
 All AI-generated suggestions were reviewed before being added to the project. In several cases, the AI output was modified to better match the intended behavior and design. Examples include:
 
@@ -104,7 +132,9 @@ All AI-generated suggestions were reviewed before being added to the project. In
 
 Builds and manual code review were used after changes to confirm that AI suggestions matched the actual codebase and did not introduce broken behavior.
 
-## 8. Reflection
+Manual verification included checking the updated UI in context, confirming logic against the assignment requirements, and running the production build with `npm run build`.
+
+## 10. Reflection
 
 AI tools were valuable for speeding up implementation, comparing alternatives, and improving the polish of both the interface and the documentation. At the same time, the final decisions, testing, and integration work were handled manually to ensure the project remained understandable, functional, and aligned with Assignment 3 requirements.
 

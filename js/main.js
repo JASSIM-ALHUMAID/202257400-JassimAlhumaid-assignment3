@@ -7,7 +7,7 @@ const PROJECT_GITHUB_CACHE_TTL = 1000 * 60 * 60;
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 const GITHUB_USERNAME = "JASSIM-ALHUMAID";
 const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-const GRADUATION_TARGET_DATE = new Date("2027-05-01T00:00:00+03:00");
+const GRADUATION_TARGET_DATE = new Date("2027-06-01T00:00:00+03:00");
 
 const ICONS = {
   menu: '<path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/>',

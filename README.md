@@ -1,20 +1,20 @@
 # SWE363 Portfolio
 
-This project is a modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript. It presents personal information, featured projects, and contact details through an interactive interface that was extended for Assignment 3 with API integration, stronger application logic, state persistence, and updated documentation.
+This project is my SWE363 Assignment 3 portfolio website. It keeps the single-page portfolio structure from the earlier assignment, then extends it with live GitHub data, stronger client-side logic, saved UI preferences, and updated documentation.
 
 ## Features
 
 - **Responsive Layout**: Adapts across mobile, tablet, and desktop screen sizes.
-- **GitHub API Integration**: Loads repository metadata and recent activity for featured projects.
+- **GitHub API Integration**: Pulls live repository metadata and recent activity into the featured projects area.
 - **Project Explorer Logic**: Supports project search, stack filtering, and multiple sorting modes.
 - **State Persistence**: Remembers theme and project explorer preferences using `localStorage`.
 - **Validated Contact Flow**: Validates contact fields before opening a prefilled email draft.
 - **Graduation Countdown**: Displays a live countdown to the expected graduation date in May 2027.
-- **CSS-Based Motion**: Uses staged hero motion, hover transitions, and reduced-motion-safe interactions.
+- **CSS-Based Motion**: Uses staged hero motion, hover transitions, and reduced-motion-safe interactions without adding another animation library.
 
 ## Assignment 3 Checklist
 
-The following checklist summarizes the Assignment 3 requirements implemented in this project, based on `portfolio assignment-3.md`:
+The following checklist maps the current implementation to `portfolio assignment-3.md`:
 
 - [x] Connected to an external API by fetching live repository data from the GitHub REST API.
 - [x] Handled API failures with loading, error, and fallback UI states.
@@ -100,13 +100,13 @@ npm run preview
 
 ## AI Usage Summary
 
-AI tools were used to support requirement analysis, implementation planning, UI refinement, debugging, and documentation. Suggestions were reviewed, adapted, and tested manually before being kept in the project.
+AI tools were used to compare solutions, speed up repetitive edits, refine UI details, and help rewrite documentation. Suggestions were reviewed, adjusted, and tested manually before being kept in the project.
 
 ### Tools Used
 
 - **AI Assistant**: Requirement analysis, implementation support, debugging, and documentation updates.
 - **GitHub Copilot**: Inline suggestions and repetitive code completion.
-- **Design-Oriented AI Support**: UI refinement for hero, projects, and contact sections.
+- **Design-Oriented AI Support**: UI refinement for the hero, projects, contact, and footer sections.
 
 For detailed AI usage information, see [docs/ai-usage-report.md](docs/ai-usage-report.md).
 
@@ -118,5 +118,5 @@ For detailed AI usage information, see [docs/ai-usage-report.md](docs/ai-usage-r
 
 - [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework.
 - [Lucide](https://lucide.dev/) for the icon set used across the interface.
-- [GitHub REST API](https://docs.github.com/en/rest) for live repository metadata.
+- [GitHub REST API](https://docs.github.com/en/rest) for live repository metadata used in the projects section.
 - AI tools for implementation support, UI refinement, and documentation assistance.
