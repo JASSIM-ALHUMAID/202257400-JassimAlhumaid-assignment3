@@ -112,7 +112,7 @@ For detailed AI usage information, see [docs/ai-usage-report.md](docs/ai-usage-r
 
 ## Live Deployment
 
-- **GitHub Pages**: `TBD`
+- **GitHub Pages**: https://jassim-alhumaid.github.io/202257400-JassimAlhumaid-assignment3/
 
 ## Acknowledgments
 

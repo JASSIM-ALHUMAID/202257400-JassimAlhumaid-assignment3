@@ -868,6 +868,16 @@ const initActiveNav = () => {
     .filter(Boolean);
   const sectionIds = new Set(sections.map((section) => section.id));
 
+  const syncUrlToSection = (sectionId) => {
+    const baseUrl = `${window.location.pathname}${window.location.search}`;
+    const nextUrl = sectionId === "home" ? baseUrl : `${baseUrl}#${sectionId}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+    if (nextUrl !== currentUrl) {
+      window.history.replaceState(null, "", nextUrl);
+    }
+  };
+
   const setActiveSection = (sectionId) => {
     navLinks.forEach((link) => {
       const isActive = link.dataset.navLink === sectionId;
@@ -879,6 +889,7 @@ const initActiveNav = () => {
       }
     });
 
+    syncUrlToSection(sectionId);
     updateDesktopNavIndicator();
   };
 
