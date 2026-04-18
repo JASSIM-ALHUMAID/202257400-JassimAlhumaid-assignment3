@@ -126,11 +126,11 @@ const initHeroAnimations = () => {
 
   timeline
     .from("#site-nav div", { y: -50, opacity: 0, duration: 1.2 })
-    .from("#home .inline-flex", { scale: 0.8, opacity: 0, duration: 0.8 }, "-=0.8")
+    .from("[data-hero-badge]", { scale: 0.8, opacity: 0, duration: 0.8 }, "-=0.8")
     .from("#home h1", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
-    .from("#home h2", { y: 30, opacity: 0, duration: 1 }, "-=0.6")
-    .from("#home p", { y: 20, opacity: 0, duration: 0.8 }, "-=0.8")
-    .from("#home .flex-wrap a", { y: 20, opacity: 0, stagger: 0.2, duration: 0.8 }, "-=0.6")
+    .from("[data-hero-name] h2", { y: 30, opacity: 0, duration: 1 }, "-=0.4")
+    .from("[data-hero-description]", { y: 20, opacity: 0, duration: 0.8 })
+    .from("[data-hero-actions]", { y: 20, opacity: 0, duration: 0.8 }, "-=0.2")
     .from("#home .absolute.bottom-12", { y: -20, opacity: 0, repeat: -1, yoyo: true, duration: 1.5 }, "-=0.2");
 };
 
@@ -153,7 +153,7 @@ const initScrollReveals = () => {
 };
 
 const initMagneticButtons = () => {
-  const buttons = document.querySelectorAll("#home a, [data-contact-form] button, .project-cta-button");
+  const buttons = document.querySelectorAll("[data-contact-form] button, .project-cta-button");
 
   buttons.forEach((button) => {
     button.addEventListener("mousemove", (event) => {
@@ -162,9 +162,9 @@ const initMagneticButtons = () => {
       const y = event.clientY - rect.top - rect.height / 2;
 
       gsap.to(button, {
-        x: x * 0.3,
-        y: y * 0.3,
-        duration: 0.3,
+        x: x * 0.18,
+        y: y * 0.18,
+        duration: 0.22,
         ease: "power2.out",
       });
     });
@@ -173,8 +173,8 @@ const initMagneticButtons = () => {
       gsap.to(button, {
         x: 0,
         y: 0,
-        duration: 0.5,
-        ease: "elastic.out(1, 0.3)",
+        duration: 0.28,
+        ease: "power2.out",
       });
     });
   });
