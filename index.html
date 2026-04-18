@@ -46,6 +46,8 @@
               id="mobile-menu-button"
               class="text-copy"
               aria-label="Toggle menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
             >
               <i data-lucide="menu" width="20"></i>
             </button>
@@ -112,16 +114,24 @@
         <!-- Hero Section -->
         <section
           id="home"
-          class="relative z-0 flex min-h-screen w-full flex-col items-center justify-center gap-8 px-4 pb-16 pt-32 text-center sm:px-6 md:pt-36"
+          class="hero-section relative z-0 flex min-h-screen w-full flex-col items-center justify-center gap-8 px-4 pb-16 pt-32 text-center sm:px-6 md:pt-36"
         >
           <!-- background blobs -->
           <div class="absolute inset-0 z-[-1] overflow-hidden">
             <div
-              class="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue/20 blur-[100px] motion-safe:animate-blob-drift"
+              class="ambient-orb ambient-orb--hero-primary absolute left-[8%] top-[12%] h-[28rem] w-[28rem] rounded-full bg-blue/20 blur-[100px] motion-safe:animate-blob-drift"
             ></div>
             <div
-              class="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-purple/20 blur-[100px] motion-safe:animate-blob-drift"
+              class="ambient-orb ambient-orb--hero-secondary absolute right-[10%] bottom-[14%] h-[24rem] w-[24rem] rounded-full bg-purple/20 blur-[100px] motion-safe:animate-blob-drift"
               style="animation-delay: -5s"
+            ></div>
+            <div
+              class="ambient-orb ambient-orb--hero-tertiary absolute right-[22%] top-[18%] h-56 w-56 rounded-full bg-cyan-400/15 blur-[80px] motion-safe:animate-blob-drift"
+              style="animation-delay: -9s"
+            ></div>
+            <div
+              class="ambient-orb ambient-orb--hero-quaternary absolute left-[18%] bottom-[8%] h-64 w-64 rounded-full bg-fuchsia-400/15 blur-[90px] motion-safe:animate-blob-drift"
+              style="animation-delay: -12s"
             ></div>
           </div>
 
@@ -185,6 +195,24 @@
             </a>
           </div>
 
+          <ul
+            class="flex flex-wrap items-center justify-center gap-3 px-4 text-sm font-bold text-gray"
+            aria-label="Quick highlights"
+          >
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              React / Next.js
+            </li>
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              KFUPM SWE
+            </li>
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              5+ Projects
+            </li>
+            <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2">
+              Open to internships
+            </li>
+          </ul>
+
           <div
             class="absolute bottom-12 left-1/2 -translate-x-1/2 motion-safe:animate-bounce"
           >
@@ -195,8 +223,12 @@
         <!-- Redesigned About Section -->
         <section
           id="about"
-          class="scroll-mt-16 flex w-full flex-col items-center px-4 py-24 sm:px-6 md:scroll-mt-24"
+          class="about-section relative scroll-mt-16 flex w-full flex-col items-center px-4 py-24 sm:px-6 md:scroll-mt-24"
         >
+          <div class="section-ambient section-ambient--about" aria-hidden="true">
+            <div class="ambient-orb ambient-orb--about-left"></div>
+            <div class="ambient-orb ambient-orb--about-right"></div>
+          </div>
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
             <button
               type="button"
@@ -619,8 +651,12 @@
       <!-- Projects Section -->
       <section
         id="projects"
-        class="scroll-mt-16 w-full px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-24"
+        class="projects-section scroll-mt-16 w-full px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-24"
       >
+          <div class="section-ambient section-ambient--projects" aria-hidden="true">
+            <div class="ambient-orb ambient-orb--projects-top"></div>
+            <div class="ambient-orb ambient-orb--projects-bottom"></div>
+          </div>
           <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
             <div class="flex flex-col items-center text-center" data-reveal>
               <button
@@ -757,6 +793,9 @@
                 data-project-year="2026"
                 data-project-filter-values="html javascript tailwind"
                 data-project-search="portfolio website html tailwind css javascript responsive glassmorphism animations"
+                tabindex="0"
+                role="link"
+                aria-label="Open Portfolio Website repository"
               >
                 <div
                   class="project-image-container aspect-video overflow-hidden"
@@ -866,6 +905,9 @@
                 data-project-year="2025"
                 data-project-filter-values="nextjs mongodb javascript"
                 data-project-search="training application tracker next.js tailwind css mongodb dashboard hiring workflow applications"
+                tabindex="0"
+                role="link"
+                aria-label="Open Training Application Tracker repository"
               >
                 <div
                   class="project-image-container aspect-video overflow-hidden"
@@ -977,6 +1019,9 @@
                 data-project-year="2025"
                 data-project-filter-values="react firebase javascript"
                 data-project-search="task manager react firebase tailwind productivity drag and drop reminders categories"
+                tabindex="0"
+                role="link"
+                aria-label="Open Task Manager repository"
               >
                 <div
                   class="project-image-container aspect-video overflow-hidden"
@@ -1085,6 +1130,9 @@
                 data-project-year="2025"
                 data-project-filter-values="javascript html css"
                 data-project-search="swe363 project javascript html css web application university course project"
+                tabindex="0"
+                role="link"
+                aria-label="Open SWE363 Project repository"
               >
                 <div
                   class="project-image-container aspect-video overflow-hidden"
@@ -1207,8 +1255,12 @@
       <!-- Contact Section -->
       <section
         id="contact"
-        class="scroll-mt-12 flex min-h-screen w-full items-center justify-center px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-20"
+        class="contact-section scroll-mt-12 flex min-h-screen w-full items-center justify-center px-4 py-24 relative z-0 sm:px-6 md:scroll-mt-20"
       >
+        <div class="section-ambient section-ambient--contact" aria-hidden="true">
+          <div class="ambient-orb ambient-orb--contact-left"></div>
+          <div class="ambient-orb ambient-orb--contact-right"></div>
+        </div>
         <div class="max-w-4xl w-full">
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
             <button
@@ -1239,6 +1291,30 @@
             class="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl motion-safe:[animation-delay:180ms] sm:p-12"
             data-reveal
           >
+            <div class="mb-8 flex flex-col gap-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-widest text-gray">Best contact path</p>
+                <p class="mt-2 text-sm leading-relaxed text-gray">
+                  Send direct email or open draft in mail app. If mail app does not open, use copy button.
+                </p>
+              </div>
+              <div class="flex flex-col gap-3 sm:items-end">
+                <a
+                  href="mailto:jassim.m.alhumaid@gmail.com"
+                  class="project-link-button"
+                >
+                  Email Directly
+                </a>
+                <button
+                  type="button"
+                  class="project-link-button"
+                  data-copy-email
+                  data-email-value="jassim.m.alhumaid@gmail.com"
+                >
+                  Copy Email
+                </button>
+              </div>
+            </div>
             <form class="space-y-8" data-contact-form>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-3">
@@ -1293,12 +1369,15 @@
                 type="submit"
                 class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-blue py-5 font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span>Send Message</span>
+                <span>Open Email Draft</span>
                 <i data-lucide="send" width="18"></i>
                 <div
                   class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"
                 ></div>
               </button>
+              <p class="text-sm text-gray" data-contact-feedback aria-live="polite">
+                Form opens your default email app with message prefilled.
+              </p>
             </form>
           </div>
             </div>
@@ -1325,17 +1404,22 @@
               <a
                 href="https://github.com/JASSIM-ALHUMAID"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
                 class="text-gray hover:text-copy transition-colors"
                 ><i data-lucide="github" class="text-xl" width="20"></i
               ></a>
               <a
                 href="https://www.linkedin.com/in/jassim-m-alhumaid/"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
                 class="text-gray hover:text-copy transition-colors"
                 ><i data-lucide="linkedin" class="text-xl" width="20"></i
               ></a>
               <a
                 href="mailto:jassim.m.alhumaid@gmail.com"
+                aria-label="Send email"
                 class="text-gray hover:text-copy transition-colors"
                 ><i data-lucide="mail" class="text-xl" width="20"></i
               ></a>

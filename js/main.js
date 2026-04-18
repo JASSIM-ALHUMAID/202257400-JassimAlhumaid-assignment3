@@ -3,7 +3,6 @@ import "../css/styles.css";
 const THEME_STORAGE_KEY = "portfolio-theme";
 const PROJECT_PREFERENCES_KEY = "portfolio-project-preferences";
 const PROJECT_GITHUB_CACHE_KEY = "portfolio-project-github-cache-v1";
-const SECTION_COLLAPSE_STORAGE_KEY = "portfolio-section-collapse-v1";
 const PROJECT_GITHUB_CACHE_TTL = 1000 * 60 * 60;
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 const GITHUB_USERNAME = "JASSIM-ALHUMAID";
@@ -52,6 +51,8 @@ const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 const contactForm = document.querySelector("[data-contact-form]");
+const contactFeedback = document.querySelector("[data-contact-feedback]");
+const copyEmailButtons = Array.from(document.querySelectorAll("[data-copy-email]"));
 const projectFilterSelect = document.querySelector("[data-project-filter]");
 const projectSortSelect = document.querySelector("[data-project-sort]");
 const projectSearchInput = document.querySelector("[data-project-search-input]");
@@ -172,22 +173,6 @@ const loadGithubCache = () => {
     safeLocalStorageRemove(PROJECT_GITHUB_CACHE_KEY);
     return null;
   }
-};
-
-const loadSectionCollapseState = () => {
-  const raw = safeLocalStorageGet(SECTION_COLLAPSE_STORAGE_KEY);
-  if (!raw) return {};
-
-  try {
-    return JSON.parse(raw) || {};
-  } catch {
-    safeLocalStorageRemove(SECTION_COLLAPSE_STORAGE_KEY);
-    return {};
-  }
-};
-
-const saveSectionCollapseState = (state) => {
-  safeLocalStorageSet(SECTION_COLLAPSE_STORAGE_KEY, JSON.stringify(state));
 };
 
 const saveGithubCache = () => {
@@ -440,6 +425,16 @@ const renderProjectCards = () => {
   projectCards.forEach(updateProjectCardMeta);
 };
 
+const openProjectCardLink = (card) => {
+  if (!card) return;
+
+  const primaryLink = card.querySelector("[data-project-repo-link]");
+  const href = primaryLink?.href;
+  if (!href) return;
+
+  window.open(href, "_blank", "noopener,noreferrer");
+};
+
 const syncProjectUI = () => {
   if (projectFilterSelect) projectFilterSelect.value = projectState.filter;
   if (projectSortSelect) projectSortSelect.value = projectState.sort;
@@ -570,6 +565,23 @@ const initMobileMenu = () => {
   let closeTimer = null;
   setMobileMenuIcon(false);
 
+  const closeMenu = () => {
+    if (!mobileMenu.classList.contains("is-open")) return;
+    mobileMenu.classList.remove("is-open");
+    mobileMenuButton.setAttribute("aria-expanded", "false");
+    setMobileMenuIcon(false);
+    closeTimer = window.setTimeout(() => {
+      mobileMenu.classList.add("hidden");
+    }, supportsReducedMotion ? 0 : 250);
+  };
+
+  const openMenu = () => {
+    mobileMenu.classList.remove("hidden");
+    requestAnimationFrame(() => mobileMenu.classList.add("is-open"));
+    mobileMenuButton.setAttribute("aria-expanded", "true");
+    setMobileMenuIcon(true);
+  };
+
   mobileMenuButton.addEventListener("click", () => {
     const isOpen = mobileMenu.classList.contains("is-open");
 
@@ -579,17 +591,27 @@ const initMobileMenu = () => {
     }
 
     if (isOpen) {
-      mobileMenu.classList.remove("is-open");
-      setMobileMenuIcon(false);
-      closeTimer = window.setTimeout(() => {
-        mobileMenu.classList.add("hidden");
-      }, supportsReducedMotion ? 0 : 250);
+      closeMenu();
       return;
     }
 
-    mobileMenu.classList.remove("hidden");
-    requestAnimationFrame(() => mobileMenu.classList.add("is-open"));
-    setMobileMenuIcon(true);
+    openMenu();
+  });
+
+  mobileMenu.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!mobileMenu.classList.contains("is-open")) return;
+    if (mobileMenu.contains(event.target) || mobileMenuButton.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
   });
 };
 
@@ -606,17 +628,37 @@ const initGreeting = () => {
 };
 
 const initContactForm = () => {
+  copyEmailButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      const email = button.dataset.emailValue || CONTACT_EMAIL;
+
+      try {
+        await navigator.clipboard.writeText(email);
+        if (contactFeedback) {
+          contactFeedback.textContent = `Email copied: ${email}`;
+        }
+      } catch {
+        if (contactFeedback) {
+          contactFeedback.textContent = `Copy failed. Email: ${email}`;
+        }
+      }
+    });
+  });
+
   if (!contactForm) return;
 
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(contactForm);
     const body = `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\n\nMessage:\n${formData.get("message")}`;
+    if (contactFeedback) {
+      contactFeedback.textContent = "Opening default email app with message prefilled.";
+    }
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=Portfolio Inquiry&body=${encodeURIComponent(body)}`;
   });
 };
 
-const setSectionCollapsed = (sectionId, collapsed, persist = true) => {
+const setSectionCollapsed = (sectionId, collapsed) => {
   const toggle = document.querySelector(`[data-section-toggle="${sectionId}"]`);
   const content = document.querySelector(`[data-section-content="${sectionId}"]`);
   if (!toggle || !content) return;
@@ -625,12 +667,6 @@ const setSectionCollapsed = (sectionId, collapsed, persist = true) => {
   content.classList.toggle("is-collapsed", collapsed);
   content.classList.toggle("is-expanded", !collapsed);
   content.setAttribute("aria-hidden", String(collapsed));
-
-  if (persist) {
-    const state = loadSectionCollapseState();
-    state[sectionId] = collapsed;
-    saveSectionCollapseState(state);
-  }
 };
 
 const expandSectionFromHash = () => {
@@ -643,13 +679,10 @@ const expandSectionFromHash = () => {
 const initSectionToggles = () => {
   if (sectionToggles.length === 0) return;
 
-  const savedState = loadSectionCollapseState();
-
   sectionToggles.forEach((toggle) => {
     const sectionId = toggle.dataset.sectionToggle;
-    const collapsed = savedState[sectionId] === true;
 
-    setSectionCollapsed(sectionId, collapsed, false);
+    setSectionCollapsed(sectionId, false);
 
     toggle.addEventListener("click", () => {
       const isExpanded = toggle.getAttribute("aria-expanded") === "true";
@@ -659,6 +692,22 @@ const initSectionToggles = () => {
 
   expandSectionFromHash();
   window.addEventListener("hashchange", expandSectionFromHash);
+};
+
+const initProjectCardLinks = () => {
+  projectCards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      openProjectCardLink(card);
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.target !== card) return;
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openProjectCardLink(card);
+    });
+  });
 };
 
 const defer = (callback) => {
@@ -677,6 +726,7 @@ const init = () => {
   initSectionToggles();
   initContactForm();
   initProjectControls();
+  initProjectCardLinks();
   revealElements("[data-reveal]");
   initStatCounters();
   syncProjectUI();
