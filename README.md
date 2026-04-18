@@ -1,117 +1,123 @@
-# SWE363 Portfolio
+# SWE363 Portfolio - Assignment 3
 
-This project is a modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript. It presents personal information, skills, featured projects, and contact details through an interactive interface designed for Assignment 2.
+This project is a responsive personal portfolio website built for SWE363 Assignment 3. It extends the earlier portfolio with live GitHub API integration, client-side filtering and sorting logic, persisted UI state, and refreshed technical documentation.
 
-## Features
+## Project Description
 
-- **Glassmorphism Design**: Uses layered transparency, blur, and soft shadows to create a modern visual style.
-- **Responsive Layout**: Adapts cleanly across mobile, tablet, and desktop screen sizes.
-- **Dynamic Content**: Displays a greeting that updates according to the time of day.
-- **Project Showcase**: Presents featured projects with hover feedback, icons, and technology tags.
+The portfolio presents personal information, featured projects, and contact details in a polished single-page experience. Assignment 3 enhancements focus on advanced functionality rather than redesigning the full site.
 
-## Assignment 2 Checklist
+The main addition is a live GitHub repository explorer that fetches public repositories from the GitHub API and lets visitors:
 
-The following checklist summarizes the Assignment 2 requirements implemented in this project, based on `portfolio assignment-2.md`:
+- view the 6 most recent repositories
+- filter repositories by language
+- sort repositories by recently updated, name, or stars
+- keep their selected view using `localStorage`
 
-- [x] Added a dynamic greeting that changes based on the time of day.
-- [x] Added section navigation through the main navigation links for `Home`, `About`, `Projects`, and `Contact`.
-- [x] Added show/hide behavior for interactive content, including the mobile navigation menu.
-- [x] Added live project filtering through the search input.
-- [x] Used `localStorage` to save the selected theme preference.
-- [x] Added contact form validation for `name`, `email`, `subject`, and `message`.
-- [x] Added smooth transitions, hover effects, and scroll-triggered reveal animations.
-- [x] Added an empty-state message when no projects match the search query.
+## Assignment 3 Features
+
+- **GitHub API Integration**: Loads public repositories from GitHub using the REST API.
+- **User-Friendly Error Handling**: Shows loading, empty, and error states if the API request is delayed, fails, or returns no matching repositories.
+- **Complex Logic**: Combines API data, language filtering, result limiting, and multiple sorting rules to produce different repository views from the same dataset.
+- **State Management**: Persists theme preference and GitHub explorer preferences with `localStorage`.
+- **Responsive Design**: Works across mobile and desktop layouts while preserving the existing portfolio design language.
+- **Interactive UI**: Includes GSAP-powered animation, counters, hover effects, and smooth transitions.
 
 ## Tech Stack
 
-- **HTML5**: Semantic markup and accessible page structure.
-- **Tailwind CSS v4.1.18**: Utility-first styling, transitions, and animation support.
-- **JavaScript**: Dynamic behavior for theme handling, section reveals, search, and form submission.
-- **Lucide Icons**: Consistent iconography across the interface.
-- **Font Awesome**: Social and utility icons used in the footer and contact links.
-- **GitHub Copilot**: AI-assisted support during development.
+- **HTML5** for semantic structure
+- **Tailwind CSS v4** for utility-first styling
+- **Vanilla JavaScript** for interactive behavior and API logic
+- **Vite** for development and production builds
+- **GSAP + ScrollTrigger** for animation
+- **Lucide Icons** and **Font Awesome** for iconography
 
 ## Project Structure
 
-```
-SWE363-portfolio/
-├── index.html              # Main HTML file
+```text
+SWE363-portfolio-1/
+├── index.html
 ├── css/
-│   ├── styles.css          # Custom styles and Tailwind imports
-│   └── output.css          # Compiled Tailwind CSS
+│   └── styles.css
 ├── js/
-│   └── script.js           # JavaScript functionality
+│   └── main.js
 ├── assets/
-│   └── images/             # Project images and assets
+│   ├── CV/
+│   └── images/
 ├── docs/
-│   ├── ai-usage-report.md  # Detailed AI usage documentation
-│   └── technical-documentation.md  # Technical specifications
-└── package.json            # Project dependencies and scripts
+│   ├── ai-usage-report.md
+│   └── technical-documentation.md
+├── devfiles/
+├── package.json
+└── vite.config.js
 ```
 
 ## Setup Instructions
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js 16+
 - npm
 
-### Installation
+### Run Locally
 
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/JASSIM-ALHUMAID/SWE363-portfolio.git
-   cd SWE363-portfolio
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start the development workflow**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   - Open `index.html` in your preferred browser.
-   - A local development server such as Live Server is recommended.
-
-### Build for Production
-
-To generate the production CSS bundle:
+1. Clone the repository.
 
 ```bash
-npx tailwindcss -i ./css/styles.css -o ./css/output.css --minify
+git clone <repository-url>
+cd SWE363-portfolio-1
 ```
+
+2. Install dependencies.
+
+```bash
+npm install
+```
+
+3. Start the development server.
+
+```bash
+npm run dev
+```
+
+4. Open the local Vite URL shown in the terminal.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+## GitHub API Details
+
+The live repository section fetches data from:
+
+```text
+https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
+```
+
+The page then applies client-side logic to:
+
+- build the language filter options dynamically
+- sort repositories by multiple rules
+- limit the rendered output to the 6 most relevant repositories in the current view
+- update the UI without reloading the page
 
 ## AI Usage Summary
 
-AI tools were used to support implementation, refinement, and documentation throughout the project.
+AI tools were used to support implementation, troubleshooting, and documentation. They were used as assistants for planning, refining code, and improving documentation quality rather than as a replacement for manual development.
 
-### Tools Used
+Detailed information is available in `docs/ai-usage-report.md`.
 
-- **Google Stitch**: Initial design exploration and layout ideation.
-- **AI Assistant**: Implementation support, refinement, and troubleshooting.
-- **GitHub Copilot**: Code suggestions and auto-completion.
+## Documentation
 
-For detailed AI usage information, see [docs/ai-usage-report.md](docs/ai-usage-report.md).
+- Technical details: `docs/technical-documentation.md`
+- AI usage report: `docs/ai-usage-report.md`
 
 ## Live Deployment
 
-The project is deployed at:
+- GitHub Pages: https://jassim-alhumaid.github.io/-202257400-JassimAlhumaid-assignment2/
 
-- **GitHub Pages**: (https://jassim-alhumaid.github.io/-202257400-JassimAlhumaid-assignment2/)
+## Notes
 
-## Acknowledgments
-
-- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework.
-- [Lucide](https://lucide.dev/) for the icon set used throughout the interface.
-- [GitHub Copilot](https://github.com/features/copilot) for AI-assisted development support.
-- AI tools for design guidance, documentation support, and iterative refinement.
-
----
+- The GitHub API is public, so the repository feed may be temporarily limited by GitHub rate limits.
+- If that happens, the site shows a fallback message and provides a direct link to the GitHub profile.

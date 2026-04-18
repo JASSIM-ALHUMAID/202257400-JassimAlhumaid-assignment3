@@ -576,6 +576,103 @@
         </div>
       </section>
 
+      <section
+        id="github-projects"
+        class="scroll-mt-16 w-full px-4 py-24 sm:px-6 md:scroll-mt-24"
+      >
+        <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
+          <div class="flex flex-col items-center text-center" data-reveal>
+            <div class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
+              <span class="text-sm font-bold uppercase tracking-widest text-blue">GitHub API</span>
+            </div>
+            <h2 class="mt-6 text-4xl font-bold md:text-6xl">Live Repository Feed</h2>
+            <p class="mt-5 max-w-2xl text-base leading-relaxed text-gray sm:text-lg">
+              This section loads my repositories directly from GitHub and lets visitors filter,
+              sort, and refine the results without leaving the page.
+            </p>
+          </div>
+
+          <div
+            class="github-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8"
+            data-reveal
+          >
+            <div class="github-toolbar flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.25em] text-gray">Repository Explorer</p>
+                <p class="mt-2 text-sm leading-relaxed text-gray">
+                  Filter by language, change the sort order, and browse the latest repositories from GitHub.
+                </p>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <label class="github-control-group">
+                  <span class="github-control-label">Language</span>
+                  <select
+                    class="github-control"
+                    data-github-language-filter
+                    aria-label="Filter GitHub repositories by language"
+                  >
+                    <option value="all">All languages</option>
+                  </select>
+                </label>
+
+                <label class="github-control-group">
+                  <span class="github-control-label">Sort By</span>
+                  <select
+                    class="github-control"
+                    data-github-sort
+                    aria-label="Sort GitHub repositories"
+                  >
+                    <option value="updated">Recently updated</option>
+                    <option value="name">Name</option>
+                    <option value="stars">Stars</option>
+                  </select>
+                </label>
+
+                <div class="github-control-group sm:col-span-2 xl:col-span-1">
+                  <span class="github-control-label">Status</span>
+                  <p class="github-status-text" data-github-status>
+                    Loading repositories from GitHub...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 hidden github-feedback-card" data-github-loading>
+              <p class="github-feedback-title">Loading repositories...</p>
+              <p class="github-feedback-copy">
+                Fetching the latest project data from GitHub.
+              </p>
+            </div>
+
+            <div class="mt-8 hidden github-feedback-card github-feedback-error" data-github-error>
+              <p class="github-feedback-title">GitHub data is unavailable right now.</p>
+              <p class="github-feedback-copy" data-github-error-message>
+                Please try again later or visit my GitHub profile directly.
+              </p>
+              <a
+                href="https://github.com/JASSIM-ALHUMAID"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue transition-colors hover:text-purple"
+              >
+                Visit GitHub Profile
+                <i data-lucide="arrow-up-right" width="16"></i>
+              </a>
+            </div>
+
+            <div class="mt-8 hidden github-feedback-card" data-github-empty>
+              <p class="github-feedback-title">No repositories match the current filters.</p>
+              <p class="github-feedback-copy">
+                Try another language or sort option to see more projects.
+              </p>
+            </div>
+
+            <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3" data-github-grid></div>
+          </div>
+        </div>
+      </section>
+
       <!-- Contact Section -->
       <section
         id="contact"

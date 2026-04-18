@@ -475,6 +475,231 @@ body::before {
   }
 }
 
+/* GitHub API Section */
+.github-shell {
+  background: color-mix(in srgb, var(--surface-panel-color) 88%, transparent);
+  backdrop-filter: blur(20px);
+}
+
+.github-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.github-control-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.github-control,
+.github-status-text {
+  min-height: 3.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--surface-border-color);
+  background: color-mix(in srgb, var(--surface-color) 94%, transparent);
+  color: var(--color-copy);
+  padding: 0.95rem 1.1rem;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+.github-control:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--color-blue) 60%, white 10%);
+  background: color-mix(in srgb, var(--field-focus-bg-color) 92%, transparent);
+}
+
+.github-control:hover {
+  transform: translateY(-1px);
+  border-color: var(--surface-border-strong-color);
+}
+
+.github-status-text {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: var(--color-copy);
+  line-height: 1.5;
+}
+
+.github-feedback-card {
+  border: 1px solid var(--surface-border-color);
+  background: color-mix(in srgb, var(--surface-color) 90%, transparent);
+  border-radius: 1.75rem;
+  padding: 1.5rem;
+}
+
+.github-feedback-error {
+  border-color: color-mix(in srgb, #ef4444 35%, var(--surface-border-color));
+}
+
+.github-feedback-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-copy);
+}
+
+.github-feedback-copy {
+  margin: 0.65rem 0 0;
+  color: var(--color-gray);
+  line-height: 1.65;
+}
+
+.github-card {
+  position: relative;
+  display: flex;
+  min-height: 22rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid var(--surface-border-color);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-panel-color) 88%, transparent), color-mix(in srgb, var(--surface-color) 94%, transparent));
+  padding: 1.5rem;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.github-card::before {
+  content: "";
+  position: absolute;
+  inset: -30% auto auto -10%;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--color-blue) 28%, transparent);
+  filter: blur(55px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.github-card:hover {
+  transform: translateY(-10px);
+  border-color: color-mix(in srgb, var(--color-blue) 28%, var(--surface-border-color));
+  box-shadow: 0 24px 50px -24px rgba(15, 23, 42, 0.8);
+}
+
+.github-card-topline,
+.github-card-metrics,
+.github-card-actions,
+.github-card-topics {
+  position: relative;
+  z-index: 1;
+}
+
+.github-card-topline,
+.github-card-metrics,
+.github-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.github-card-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.github-card-title {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--color-copy);
+}
+
+.github-card-description {
+  margin: 0.75rem 0 0;
+  color: var(--color-gray);
+  line-height: 1.7;
+}
+
+.github-card-badge,
+.github-topic-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.github-card-badge {
+  padding: 0.5rem 0.9rem;
+  background: color-mix(in srgb, var(--color-blue) 18%, transparent);
+  color: var(--color-blue);
+}
+
+.github-card-badge-muted {
+  background: color-mix(in srgb, var(--surface-color) 94%, transparent);
+  border-color: var(--surface-border-color);
+  color: var(--color-gray);
+}
+
+.github-card-metrics span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-copy);
+  font-size: 0.95rem;
+}
+
+.github-card-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.github-topic-pill {
+  padding: 0.45rem 0.8rem;
+  background: color-mix(in srgb, var(--surface-color) 92%, transparent);
+  border-color: var(--surface-border-color);
+  color: var(--color-gray);
+}
+
+.github-card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-purple));
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.github-card-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.github-card-link-secondary {
+  background: color-mix(in srgb, var(--surface-color) 94%, transparent);
+  color: var(--color-copy);
+  border: 1px solid var(--surface-border-color);
+}
+
+@media (max-width: 767px) {
+  .github-toolbar {
+    align-items: stretch;
+  }
+
+  .github-card {
+    min-height: auto;
+  }
+}
+
 
 
 
