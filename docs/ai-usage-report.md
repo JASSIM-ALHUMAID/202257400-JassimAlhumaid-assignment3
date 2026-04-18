@@ -10,11 +10,11 @@ AI assistance was used during Assignment 3 for:
 - identifying missing functionality such as API integration and stronger application logic
 - planning how to integrate GitHub API data into the existing featured projects section
 - refining JavaScript logic for filtering, sorting, and local state persistence
-- updating documentation so it matches the final implementation
+- refining contact form UX, hero motion, and documentation so they match the final implementation
 
-### GitHub Copilot
+### OpenCode
 
-GitHub Copilot was used for:
+OpenCode was used for:
 
 - inline suggestions while writing or refining JavaScript
 - speeding up repetitive markup and styling patterns
@@ -22,7 +22,7 @@ GitHub Copilot was used for:
 
 ### Design-Oriented AI Support
 
-AI-guided design feedback was used to preserve the visual style of the portfolio while restructuring the projects area. This was especially useful for deciding how to combine curated cards, GitHub metadata, and filter/sort controls without breaking the existing aesthetic.
+AI-guided design feedback was used to preserve the visual style of the portfolio while restructuring the projects area and polishing the contact and hero sections. This was especially useful for deciding how to combine curated cards, GitHub metadata, filter/sort controls, and small motion details without breaking the existing aesthetic.
 
 ## 2. Benefits and Challenges
 
@@ -41,6 +41,8 @@ AI-guided design feedback was used to preserve the visual style of the portfolio
 
 Because of this, all suggestions had to be checked carefully before being used.
 
+Builds and manual code review were used after changes to confirm that AI suggestions matched the actual codebase and did not introduce broken behavior.
+
 ## 3. Learning Outcomes
 
 Using AI during this assignment helped strengthen several skills:
@@ -49,6 +51,7 @@ Using AI during this assignment helped strengthen several skills:
 - designing client-side filtering and sorting logic for real data
 - managing UI state with `localStorage`
 - thinking more carefully about user feedback states such as loading, empty, and error messages
+- using CSS-based motion in a more controlled and professional way instead of adding unnecessary libraries
 - improving documentation accuracy by comparing the written description against the actual code
 
 The process also reinforced that AI is most useful when treated as a support tool rather than a source of final answers.
@@ -69,6 +72,7 @@ Examples of responsible modifications include:
 - choosing GitHub API integration because it is directly relevant to a portfolio
 - integrating GitHub metadata into curated project cards instead of treating repositories as a competing second projects section
 - using project-level filter and sort controls to satisfy the complex logic requirement in a more natural way
+- revising AI suggestions when they referenced libraries or behaviors that were not actually present in the project
 - rewriting stale documentation that still referenced Assignment 2 and outdated file names
 
 ## 5. Reflection

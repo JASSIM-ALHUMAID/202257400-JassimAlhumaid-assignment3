@@ -2,24 +2,25 @@
 
 ## 1. Project Overview
 
-This portfolio is a single-page personal website built for SWE363 Assignment 3. The project keeps the existing visual identity from the earlier assignment and adds more advanced functionality to meet the new requirements.
+This project is a single-page personal portfolio website built for SWE363 Assignment 3. It builds on an earlier portfolio and adds advanced front-end functionality to satisfy the new assignment requirements without changing the core structure of the site.
 
-The main Assignment 3 enhancement is an integrated projects explorer. Instead of separating curated projects from GitHub data, the portfolio now fetches repository information from GitHub and injects relevant metadata directly into the featured project cards. Visitors can filter and sort the project grid while the application stores their preferences locally.
+The main Assignment 3 enhancement is a GitHub-powered projects section. Instead of showing only static project cards, the portfolio fetches live repository data from GitHub and merges that data into curated featured projects. The site also includes client-side filtering and sorting, state persistence, form validation, and a dynamic graduation countdown.
 
 ## 2. Technology Stack
 
-- **HTML5**: Semantic page structure and form markup.
-- **Tailwind CSS v4**: Core layout, spacing, color, and responsive styling.
-- **Custom CSS**: Additional component styling for project cards, metadata rows, and themed UI controls.
-- **Vanilla JavaScript**: API integration, state management, form handling, and UI updates.
-- **Vite**: Development server and production bundling.
-- **GSAP + ScrollTrigger**: Hero animation, section reveal effects, counters, and parallax blobs.
-- **Lucide + Font Awesome**: Icons used throughout the interface.
+- **HTML5**: Semantic document structure, sections, lists, forms, and accessible attributes.
+- **Tailwind CSS v4**: Utility-first layout, spacing, typography, responsiveness, and visual styling.
+- **Custom CSS**: Component styling, hover states, transitions, hero motion, project cards, and theme-sensitive UI behavior.
+- **Vanilla JavaScript**: API requests, state management, countdown logic, contact validation, DOM updates, and interaction logic.
+- **Vite**: Development server, asset handling, and production bundling.
+- **Lucide Icons**: General UI icons rendered into inline SVG.
+- **Local SVG brand assets**: Official GitHub and LinkedIn icons used in the footer.
 
 ## 3. Project Structure
 
 ```text
 SWE363-portfolio-1/
+├── README.md
 ├── index.html
 ├── css/
 │   └── styles.css
@@ -32,6 +33,7 @@ SWE363-portfolio-1/
 │   ├── ai-usage-report.md
 │   └── technical-documentation.md
 ├── package.json
+├── portfolio assignment-3.md
 └── vite.config.js
 ```
 
@@ -43,130 +45,193 @@ SWE363-portfolio-1/
 npm install
 ```
 
-2. Start the local development server:
+2. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-3. Build the production version:
+3. Build the production bundle:
 
 ```bash
 npm run build
+```
+
+4. Preview the production build locally if needed:
+
+```bash
+npm run preview
 ```
 
 ## 5. Assignment 3 Requirements Mapping
 
 ### API Integration
 
-The site connects to the GitHub REST API using a `fetch` request in `js/main.js`.
+The site integrates with the GitHub REST API to fetch public repository data related to the portfolio owner.
 
-Endpoint used:
+Primary endpoint:
 
 ```text
 https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
 ```
 
-The application:
+The application uses fetched data to:
 
-- requests repository data from GitHub
-- handles non-success responses
-- shows loading, error, and empty states
-- maps repository metadata into the featured project cards
+- match repositories to curated project cards
+- display repository descriptions
+- display star counts
+- display repository activity dates
+- support GitHub-aware sorting and metadata updates
+
+GitHub commit metadata is requested only for matched repositories to avoid unnecessary requests.
 
 ### Complex Logic
 
-The projects explorer demonstrates multi-step client-side logic by combining:
+The portfolio demonstrates multi-step client-side logic in several places:
 
-- filtering by technology stack
-- multiple sorting options
-- GitHub-based ranking using stars and recent activity
+1. **Projects explorer**
+- filters projects by selected technology
+- sorts projects by recent activity, stars, or name
+- combines static portfolio data with live GitHub data
+- updates visible cards without reloading the page
 
-This creates a more advanced interaction than a simple one-click action because the visible order and contents of the project grid change based on several active conditions.
+2. **Contact form**
+- trims user input
+- checks required fields
+- validates email format
+- prevents submission if validation fails
+- opens a prefilled `mailto:` draft only after validation passes
+
+3. **Graduation countdown**
+- calculates remaining time until the target date in May 2027
+- updates the display dynamically
+- switches to `Graduated` after the target date passes
 
 ### State Management
 
-The project stores interface preferences in `localStorage`.
+The project manages and persists interface state with `localStorage`.
 
-- `portfolio-theme` stores the selected light or dark theme.
-- `portfolio-project-preferences` stores the chosen project filter and sort option.
+- `portfolio-theme` stores the selected theme
+- `portfolio-project-preferences` stores filter, sort, and search state
+- `portfolio-project-github-cache-v1` stores cached GitHub metadata and commit counts
 
-This allows the portfolio to restore the user’s last selected view when they revisit or refresh the page.
+This allows the site to restore theme and project preferences between visits while also reducing repeated API work.
 
-### Performance and UX
+### Performance
 
-The site keeps the new feature lightweight by using one repository request and targeted commit-count requests only for matched projects. Existing animations remain intact, and the integrated project explorer uses clear UI feedback states so visitors understand what is happening.
+Performance-related decisions in the project include:
 
-The current implementation also avoids full-page reloads for filter and sort interactions.
+- using optimized `.webp` project images
+- caching GitHub responses in `localStorage`
+- fetching commit counts only for matched featured repositories
+- updating project cards in-place instead of reloading the page
+- bundling and optimizing assets through Vite
 
 ## 6. Main JavaScript Responsibilities
 
-`js/main.js` contains the application logic.
+`js/main.js` contains the main application logic.
 
 ### Theme Management
 
-- applies the saved theme or system preference
-- toggles theme icon visibility
-- animates background color transitions with GSAP
+- applies saved theme or system preference
+- toggles theme icons
+- stores theme choice in `localStorage`
 
-### Portfolio Interactions
+### Hero Section Interactions
 
-- dynamic greeting based on current time
-- mobile navigation menu toggle
-- hero animation sequence
-- section reveal animations
-- parallax background blob motion
-- animated counters in the About section
+- renders greeting text based on current time
+- triggers CSS-based staged hero entrance motion
+- calculates and updates graduation countdown
+
+### Navigation and Layout Interactions
+
+- toggles mobile navigation menu
+- tracks active navigation section with `IntersectionObserver`
+- expands and collapses content sections
+
+### Contact Form
+
+- reads and trims form values
+- validates name, email, and message
+- builds a subject and body for the mail draft
+- updates feedback text when validation fails or succeeds
 
 ### Project Explorer Module
 
-The projects logic in `main.js` performs these steps:
+The project explorer follows this flow:
 
-1. Read saved project preferences from `localStorage`.
-2. Fetch repository data from GitHub.
-3. Match GitHub repositories to curated featured projects.
-4. Fetch commit counts only for matched repositories.
-5. Filter and sort the project cards based on the selected controls.
-6. Render GitHub metadata into each project card.
-7. Persist updated preferences after each interaction.
-8. Show friendly fallback feedback if the API request fails.
+1. Load saved project preferences.
+2. Render the current UI state.
+3. Hydrate cached GitHub data if available.
+4. Fetch fresh repository data from GitHub.
+5. Match repositories to curated cards.
+6. Fetch commit counts for matched repositories.
+7. Render metadata into cards.
+8. Save the updated cache.
+9. Re-render results when search, filter, or sort changes.
 
-## 7. Project Card Metadata
+## 7. API Data Flow
 
-Each featured project card may display:
+The GitHub integration uses two main steps:
 
-- repository link
-- star count
-- commit count
-- last commit date
+1. Fetch the public repositories list.
+2. Fetch commit metadata only for repositories that match the featured projects.
 
-## 8. Styling Notes
+This keeps the portfolio dynamic while staying lightweight enough for a front-end-only project.
 
-The project uses Tailwind for most layout and spacing, while `css/styles.css` includes custom component styling for:
+## 8. UI Feedback States
 
-- animated project cards
-- stat cards and value cards
-- project explorer controls
-- project feedback states
-- project metadata rows
+The projects section includes explicit feedback states to make the API integration user-friendly.
+
+- **Loading state**: indicates that GitHub metadata is being fetched.
+- **Error state**: explains that repository insights are temporarily unavailable.
+- **Empty state**: explains when no projects match the current filter or search.
+
+These states help satisfy the assignment requirement for proper API error handling.
+
+## 9. Styling Notes
+
+The project uses Tailwind for most structure and spacing, while `css/styles.css` contains custom rules for:
+
+- project card shells and metadata rows
+- custom project filter and sort controls
 - theme-sensitive surface colors
-
-## 9. Error Handling
-
-GitHub API failures are handled in the UI instead of silently failing.
-
-Examples:
-
-- rate-limit or request failure shows a friendly error message
-- empty filter results show a helpful empty-state card
-- loading state informs the visitor that data is being fetched
+- hero stagger animations and scroll cue motion
+- graduation countdown card
+- section collapse transitions
+- contact feedback styling
 
 ## 10. Contact Flow
 
-The contact form uses client-side validation plus a `mailto:` flow. When submitted, JavaScript trims the input, validates required fields, includes optional subject field, builds prefilled draft addressed to `jassim.m.alhumaid@gmail.com`, and opens it in the visitor's default mail client.
+The contact section uses a validated `mailto:` workflow rather than a backend form handler.
 
-The section stays intentionally minimal: fields for name, email, subject, and message, followed by single submit action. Subject is passed through mail subject line, while body includes sender name, sender email, and message content for clearer professional context.
+Form fields:
+
+- Name
+- Email
+- Subject
+- Message
+
+Behavior:
+
+- validates required fields before submission
+- validates email format on the client side
+- uses the subject field in the email subject line
+- includes sender name, sender email, and message content in the generated draft body
+
+This keeps the feature lightweight while still demonstrating more advanced form logic.
 
 ## 11. Maintainability Notes
 
-The Assignment 3 changes were added without restructuring the entire portfolio. This keeps the implementation small and easier to follow while still introducing advanced functionality in a focused way.
+The Assignment 3 enhancements were added by extending the existing portfolio instead of rebuilding it. This approach kept the codebase small and focused while still meeting the assignment requirements through:
+
+- reusable state helpers
+- centralized project rendering logic
+- clear UI feedback blocks
+- compact feature additions such as the graduation countdown
+
+## 12. Known Constraints
+
+- GitHub API requests may be rate-limited.
+- The site remains functional when live GitHub data cannot be fetched.
+- The contact form depends on the visitor having access to a mail client because it uses `mailto:` rather than a backend endpoint.
