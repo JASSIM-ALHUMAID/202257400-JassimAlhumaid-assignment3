@@ -103,29 +103,29 @@
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --color-primary: #f2f4f8;
-  --color-blob: #d4ddf8;
-  --color-foreground: #435066;
-  --color-gray: #5a6680;
-  --color-copy: #0f172a;
-  --surface-color: rgba(247, 249, 253, 0.74);
-  --surface-panel-color: rgba(244, 247, 252, 0.84);
-  --surface-hover-color: rgba(250, 252, 255, 0.92);
-  --surface-strong-color: rgba(241, 244, 250, 0.94);
-  --surface-border-color: rgba(99, 102, 241, 0.16);
-  --surface-border-subtle-color: rgba(15, 23, 42, 0.08);
-  --surface-border-strong-color: rgba(99, 102, 241, 0.26);
-  --shell-bg-color: rgba(242, 244, 248, 0.92);
-  --footer-bg-color: rgba(235, 239, 247, 0.92);
-  --field-focus-bg-color: rgba(250, 252, 255, 0.96);
+  --color-primary: #eef1f5;
+  --color-blob: #c8d2eb;
+  --color-foreground: #425066;
+  --color-gray: #58657c;
+  --color-copy: #101828;
+  --surface-color: rgba(242, 245, 249, 0.78);
+  --surface-panel-color: rgba(237, 241, 246, 0.9);
+  --surface-hover-color: rgba(246, 248, 252, 0.94);
+  --surface-strong-color: rgba(233, 237, 243, 0.96);
+  --surface-border-color: rgba(71, 85, 105, 0.14);
+  --surface-border-subtle-color: rgba(15, 23, 42, 0.07);
+  --surface-border-strong-color: rgba(79, 70, 229, 0.2);
+  --shell-bg-color: rgba(235, 239, 244, 0.94);
+  --footer-bg-color: rgba(228, 233, 240, 0.94);
+  --field-focus-bg-color: rgba(248, 250, 253, 0.97);
 }
 
 :root[data-theme="light"] body {
   background:
-    radial-gradient(circle at top left, rgba(129, 140, 248, 0.13), transparent 30%),
-    radial-gradient(circle at 85% 18%, rgba(244, 114, 182, 0.11), transparent 26%),
-    radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.08), transparent 32%),
-    linear-gradient(180deg, #f6f7fb 0%, #f2f4f8 38%, #edf1f7 100%);
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.08), transparent 32%),
+    radial-gradient(circle at 85% 18%, rgba(148, 163, 184, 0.08), transparent 28%),
+    radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.05), transparent 34%),
+    linear-gradient(180deg, #f4f6f9 0%, #eef1f5 38%, #e7ebf1 100%);
 }
 
 body {
@@ -214,6 +214,35 @@ body::before {
 
 .hero-scroll-cue {
   opacity: 0.72;
+}
+
+.footer-brand-icon {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+.footer-brand-icon--github {
+  mask-image: url("../assets/images/github.svg");
+  -webkit-mask-image: url("../assets/images/github.svg");
+}
+
+.footer-brand-icon--linkedin {
+  mask-image: url("../assets/images/linkedin-brand.svg");
+  -webkit-mask-image: url("../assets/images/linkedin-brand.svg");
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .motion-safe .hero-scroll-cue,
@@ -345,21 +374,21 @@ textarea:focus-visible {
 
 :root[data-theme="light"] .hero-section::before {
   background:
-    radial-gradient(circle at 50% 24%, rgba(248, 250, 254, 0.84), transparent 32%),
-    linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.04) 45%, transparent 72%);
+    radial-gradient(circle at 50% 24%, rgba(248, 250, 253, 0.72), transparent 34%),
+    linear-gradient(135deg, rgba(79, 70, 229, 0.055), rgba(148, 163, 184, 0.04) 45%, transparent 72%);
 }
 
 :root[data-theme="light"] .about-section::before {
   background:
-    radial-gradient(circle at 16% 22%, rgba(129, 140, 248, 0.18), transparent 24%),
-    radial-gradient(circle at 88% 68%, rgba(244, 114, 182, 0.12), transparent 22%);
+    radial-gradient(circle at 16% 22%, rgba(99, 102, 241, 0.13), transparent 25%),
+    radial-gradient(circle at 88% 68%, rgba(148, 163, 184, 0.09), transparent 23%);
 }
 
 :root[data-theme="light"] .projects-section::before {
   inset: -5rem 0;
   background:
-    linear-gradient(135deg, rgba(99, 102, 241, 0.11), transparent 40%),
-    radial-gradient(circle at 78% 18%, rgba(56, 189, 248, 0.15), transparent 22%);
+    linear-gradient(135deg, rgba(79, 70, 229, 0.075), transparent 42%),
+    radial-gradient(circle at 78% 18%, rgba(56, 189, 248, 0.09), transparent 24%);
   -webkit-mask-image: linear-gradient(
     180deg,
     transparent 0%,
@@ -381,49 +410,68 @@ textarea:focus-visible {
 }
 
 :root[data-theme="light"] .contact-section::before {
+  inset: -5rem 0;
   background:
-    radial-gradient(circle at 18% 72%, rgba(34, 197, 94, 0.18), transparent 26%),
-    radial-gradient(circle at 86% 18%, rgba(99, 102, 241, 0.14), transparent 22%);
+    radial-gradient(circle at 18% 72%, rgba(71, 85, 105, 0.1), transparent 28%),
+    radial-gradient(circle at 86% 18%, rgba(79, 70, 229, 0.1), transparent 24%);
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.95) 12%,
+    rgba(0, 0, 0, 0.95) 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.95) 12%,
+    rgba(0, 0, 0, 0.95) 88%,
+    transparent 100%
+  );
+}
+
+:root[data-theme="light"] .section-ambient--contact {
+  inset: -4rem 0;
 }
 
 :root[data-theme="light"] .ambient-orb--hero-primary {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.22);
 }
 
 :root[data-theme="light"] .ambient-orb--hero-secondary {
-  background: rgba(217, 70, 239, 0.24);
+  background: rgba(148, 163, 184, 0.16);
 }
 
 :root[data-theme="light"] .ambient-orb--hero-tertiary {
-  background: rgba(56, 189, 248, 0.24);
+  background: rgba(96, 165, 250, 0.16);
 }
 
 :root[data-theme="light"] .ambient-orb--hero-quaternary {
-  background: rgba(244, 114, 182, 0.2);
+  background: rgba(129, 140, 248, 0.12);
 }
 
 :root[data-theme="light"] .ambient-orb--about-left {
-  background: rgba(99, 102, 241, 0.24);
+  background: rgba(99, 102, 241, 0.18);
 }
 
 :root[data-theme="light"] .ambient-orb--about-right {
-  background: rgba(244, 114, 182, 0.18);
+  background: rgba(148, 163, 184, 0.13);
 }
 
 :root[data-theme="light"] .ambient-orb--projects-top {
-  background: rgba(129, 140, 248, 0.24);
+  background: rgba(99, 102, 241, 0.18);
 }
 
 :root[data-theme="light"] .ambient-orb--projects-bottom {
-  background: rgba(56, 189, 248, 0.18);
+  background: rgba(56, 189, 248, 0.13);
 }
 
 :root[data-theme="light"] .ambient-orb--contact-left {
-  background: rgba(34, 197, 94, 0.2);
+  background: rgba(100, 116, 139, 0.13);
 }
 
 :root[data-theme="light"] .ambient-orb--contact-right {
-  background: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.16);
 }
 
 .section-toggle-pill {
@@ -555,13 +603,13 @@ textarea:focus-visible {
 }
 
 :root[data-theme="light"] .section-toggle-pill {
-  border-color: rgba(99, 102, 241, 0.18);
-  background: linear-gradient(180deg, rgba(247, 249, 253, 0.92), rgba(239, 243, 250, 0.76));
-  box-shadow: 0 10px 30px -20px rgba(79, 70, 229, 0.28);
+  border-color: rgba(71, 85, 105, 0.12);
+  background: linear-gradient(180deg, rgba(243, 246, 250, 0.94), rgba(233, 238, 244, 0.82));
+  box-shadow: 0 16px 32px -28px rgba(15, 23, 42, 0.22);
 }
 
 :root[data-theme="light"] .section-toggle-pill:hover {
-  background: linear-gradient(180deg, rgba(250, 252, 255, 0.94), rgba(242, 246, 252, 0.82));
+  background: linear-gradient(180deg, rgba(247, 249, 252, 0.96), rgba(237, 242, 247, 0.86));
 }
 
 :root[data-theme="light"] .theme-panel,
@@ -578,9 +626,9 @@ textarea:focus-visible {
 :root[data-theme="light"] #about-content .rounded-\[2\.5rem\],
 :root[data-theme="light"] #about-content .rounded-\[2rem\] {
   box-shadow:
-    0 24px 60px -36px rgba(15, 23, 42, 0.18),
-    0 14px 34px -26px rgba(99, 102, 241, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.52);
+    0 28px 60px -42px rgba(15, 23, 42, 0.24),
+    0 12px 28px -24px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
 }
 
 :root[data-theme="light"] .value-card,
@@ -600,24 +648,24 @@ textarea:focus-visible {
   position: absolute;
   inset: 1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 42%, rgba(99, 102, 241, 0.035));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 44%, rgba(99, 102, 241, 0.025));
   pointer-events: none;
 }
 
 :root[data-theme="light"] .project-shell {
-  background: linear-gradient(180deg, rgba(245, 247, 252, 0.88), rgba(237, 241, 248, 0.76));
-  border-color: rgba(99, 102, 241, 0.14);
+  background: linear-gradient(180deg, rgba(240, 244, 248, 0.9), rgba(231, 236, 243, 0.82));
+  border-color: rgba(71, 85, 105, 0.12);
 }
 
 :root[data-theme="light"] .project-control,
 :root[data-theme="light"] .project-link-button,
 :root[data-theme="light"] .project-meta-item,
 :root[data-theme="light"] .contact-feedback {
-  background: linear-gradient(180deg, rgba(247, 249, 253, 0.9), rgba(239, 243, 250, 0.76));
+  background: linear-gradient(180deg, rgba(242, 245, 249, 0.92), rgba(233, 237, 243, 0.8));
 }
 
 :root[data-theme="light"] [data-project-card] {
-  background-image: linear-gradient(180deg, rgba(247, 249, 253, 0.94), rgba(238, 242, 249, 0.84));
+  background-image: linear-gradient(180deg, rgba(242, 245, 249, 0.94), rgba(233, 238, 244, 0.86));
 }
 
 :root[data-theme="light"] .value-card::before {
@@ -633,7 +681,7 @@ textarea:focus-visible {
 }
 
 :root[data-theme="light"] footer {
-  background: linear-gradient(180deg, rgba(242, 244, 248, 0), rgba(232, 237, 246, 0.76));
+  background: linear-gradient(180deg, rgba(238, 241, 246, 0), rgba(225, 230, 237, 0.82));
 }
 
 /* Horizontal Projects Scroll */
@@ -728,12 +776,12 @@ textarea:focus-visible {
 }
 
 [data-theme="light"] [data-project-card] {
-  background-color: rgba(245, 247, 252, 0.9);
-  border-color: rgba(15, 23, 42, 0.09);
+  background-color: rgba(241, 244, 248, 0.92);
+  border-color: rgba(15, 23, 42, 0.08);
 }
 
 [data-theme="light"] [data-project-card]:hover {
-  background-color: rgba(249, 251, 255, 0.96);
+  background-color: rgba(245, 247, 251, 0.96);
   border-color: var(--card-accent, var(--color-blue));
   box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12),
               0 0 30px -8px color-mix(in srgb, var(--card-accent, var(--color-blue)) 40%, transparent);
