@@ -1106,6 +1106,24 @@ textarea:focus-visible {
   border: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
 }
 
+.project-tech-pill--java {
+  background-color: color-mix(in srgb, #f89820 16%, transparent);
+  color: #ffb14a;
+  border-color: color-mix(in srgb, #f89820 30%, transparent);
+}
+
+.project-tech-pill--javafx {
+  background-color: color-mix(in srgb, #4aa3ff 16%, transparent);
+  color: #7fc0ff;
+  border-color: color-mix(in srgb, #4aa3ff 30%, transparent);
+}
+
+.project-tech-pill--excel {
+  background-color: color-mix(in srgb, #21a366 16%, transparent);
+  color: #63d89a;
+  border-color: color-mix(in srgb, #21a366 30%, transparent);
+}
+
 [data-project-card]:hover .project-tech-pill {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px -4px var(--card-accent);

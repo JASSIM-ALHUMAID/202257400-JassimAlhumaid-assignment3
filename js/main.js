@@ -2,7 +2,7 @@ import "../css/styles.css";
 
 const THEME_STORAGE_KEY = "portfolio-theme";
 const PROJECT_PREFERENCES_KEY = "portfolio-project-preferences";
-const PROJECT_GITHUB_CACHE_KEY = "portfolio-project-github-cache-v1";
+const PROJECT_GITHUB_CACHE_KEY = "portfolio-project-github-cache-v2";
 const PROJECT_GITHUB_CACHE_TTL = 1000 * 60 * 60;
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 const GITHUB_USERNAME = "JASSIM-ALHUMAID";
@@ -42,7 +42,11 @@ const ICONS = {
 const PROJECT_REPO_MAP = {
   portfolio: ["SWE363-portfolio-1", "swe363-portfolio", "portfolio"],
   "training-application-tracker": ["Training-Application-Tracker", "training-application-tracker", "application-tracker"],
-  "task-manager": ["task-manager", "taskmanager"],
+  "campus-route-visualizer": [
+    "KFUPM-Campus-Route-Visualizer",
+    "campus-route-visualizer",
+    "route-visualizer",
+  ],
   "swe363-project": ["SWE363-project", "swe363project", "project"],
 };
 

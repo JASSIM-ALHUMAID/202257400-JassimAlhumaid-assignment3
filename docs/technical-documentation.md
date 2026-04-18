@@ -88,7 +88,7 @@ SWE363-portfolio-1/
   https://api.github.com/users/JASSIM-ALHUMAID/repos?per_page=100&sort=updated
   ```
 
-- The fetched data is matched to curated cards such as `Portfolio Website`, `Task Manager`, and the other featured projects already shown in the UI.
+- The fetched data is matched to curated cards such as `Portfolio Website`, `KFUPM Campus Route Visualizer`, and the other featured projects already shown in the UI.
 - Additional commit metadata is fetched only for matched repositories.
 - Live GitHub data is used to display descriptions, star counts, and recent activity.
 
