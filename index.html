@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SWE363 Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
     <script>
       (function () {
         document.documentElement.classList.add("js");
@@ -33,13 +36,18 @@
       class="flex min-h-screen w-full flex-col items-center bg-primary text-copy overflow-x-hidden"
     >
       <!-- Nav Bar -->
-      <nav id="site-nav" class="fixed inset-x-0 top-6 z-50 flex justify-center px-4 transition-all duration-500">
+      <nav
+        id="site-nav"
+        class="fixed inset-x-0 top-6 z-50 flex justify-center px-4 transition-all duration-500"
+      >
         <div
           class="mx-auto flex w-full max-w-fit items-center rounded-full border border-white/10 bg-primary/80 px-6 py-2 shadow-2xl shadow-black/40 backdrop-blur-xl motion-safe:animate-fade-down"
         >
           <!-- Mobile view toggle/menu -->
           <div class="flex items-center gap-4 md:hidden">
-            <a href="#home" class="text-sm font-bold tracking-widest uppercase">JA</a>
+            <a href="#home" class="text-sm font-bold tracking-widest uppercase"
+              >JA</a
+            >
             <button
               id="mobile-menu-button"
               class="text-copy"
@@ -50,11 +58,27 @@
           </div>
 
           <!-- Desktop Links -->
-          <ul class="nav-links hidden items-center gap-8 text-sm font-bold tracking-wide uppercase md:flex">
-            <li><a href="#home" class="hover:text-blue transition-colors">Home</a></li>
-            <li><a href="#about" class="hover:text-blue transition-colors">About</a></li>
-            <li><a href="#projects" class="hover:text-blue transition-colors">Projects</a></li>
-            <li><a href="#contact" class="hover:text-blue transition-colors">Contact</a></li>
+          <ul
+            class="nav-links hidden items-center gap-8 text-sm font-bold tracking-wide uppercase md:flex"
+          >
+            <li>
+              <a href="#home" class="hover:text-blue transition-colors">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="hover:text-blue transition-colors"
+                >About</a
+              >
+            </li>
+            <li>
+              <a href="#projects" class="hover:text-blue transition-colors"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-blue transition-colors"
+                >Contact</a
+              >
+            </li>
           </ul>
 
           <div class="ml-8 hidden h-4 w-px bg-white/10 md:block"></div>
@@ -65,14 +89,23 @@
             class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-copy transition-all hover:bg-white/10"
             data-theme-toggle
           >
-            <span data-theme-icon="sun" class="flex"><i class="fa-solid fa-sun text-sm"></i></span>
-            <span data-theme-icon="moon" class="hidden"><i class="fa-solid fa-moon text-sm"></i></span>
+            <span data-theme-icon="sun" class="flex"
+              ><i class="fa-solid fa-sun text-sm"></i
+            ></span>
+            <span data-theme-icon="moon" class="hidden"
+              ><i class="fa-solid fa-moon text-sm"></i
+            ></span>
           </button>
         </div>
 
         <!-- Mobile Menu Portal (simplified for now) -->
-        <div id="mobile-menu" class="hidden absolute top-16 inset-x-4 rounded-3xl border border-white/10 bg-primary/95 p-6 backdrop-blur-2xl shadow-2xl md:hidden">
-          <ul class="flex flex-col gap-4 text-center text-sm font-bold uppercase tracking-widest">
+        <div
+          id="mobile-menu"
+          class="hidden absolute top-16 inset-x-4 rounded-3xl border border-white/10 bg-primary/95 p-6 backdrop-blur-2xl shadow-2xl md:hidden"
+        >
+          <ul
+            class="flex flex-col gap-4 text-center text-sm font-bold uppercase tracking-widest"
+          >
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -89,14 +122,25 @@
         >
           <!-- background blobs -->
           <div class="absolute inset-0 z-[-1] overflow-hidden">
-            <div class="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue/20 blur-[100px] motion-safe:animate-blob-drift"></div>
-            <div class="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-purple/20 blur-[100px] motion-safe:animate-blob-drift" style="animation-delay: -5s;"></div>
+            <div
+              class="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue/20 blur-[100px] motion-safe:animate-blob-drift"
+            ></div>
+            <div
+              class="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-purple/20 blur-[100px] motion-safe:animate-blob-drift"
+              style="animation-delay: -5s"
+            ></div>
           </div>
 
-          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-bold uppercase tracking-[0.2em] text-blue motion-safe:animate-fade-up">
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-bold uppercase tracking-[0.2em] text-blue motion-safe:animate-fade-up"
+          >
             <span class="relative flex h-2 w-2">
-              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue opacity-75"></span>
-              <span class="relative inline-flex h-2 w-2 rounded-full bg-blue"></span>
+              <span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex h-2 w-2 rounded-full bg-blue"
+              ></span>
             </span>
             Available for new opportunities
           </div>
@@ -104,8 +148,13 @@
           <div
             class="flex flex-col items-center gap-4 motion-safe:animate-fade-up"
           >
-            <h1 class="text-sm font-bold uppercase tracking-[0.3em] text-gray" id="welcome-message"></h1>
-            <h2 class="text-5xl font-extrabold tracking-tight sm:text-7xl md:text-8xl">
+            <h1
+              class="text-sm font-bold uppercase tracking-[0.3em] text-gray"
+              id="welcome-message"
+            ></h1>
+            <h2
+              class="text-5xl font-extrabold tracking-tight sm:text-7xl md:text-8xl"
+            >
               I'm <span class="liner-gradient-bg">Jassim</span>
             </h2>
           </div>
@@ -113,9 +162,10 @@
           <p
             class="max-w-xl px-2 text-base leading-relaxed text-gray motion-safe:animate-fade-up motion-safe:[animation-delay:200ms] sm:text-lg"
           >
-            A Junior Software Engineering student at <span class="text-copy font-semibold">KFUPM</span>, 
-            crafting high-performance digital experiences with a focus on 
-            clean architecture and intuitive design.
+            A Junior Software Engineering student at
+            <span class="text-copy font-semibold">KFUPM</span>, crafting
+            high-performance digital experiences with a focus on clean
+            architecture and intuitive design.
           </p>
 
           <div
@@ -129,9 +179,11 @@
             >
               <span>Download CV</span>
               <i data-lucide="arrow-down-to-line" width="18"></i>
-              <div class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"></div>
+              <div
+                class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"
+              ></div>
             </a>
-            
+
             <a
               class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 font-bold text-copy transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
               href="#projects"
@@ -140,7 +192,9 @@
             </a>
           </div>
 
-          <div class="absolute bottom-12 left-1/2 -translate-x-1/2 motion-safe:animate-bounce">
+          <div
+            class="absolute bottom-12 left-1/2 -translate-x-1/2 motion-safe:animate-bounce"
+          >
             <i data-lucide="chevron-down" class="text-gray" width="24"></i>
           </div>
         </section>
@@ -151,25 +205,32 @@
           class="scroll-mt-16 flex w-full flex-col items-center px-4 py-24 sm:px-6 md:scroll-mt-24"
         >
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
-            <div class="mb-6 rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
-              <span class="text-sm font-bold uppercase tracking-widest text-purple">About Me</span>
+            <div
+              class="mb-6 rounded-full border border-white/10 bg-white/5 px-4 py-1.5"
+            >
+              <span
+                class="text-sm font-bold uppercase tracking-widest text-purple"
+                >About Me</span
+              >
             </div>
             <h2 class="text-4xl font-bold md:text-6xl">The Story So Far</h2>
           </div>
 
           <div class="flex w-full max-w-6xl flex-col gap-6">
-            
             <!-- Top Row: Profile + Stats + Bio -->
             <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12">
-              
               <!-- Profile Avatar -->
               <div
                 class="group relative flex flex-col items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 lg:col-span-3"
                 data-reveal
               >
                 <div class="avatar-container mb-6">
-                  <div class="avatar-ring relative h-40 w-40 rounded-full bg-gradient-to-br from-blue to-purple p-1">
-                    <div class="flex h-full w-full items-center justify-center rounded-full bg-primary text-4xl font-bold liner-gradient-bg">
+                  <div
+                    class="avatar-ring relative h-40 w-40 rounded-full bg-gradient-to-br from-blue to-purple p-1"
+                  >
+                    <div
+                      class="flex h-full w-full items-center justify-center rounded-full bg-primary text-4xl font-bold liner-gradient-bg"
+                    >
                       JA
                     </div>
                   </div>
@@ -186,23 +247,64 @@
 
               <!-- Stats + Bio Container -->
               <div class="flex flex-col gap-6 lg:col-span-9">
-                
                 <!-- Stats Row -->
                 <div class="grid grid-cols-3 gap-4" data-reveal>
-                  <div class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default" data-stat data-target="5" data-suffix="+">
-                    <i data-lucide="folder-code" class="mb-4 text-blue" width="32"></i>
-                    <span class="stat-number text-5xl font-bold" data-count>0</span>
-                    <span class="text-sm mt-3 font-bold uppercase tracking-widest text-gray">Projects</span>
+                  <div
+                    class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default"
+                    data-stat
+                    data-target="5"
+                    data-suffix="+"
+                  >
+                    <i
+                      data-lucide="folder-code"
+                      class="mb-4 text-blue"
+                      width="32"
+                    ></i>
+                    <span class="stat-number text-5xl font-bold" data-count
+                      >0</span
+                    >
+                    <span
+                      class="text-sm mt-3 font-bold uppercase tracking-widest text-gray"
+                      >Projects</span
+                    >
                   </div>
-                  <div class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default" data-stat data-target="250" data-suffix="+">
-                    <i data-lucide="git-branch" class="mb-4 text-purple" width="32"></i>
-                    <span class="stat-number text-5xl font-bold" data-count>0</span>
-                    <span class="text-sm mt-3 font-bold uppercase tracking-widest text-gray">Commits</span>
+                  <div
+                    class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default"
+                    data-stat
+                    data-target="250"
+                    data-suffix="+"
+                  >
+                    <i
+                      data-lucide="git-branch"
+                      class="mb-4 text-purple"
+                      width="32"
+                    ></i>
+                    <span class="stat-number text-5xl font-bold" data-count
+                      >0</span
+                    >
+                    <span
+                      class="text-sm mt-3 font-bold uppercase tracking-widest text-gray"
+                      >Commits</span
+                    >
                   </div>
-                  <div class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default" data-stat data-target="10" data-suffix="+">
-                    <i data-lucide="star" class="mb-4 text-green-400" width="32"></i>
-                    <span class="stat-number text-5xl font-bold" data-count>0</span>
-                    <span class="text-sm mt-3 font-bold uppercase tracking-widest text-gray">Repositories</span>
+                  <div
+                    class="stat-card group relative flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 cursor-default"
+                    data-stat
+                    data-target="10"
+                    data-suffix="+"
+                  >
+                    <i
+                      data-lucide="star"
+                      class="mb-4 text-green-400"
+                      width="32"
+                    ></i>
+                    <span class="stat-number text-5xl font-bold" data-count
+                      >0</span
+                    >
+                    <span
+                      class="text-sm mt-3 font-bold uppercase tracking-widest text-gray"
+                      >Repositories</span
+                    >
                   </div>
                 </div>
 
@@ -213,18 +315,35 @@
                 >
                   <div class="flex h-full flex-col justify-between gap-6">
                     <div>
-                      <h3 class="mb-4 text-2xl font-bold">Building digital experiences that matter.</h3>
+                      <h3 class="mb-4 text-2xl font-bold">
+                        Building digital experiences that matter.
+                      </h3>
                       <p class="leading-relaxed text-gray">
-                        I'm a junior Software Engineering student at KFUPM with a passion for crafting performant web applications. 
-                        My stack centers around React and Next.js, where I focus on building scalable solutions with clean architecture. 
-                        I believe great software is invisible—it just works, beautifully.
+                        I'm a junior Software Engineering student at KFUPM with
+                        a passion for crafting performant web applications. My
+                        stack centers around React and Next.js, where I focus on
+                        building scalable solutions with clean architecture. I
+                        believe great software is invisible—it just works,
+                        beautifully.
                       </p>
                     </div>
                     <div class="flex flex-wrap gap-3">
-                      <span class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue">React</span>
-                      <span class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue">Next.js</span>
-                      <span class="rounded-full bg-purple/10 px-4 py-1.5 text-sm font-bold text-purple">TypeScript</span>
-                      <span class="rounded-full bg-green-500/10 px-4 py-1.5 text-sm font-bold text-green-400">Tailwind</span>
+                      <span
+                        class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue"
+                        >React</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-4 py-1.5 text-sm font-bold text-blue"
+                        >Next.js</span
+                      >
+                      <span
+                        class="rounded-full bg-purple/10 px-4 py-1.5 text-sm font-bold text-purple"
+                        >TypeScript</span
+                      >
+                      <span
+                        class="rounded-full bg-green-500/10 px-4 py-1.5 text-sm font-bold text-green-400"
+                        >Tailwind</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -233,56 +352,147 @@
 
             <!-- Bottom Row: Skills + Values + Education -->
             <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12">
-              
               <!-- Tech Stack Section -->
               <div
                 class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 lg:col-span-5"
                 data-reveal
               >
-                <h4 class="mb-6 text-sm font-bold uppercase tracking-widest text-gray">Tech Stack</h4>
+                <h4
+                  class="mb-6 text-sm font-bold uppercase tracking-widest text-gray"
+                >
+                  Tech Stack
+                </h4>
                 <div class="grid grid-cols-4 gap-4">
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="atom" class="text-blue" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/react.svg"
+                      alt="React logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">React</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="triangle" class="text-copy" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/nextjs.svg"
+                      alt="Next.js logo"
+                      class="tech-stack-icon tech-stack-icon--invert"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">Next.js</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="file-code" class="text-blue" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/typescript.svg"
+                      alt="TypeScript logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">TypeScript</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="wind" class="text-cyan-400" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/tailwindcss.svg"
+                      alt="Tailwind CSS logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">Tailwind</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="code" class="text-yellow-400" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/javascript.svg"
+                      alt="JavaScript logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">JavaScript</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="file-text" class="text-orange-500" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/html5.svg"
+                      alt="HTML5 logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">HTML</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="palette" class="text-blue" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/css3.svg"
+                      alt="CSS3 logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">CSS</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="snake" class="text-green-400" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/python.svg"
+                      alt="Python logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">Python</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="git-branch" class="text-orange-600" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/git.svg"
+                      alt="Git logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">Git</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="flame" class="text-yellow-500" width="36" height="36"></i>
-                    <span class="text-sm font-medium">Firebase</span>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/mongodb.svg"
+                      alt="MongoDB logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
+                    <span class="text-sm font-medium">MongoDB</span>
                   </div>
-                  <div class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10">
-                    <i data-lucide="coffee" class="text-red-500" width="36" height="36"></i>
+                  <div
+                    class="flex flex-col items-center gap-3 rounded-2xl bg-white/5 p-5 text-center transition-all hover:bg-white/10"
+                  >
+                    <img
+                      src="./assets/images/java.svg"
+                      alt="Java logo"
+                      class="tech-stack-icon"
+                      width="36"
+                      height="36"
+                    />
                     <span class="text-sm font-medium">Java</span>
                   </div>
                 </div>
@@ -290,29 +500,46 @@
 
               <!-- Values + Education Container -->
               <div class="flex flex-col gap-6 lg:col-span-7">
-                
                 <!-- Values Cards -->
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-3" data-reveal>
-                  <div class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default">
-                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue/10 text-blue">
+                  <div
+                    class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default"
+                  >
+                    <div
+                      class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue/10 text-blue"
+                    >
                       <i data-lucide="code-2" width="32"></i>
                     </div>
                     <h4 class="mb-2 text-lg font-bold">Clean Code</h4>
-                    <p class="text-sm leading-relaxed text-gray">Readable, maintainable, and tested.</p>
+                    <p class="text-sm leading-relaxed text-gray">
+                      Readable, maintainable, and tested.
+                    </p>
                   </div>
-                  <div class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default">
-                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple/10 text-purple">
+                  <div
+                    class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default"
+                  >
+                    <div
+                      class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple/10 text-purple"
+                    >
                       <i data-lucide="users" width="32"></i>
                     </div>
                     <h4 class="mb-2 text-lg font-bold">User-First</h4>
-                    <p class="text-sm leading-relaxed text-gray">Intuitive experiences that delight.</p>
+                    <p class="text-sm leading-relaxed text-gray">
+                      Intuitive experiences that delight.
+                    </p>
                   </div>
-                  <div class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default">
-                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
+                  <div
+                    class="value-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center transition-all hover:bg-white/10 cursor-default"
+                  >
+                    <div
+                      class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                    >
                       <i data-lucide="book-open" width="32"></i>
                     </div>
                     <h4 class="mb-2 text-lg font-bold">Keep Learning</h4>
-                    <p class="text-sm leading-relaxed text-gray">Always exploring new tech.</p>
+                    <p class="text-sm leading-relaxed text-gray">
+                      Always exploring new tech.
+                    </p>
                   </div>
                 </div>
 
@@ -322,13 +549,21 @@
                   data-reveal
                 >
                   <div class="flex items-center gap-6">
-                    <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-blue/10 text-blue">
+                    <div
+                      class="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-blue/10 text-blue"
+                    >
                       <i data-lucide="graduation-cap" width="32"></i>
                     </div>
                     <div>
-                      <h4 class="text-xl font-bold">King Fahd University of Petroleum & Minerals</h4>
-                      <p class="mt-1 text-sm text-gray">B.S. in Software Engineering</p>
-                      <div class="mt-2 flex flex-wrap items-center gap-4 text-sm text-gray">
+                      <h4 class="text-xl font-bold">
+                        King Fahd University of Petroleum & Minerals
+                      </h4>
+                      <p class="mt-1 text-sm text-gray">
+                        B.S. in Software Engineering
+                      </p>
+                      <div
+                        class="mt-2 flex flex-wrap items-center gap-4 text-sm text-gray"
+                      >
                         <span class="flex items-center gap-2">
                           <i data-lucide="calendar" width="14"></i>
                           Class of 2027
@@ -343,12 +578,14 @@
                   <div class="hidden sm:block h-16 w-px bg-white/10 mx-4"></div>
                   <div class="flex items-center gap-3 sm:flex-col sm:gap-1">
                     <span class="text-4xl font-bold text-copy">3.5</span>
-                    <span class="text-sm font-bold uppercase tracking-widest text-gray">GPA</span>
+                    <span
+                      class="text-sm font-bold uppercase tracking-widest text-gray"
+                      >GPA</span
+                    >
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </section>
       </div>
@@ -359,27 +596,42 @@
       >
         <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
           <div class="flex flex-col items-center text-center" data-reveal>
-            <div class="bg-blue/10 px-4 py-1.5 rounded-full border border-blue/20">
-              <span class="text-sm font-bold tracking-widest text-blue uppercase">Portfolio</span>
+            <div
+              class="bg-blue/10 px-4 py-1.5 rounded-full border border-blue/20"
+            >
+              <span
+                class="text-sm font-bold tracking-widest text-blue uppercase"
+                >Portfolio</span
+              >
             </div>
-            <h2 class="mt-6 text-4xl font-bold md:text-6xl">Featured Projects</h2>
-            <p class="mt-5 max-w-2xl text-base leading-relaxed text-gray sm:text-lg">
-              A curated set of projects with live GitHub signals built into each card, plus controls
-              to filter and sort the collection.
-            </p>
+            <h2 class="mt-6 text-4xl font-bold md:text-6xl">
+              Featured Projects
+            </h2>
           </div>
 
-          <div class="project-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8" data-reveal>
-            <div class="project-toolbar flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div
+            class="project-shell rounded-[2.5rem] border border-white/10 bg-white/5 p-6 sm:p-8"
+            data-reveal
+          >
+            <div
+              class="project-toolbar flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
+            >
               <div>
-                <p class="text-sm font-bold uppercase tracking-[0.25em] text-gray">Project Explorer</p>
+                <p
+                  class="text-sm font-bold uppercase tracking-[0.25em] text-gray"
+                >
+                  Project Explorer
+                </p>
                 <p class="mt-2 max-w-2xl text-sm leading-relaxed text-gray">
-                  Filter the portfolio by stack and sort the cards by name, year, stars, or recent GitHub activity.
+                  Filter the portfolio by stack and sort the cards by name,
+                  year, stars, or recent GitHub activity.
                 </p>
               </div>
 
               <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                <label class="project-control-group sm:col-span-2 xl:col-span-1">
+                <label
+                  class="project-control-group sm:col-span-2 xl:col-span-1"
+                >
                   <span class="project-control-label">Search</span>
                   <input
                     type="search"
@@ -392,7 +644,11 @@
 
                 <label class="project-control-group">
                   <span class="project-control-label">Filter</span>
-                  <select class="project-control" data-project-filter aria-label="Filter projects by technology">
+                  <select
+                    class="project-control"
+                    data-project-filter
+                    aria-label="Filter projects by technology"
+                  >
                     <option value="all">All projects</option>
                     <option value="html">HTML</option>
                     <option value="javascript">JavaScript</option>
@@ -405,7 +661,11 @@
 
                 <label class="project-control-group">
                   <span class="project-control-label">Sort By</span>
-                  <select class="project-control" data-project-sort aria-label="Sort portfolio projects">
+                  <select
+                    class="project-control"
+                    data-project-sort
+                    aria-label="Sort portfolio projects"
+                  >
                     <option value="year">Newest first</option>
                     <option value="name">Name</option>
                     <option value="stars">GitHub stars</option>
@@ -422,15 +682,23 @@
               </p>
             </div>
 
-            <div class="mt-8 hidden project-feedback-card project-feedback-error" data-project-error>
-              <p class="project-feedback-title">GitHub insights are unavailable right now.</p>
+            <div
+              class="mt-8 hidden project-feedback-card project-feedback-error"
+              data-project-error
+            >
+              <p class="project-feedback-title">
+                GitHub insights are unavailable right now.
+              </p>
               <p class="project-feedback-copy" data-project-error-message>
-                The portfolio is still fully viewable, but repository stats could not be loaded.
+                The portfolio is still fully viewable, but repository stats
+                could not be loaded.
               </p>
             </div>
 
             <div class="mt-8 hidden project-feedback-card" data-project-empty>
-              <p class="project-feedback-title">No projects match this filter.</p>
+              <p class="project-feedback-title">
+                No projects match this filter.
+              </p>
               <p class="project-feedback-copy">
                 Try a different technology filter or change the sort order.
               </p>
@@ -446,7 +714,9 @@
                 data-project-filter-values="html javascript tailwind"
                 data-project-search="portfolio website html tailwind css javascript responsive glassmorphism animations"
               >
-                <div class="project-image-container aspect-video overflow-hidden">
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
                   <img
                     src="./assets/images/portfolio-image.png"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -454,18 +724,35 @@
                     loading="lazy"
                   />
                   <div class="project-image-overlay">
-                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
-                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
                     </a>
                   </div>
-                  <div class="absolute top-4 left-4 project-badge project-badge-year">2026</div>
-                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2026
+                  </div>
+                  <div
+                    class="absolute top-4 right-4 project-badge project-badge-status"
+                  >
+                    Featured
+                  </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
                     <h3 class="text-2xl font-bold">Portfolio Website</h3>
                     <p class="text-gray text-sm flex-1">
-                      A modern, responsive portfolio website featuring glassmorphism design, animation, and an integrated GitHub-powered project system.
+                      A modern, responsive portfolio website featuring
+                      glassmorphism design, animation, and an integrated
+                      GitHub-powered project system.
                     </p>
                   </div>
                   <div class="project-features mt-6 mb-6">
@@ -483,17 +770,42 @@
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">HTML</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Tailwind CSS</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >HTML</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
                   </div>
                   <div class="project-meta-row mt-6" data-project-meta>
-                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
                   </div>
                   <div class="project-link-row mt-6">
-                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/SWE363-portfolio-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-link-button"
+                      data-project-repo-link-secondary
+                      >GitHub</a
+                    >
                   </div>
                 </div>
               </article>
@@ -507,7 +819,9 @@
                 data-project-filter-values="nextjs mongodb javascript"
                 data-project-search="training application tracker next.js tailwind css mongodb dashboard hiring workflow applications"
               >
-                <div class="project-image-container aspect-video overflow-hidden">
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
                   <img
                     src="./assets/images/dashboard.png"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -515,18 +829,37 @@
                     loading="lazy"
                   />
                   <div class="project-image-overlay">
-                    <a href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
-                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
                     </a>
                   </div>
-                  <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
-                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2025
+                  </div>
+                  <div
+                    class="absolute top-4 right-4 project-badge project-badge-status"
+                  >
+                    Featured
+                  </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
-                    <h3 class="text-2xl font-bold">Training Application Tracker</h3>
+                    <h3 class="text-2xl font-bold">
+                      Training Application Tracker
+                    </h3>
                     <p class="text-gray text-sm flex-1">
-                      A training-focused application dashboard for tracking submissions, reviewing progress, and managing application flow in one place.
+                      A training-focused application dashboard for tracking
+                      submissions, reviewing progress, and managing application
+                      flow in one place.
                     </p>
                   </div>
                   <div class="project-features mt-6 mb-6">
@@ -544,17 +877,42 @@
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Next.js</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">MongoDB</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >Next.js</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >MongoDB</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
                   </div>
                   <div class="project-meta-row mt-6" data-project-meta>
-                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
                   </div>
                   <div class="project-link-row mt-6">
-                    <a href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/Training-Application-Tracker"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-link-button"
+                      data-project-repo-link-secondary
+                      >GitHub</a
+                    >
                   </div>
                 </div>
               </article>
@@ -568,7 +926,9 @@
                 data-project-filter-values="react firebase javascript"
                 data-project-search="task manager react firebase tailwind productivity drag and drop reminders categories"
               >
-                <div class="project-image-container aspect-video overflow-hidden">
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
                   <img
                     src="./assets/images/task-manager.png"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -576,18 +936,34 @@
                     loading="lazy"
                   />
                   <div class="project-image-overlay">
-                    <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
-                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
                     </a>
                   </div>
-                  <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
-                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2025
+                  </div>
+                  <div
+                    class="absolute top-4 right-4 project-badge project-badge-status"
+                  >
+                    Featured
+                  </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
                     <h3 class="text-2xl font-bold">Task Manager</h3>
                     <p class="text-gray text-sm flex-1">
-                      Productivity tool with drag-and-drop task management, categorized workflows, and real-time synchronization.
+                      Productivity tool with drag-and-drop task management,
+                      categorized workflows, and real-time synchronization.
                     </p>
                   </div>
                   <div class="project-features mt-6 mb-6">
@@ -605,17 +981,42 @@
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">React</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">Firebase</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >React</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >Firebase</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
                   </div>
                   <div class="project-meta-row mt-6" data-project-meta>
-                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
                   </div>
                   <div class="project-link-row mt-6">
-                    <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-link-button"
+                      data-project-repo-link-secondary
+                      >GitHub</a
+                    >
                   </div>
                 </div>
               </article>
@@ -629,7 +1030,9 @@
                 data-project-filter-values="javascript html css"
                 data-project-search="swe363 project javascript html css web application university course project"
               >
-                <div class="project-image-container aspect-video overflow-hidden">
+                <div
+                  class="project-image-container aspect-video overflow-hidden"
+                >
                   <img
                     src="./assets/images/SWE3636-project.png"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -637,18 +1040,35 @@
                     loading="lazy"
                   />
                   <div class="project-image-overlay">
-                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-project" target="_blank" rel="noopener noreferrer" class="project-view-cta" data-project-repo-link>
-                      View Repository <i data-lucide="arrow-right" width="16"></i>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/SWE363-project"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-view-cta"
+                      data-project-repo-link
+                    >
+                      View Repository
+                      <i data-lucide="arrow-right" width="16"></i>
                     </a>
                   </div>
-                  <div class="absolute top-4 left-4 project-badge project-badge-year">2025</div>
-                  <div class="absolute top-4 right-4 project-badge project-badge-status">Featured</div>
+                  <div
+                    class="absolute top-4 left-4 project-badge project-badge-year"
+                  >
+                    2025
+                  </div>
+                  <div
+                    class="absolute top-4 right-4 project-badge project-badge-status"
+                  >
+                    Featured
+                  </div>
                 </div>
                 <div class="flex flex-col flex-1 p-8">
                   <div class="flex flex-col gap-3">
                     <h3 class="text-2xl font-bold">SWE363 Project</h3>
                     <p class="text-gray text-sm flex-1">
-                      A course project built for SWE363 that focuses on delivering a structured web application with clean interaction flow and polished presentation.
+                      A course project built for SWE363 that focuses on
+                      delivering a structured web application with clean
+                      interaction flow and polished presentation.
                     </p>
                   </div>
                   <div class="project-features mt-6 mb-6">
@@ -666,17 +1086,42 @@
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">JavaScript</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">HTML</span>
-                    <span class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill">CSS</span>
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >HTML</span
+                    >
+                    <span
+                      class="rounded-full px-3 py-1 text-sm font-bold project-tech-pill"
+                      >CSS</span
+                    >
                   </div>
                   <div class="project-meta-row mt-6" data-project-meta>
-                    <span class="project-meta-item"><i data-lucide="star" width="14"></i><span data-project-stars>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="git-fork" width="14"></i><span data-project-commits>...</span></span>
-                    <span class="project-meta-item"><i data-lucide="calendar" width="14"></i><span data-project-date>...</span></span>
+                    <span class="project-meta-item"
+                      ><i data-lucide="star" width="14"></i
+                      ><span data-project-stars>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="git-fork" width="14"></i
+                      ><span data-project-commits>...</span></span
+                    >
+                    <span class="project-meta-item"
+                      ><i data-lucide="calendar" width="14"></i
+                      ><span data-project-date>...</span></span
+                    >
                   </div>
                   <div class="project-link-row mt-6">
-                    <a href="https://github.com/JASSIM-ALHUMAID/SWE363-project" target="_blank" rel="noopener noreferrer" class="project-link-button" data-project-repo-link-secondary>GitHub</a>
+                    <a
+                      href="https://github.com/JASSIM-ALHUMAID/SWE363-project"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-link-button"
+                      data-project-repo-link-secondary
+                      >GitHub</a
+                    >
                   </div>
                 </div>
               </article>
@@ -704,10 +1149,17 @@
       >
         <div class="max-w-4xl w-full">
           <div class="mb-16 flex flex-col items-center text-center" data-reveal>
-            <div class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6">
-              <span class="text-sm font-bold tracking-widest text-green-400 uppercase">Contact</span>
+            <div
+              class="bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-6"
+            >
+              <span
+                class="text-sm font-bold tracking-widest text-green-400 uppercase"
+                >Contact</span
+              >
             </div>
-            <h2 class="text-4xl md:text-6xl font-bold">Let's build something.</h2>
+            <h2 class="text-4xl md:text-6xl font-bold">
+              Let's build something.
+            </h2>
           </div>
 
           <div
@@ -717,7 +1169,11 @@
             <form class="space-y-8" data-contact-form>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-3">
-                  <label for="name" class="text-sm font-bold uppercase tracking-widest text-gray ml-1">Name</label>
+                  <label
+                    for="name"
+                    class="text-sm font-bold uppercase tracking-widest text-gray ml-1"
+                    >Name</label
+                  >
                   <input
                     type="text"
                     id="name"
@@ -728,7 +1184,11 @@
                   />
                 </div>
                 <div class="space-y-3">
-                  <label for="email" class="text-sm font-bold uppercase tracking-widest text-gray ml-1">Email</label>
+                  <label
+                    for="email"
+                    class="text-sm font-bold uppercase tracking-widest text-gray ml-1"
+                    >Email</label
+                  >
                   <input
                     type="email"
                     id="email"
@@ -741,7 +1201,11 @@
               </div>
 
               <div class="space-y-3">
-                <label for="message" class="text-sm font-bold uppercase tracking-widest text-gray ml-1">Message</label>
+                <label
+                  for="message"
+                  class="text-sm font-bold uppercase tracking-widest text-gray ml-1"
+                  >Message</label
+                >
                 <textarea
                   id="message"
                   name="message"
@@ -758,7 +1222,9 @@
               >
                 <span>Send Message</span>
                 <i data-lucide="send" width="18"></i>
-                <div class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"></div>
+                <div
+                  class="absolute inset-0 -z-10 bg-gradient-to-r from-blue to-purple opacity-0 transition-opacity group-hover:opacity-100"
+                ></div>
               </button>
             </form>
           </div>
@@ -768,25 +1234,46 @@
       <!-- Footer -->
       <footer class="w-full py-12 border-t border-white/10">
         <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <div class="flex flex-col items-center justify-between gap-8 md:flex-row">
+          <div
+            class="flex flex-col items-center justify-between gap-8 md:flex-row"
+          >
             <div class="flex flex-col items-center gap-4 md:items-start">
-              <a href="#home" class="text-xl font-bold tracking-tighter">JA<span class="text-blue">.</span></a>
-              <p class="text-sm text-gray text-center md:text-left">Building the future of the web, one pixel at a time.</p>
+              <a href="#home" class="text-xl font-bold tracking-tighter"
+                >JA<span class="text-blue">.</span></a
+              >
+              <p class="text-sm text-gray text-center md:text-left">
+                Building the future of the web, one pixel at a time.
+              </p>
             </div>
-            
+
             <div class="flex items-center gap-6">
-              <a href="https://github.com/JASSIM-ALHUMAID" target="_blank" class="text-gray hover:text-copy transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
-              <a href="https://www.linkedin.com/in/jassim-m-alhumaid/" target="_blank" class="text-gray hover:text-copy transition-colors"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
-              <a href="mailto:jassim.m.alhumaid@gmail.com" class="text-gray hover:text-copy transition-colors"><i class="fa-solid fa-envelope text-xl"></i></a>
+              <a
+                href="https://github.com/JASSIM-ALHUMAID"
+                target="_blank"
+                class="text-gray hover:text-copy transition-colors"
+                ><i class="fa-brands fa-github text-xl"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/jassim-m-alhumaid/"
+                target="_blank"
+                class="text-gray hover:text-copy transition-colors"
+                ><i class="fa-brands fa-linkedin-in text-xl"></i
+              ></a>
+              <a
+                href="mailto:jassim.m.alhumaid@gmail.com"
+                class="text-gray hover:text-copy transition-colors"
+                ><i class="fa-solid fa-envelope text-xl"></i
+              ></a>
             </div>
           </div>
-          <div class="mt-12 pt-8 border-t border-white/5 text-center text-sm font-bold uppercase tracking-[0.2em] text-gray/50">
+          <div
+            class="mt-12 pt-8 border-t border-white/5 text-center text-sm font-bold uppercase tracking-[0.2em] text-gray/50"
+          >
             &copy; 2026 Jassim Alhumaid. All rights reserved.
           </div>
         </div>
       </footer>
     </main>
     <script type="module" src="js/main.js"></script>
-
   </body>
 </html>

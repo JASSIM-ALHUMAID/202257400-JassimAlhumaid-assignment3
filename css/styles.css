@@ -415,6 +415,20 @@ body::before {
 }
 
 /* Tech Stack Enhancement */
+.tech-stack-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+}
+
+.tech-stack-icon--invert {
+  filter: invert(1);
+}
+
+:root[data-theme="light"] .tech-stack-icon--invert {
+  filter: none;
+}
+
 .project-tech-pill {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   background-color: color-mix(in srgb, var(--card-accent) 15%, transparent);
