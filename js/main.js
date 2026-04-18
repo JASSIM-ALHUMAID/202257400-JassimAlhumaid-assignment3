@@ -7,6 +7,7 @@ const PROJECT_GITHUB_CACHE_TTL = 1000 * 60 * 60;
 const CONTACT_EMAIL = "jassim.m.alhumaid@gmail.com";
 const GITHUB_USERNAME = "JASSIM-ALHUMAID";
 const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+const GRADUATION_TARGET_DATE = new Date("2027-05-01T00:00:00+03:00");
 
 const ICONS = {
   menu: '<path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/>',
@@ -51,6 +52,7 @@ const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 const heroSection = document.getElementById("home");
+const graduationCountdown = document.querySelector("[data-graduation-countdown]");
 const contactForm = document.querySelector("[data-contact-form]");
 const contactFeedback = document.querySelector("[data-contact-feedback]");
 const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
@@ -727,6 +729,26 @@ const initHeroMotion = () => {
   });
 };
 
+const initGraduationCountdown = () => {
+  if (!graduationCountdown) return;
+
+  const renderCountdown = () => {
+    const now = Date.now();
+    const timeRemaining = GRADUATION_TARGET_DATE.getTime() - now;
+
+    if (timeRemaining <= 0) {
+      graduationCountdown.textContent = "Graduated";
+      return;
+    }
+
+    const daysRemaining = Math.ceil(timeRemaining / (1000 * 60 * 60 * 24));
+    graduationCountdown.textContent = `${daysRemaining} days to go`;
+  };
+
+  renderCountdown();
+  window.setInterval(renderCountdown, 1000 * 60 * 60);
+};
+
 const initContactForm = () => {
   if (!contactForm) return;
 
@@ -900,6 +922,7 @@ const init = () => {
   initThemeToggle();
   initGreeting();
   initHeroMotion();
+  initGraduationCountdown();
   initMobileMenu();
   initSectionToggles();
   initActiveNav();
