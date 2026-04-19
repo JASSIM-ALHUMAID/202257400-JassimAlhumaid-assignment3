@@ -317,7 +317,19 @@ body::before {
   animation: hero-scroll-drift 2.8s ease-in-out infinite;
 }
 
+#site-nav {
+  transition: none;
+}
+
+#site-nav.is-ready {
+  transition: top 0.5s ease;
+}
+
 .nav-shell {
+  transition: none;
+}
+
+#site-nav.is-ready .nav-shell {
   transition: transform 0.3s ease, padding 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -348,8 +360,12 @@ body::before {
   box-shadow: 0 10px 30px -24px color-mix(in srgb, var(--color-blue) 42%, transparent);
   opacity: 0;
   transform: translate3d(0, -50%, 0);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  transition: none;
   pointer-events: none;
+}
+
+#site-nav.is-ready .nav-links__indicator {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
 .nav-links li {

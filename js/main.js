@@ -1000,6 +1000,9 @@ const init = () => {
   initStatCounters();
   syncProjectUI();
   defer(loadProjectGithubData);
+  window.requestAnimationFrame(() => {
+    siteNav?.classList.add("is-ready");
+  });
 };
 
 if (document.readyState === "loading") {
