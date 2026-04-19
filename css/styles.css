@@ -421,6 +421,7 @@ textarea:focus-visible {
   z-index: -1;
 }
 
+.section-ambient--about,
 .section-ambient--projects,
 .section-ambient--contact {
   inset: -8rem 0;
@@ -520,9 +521,14 @@ textarea:focus-visible {
   );
 }
 
-:root[data-theme="light"] .section-ambient--about {
-  inset: -8rem 0;
-  overflow: visible;
+.section-ambient--about,
+:root[data-theme="light"] .about-section::before {
+  transition: opacity 0.35s ease;
+}
+
+.about-section.is-section-collapsed .section-ambient--about,
+:root[data-theme="light"] .about-section.is-section-collapsed::before {
+  opacity: 0.18;
 }
 
 :root[data-theme="light"] .projects-section::before {

@@ -833,10 +833,13 @@ const setSectionCollapsed = (sectionId, collapsed) => {
   const content = document.querySelector(`[data-section-content="${sectionId}"]`);
   if (!toggle || !content) return;
 
+  const section = content.closest("section");
+
   toggle.setAttribute("aria-expanded", String(!collapsed));
   content.classList.toggle("is-collapsed", collapsed);
   content.classList.toggle("is-expanded", !collapsed);
   content.setAttribute("aria-hidden", String(collapsed));
+  section?.classList.toggle("is-section-collapsed", collapsed);
 };
 
 const expandSectionFromHash = () => {
